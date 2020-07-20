@@ -1,0 +1,1135 @@
+fileFormatVersion: 2
+guid: 70bf55cd5b185644e85409ad4b00787b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5856228194499907585
+    second: Nongoh_Spritesheet_PNG_1.0_0
+  - first:
+      213: -712548337128598047
+    second: Nongoh_Spritesheet_PNG_1.0_1
+  - first:
+      213: 8115412370553216405
+    second: Nongoh_Spritesheet_PNG_1.0_2
+  - first:
+      213: -8084527961709920389
+    second: Nongoh_Spritesheet_PNG_1.0_3
+  - first:
+      213: 4871295921561679910
+    second: Nongoh_Spritesheet_PNG_1.0_4
+  - first:
+      213: -4458092238455444353
+    second: Nongoh_Spritesheet_PNG_1.0_5
+  - first:
+      213: 4909234832326071165
+    second: Nongoh_Spritesheet_PNG_1.0_6
+  - first:
+      213: -4343421519836790466
+    second: Nongoh_Spritesheet_PNG_1.0_7
+  - first:
+      213: 4249588888866761180
+    second: Nongoh_Spritesheet_PNG_1.0_8
+  - first:
+      213: 9046963741488838996
+    second: Nongoh_Spritesheet_PNG_1.0_9
+  - first:
+      213: 7412111546372987128
+    second: Nongoh_Spritesheet_PNG_1.0_10
+  - first:
+      213: -3560154503281923641
+    second: Nongoh_Spritesheet_PNG_1.0_11
+  - first:
+      213: 4417764015636345365
+    second: Nongoh_Spritesheet_PNG_1.0_12
+  - first:
+      213: -8530326385859211256
+    second: Nongoh_Spritesheet_PNG_1.0_13
+  - first:
+      213: -1102781173821255799
+    second: Nongoh_Spritesheet_PNG_1.0_14
+  - first:
+      213: -5282749631389268867
+    second: Nongoh_Spritesheet_PNG_1.0_15
+  - first:
+      213: 2928488214212349044
+    second: Nongoh_Spritesheet_PNG_1.0_16
+  - first:
+      213: 6449072664358179452
+    second: Nongoh_Spritesheet_PNG_1.0_17
+  - first:
+      213: 5819190123559277788
+    second: Nongoh_Spritesheet_PNG_1.0_18
+  - first:
+      213: 2089093535119229605
+    second: Nongoh_Spritesheet_PNG_1.0_19
+  - first:
+      213: -1091635945166238250
+    second: Nongoh_Spritesheet_PNG_1.0_20
+  - first:
+      213: -2938583996529999255
+    second: Nongoh_Spritesheet_PNG_1.0_21
+  - first:
+      213: 7758035084111208951
+    second: Nongoh_Spritesheet_PNG_1.0_22
+  - first:
+      213: 3323293185758189738
+    second: Nongoh_Spritesheet_PNG_1.0_23
+  - first:
+      213: -1075235095640833191
+    second: Nongoh_Spritesheet_PNG_1.0_24
+  - first:
+      213: 4664343551776384490
+    second: Nongoh_Spritesheet_PNG_1.0_25
+  - first:
+      213: 7045784678482661556
+    second: Nongoh_Spritesheet_PNG_1.0_26
+  - first:
+      213: -8559055123743962728
+    second: Nongoh_Spritesheet_PNG_1.0_27
+  - first:
+      213: 1654106761803503802
+    second: Nongoh_Spritesheet_PNG_1.0_28
+  - first:
+      213: -6755664353050468258
+    second: Nongoh_Spritesheet_PNG_1.0_29
+  - first:
+      213: -1295647884823566378
+    second: Nongoh_Spritesheet_PNG_1.0_30
+  - first:
+      213: -4466104029849760905
+    second: Nongoh_Spritesheet_PNG_1.0_31
+  - first:
+      213: 7344180650612106450
+    second: Nongoh_Spritesheet_PNG_1.0_32
+  - first:
+      213: 5553652937214555151
+    second: Nongoh_Spritesheet_PNG_1.0_33
+  - first:
+      213: 2475292718481581341
+    second: Nongoh_Spritesheet_PNG_1.0_34
+  - first:
+      213: -5459522374525898375
+    second: Nongoh_Spritesheet_PNG_1.0_35
+  - first:
+      213: 276516201177427723
+    second: Nongoh_Spritesheet_PNG_1.0_36
+  - first:
+      213: 1717068043158161447
+    second: Nongoh_Spritesheet_PNG_1.0_37
+  - first:
+      213: -7523657125331737883
+    second: Nongoh_Spritesheet_PNG_1.0_38
+  - first:
+      213: 5818791473714157362
+    second: Nongoh_Spritesheet_PNG_1.0_39
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 40
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: tvOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Lumin
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Nongoh_Spritesheet_PNG_1.0_0
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 896
+        width: 82
+        height: 114
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fce35bbaf9dfa3c449205b4d857cd5ae
+      internalID: 5856228194499907585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nongoh_Spritesheet_PNG_1.0_1
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 896
+        width: 82
+        height: 110
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0daa86d9c6cf8194197380eb21d24e25
+      internalID: -712548337128598047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nongoh_Spritesheet_PNG_1.0_2
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 896
+        width: 82
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6772852c63cf73c44af93ee0b0e663a1
+      internalID: 8115412370553216405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nongoh_Spritesheet_PNG_1.0_3
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 896
+        width: 82
+        height: 115
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3083ce4dd8201354d95025d615fb7d7c
+      internalID: -8084527961709920389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nongoh_Spritesheet_PNG_1.0_4
+      rect:
+        serializedVersion: 2
+        x: 442
+        y: 896
+        width: 85
+        height: 121
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61ba149e2b4720843a2eb07b74758a84
+      internalID: 4871295921561679910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nongoh_Spritesheet_PNG_1.0_5
+      rect:
+        serializedVersion: 2
+        x: 549
+        y: 896
+        width: 82
+        height: 115
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9f0894c90cfdb8419276f8a840bded9
+      internalID: -4458092238455444353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nongoh_Spritesheet_PNG_1.0_6
+      rect:
+        serializedVersion: 2
+        x: 658
+        y: 896
+        width: 82
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65a484f343480de4cb9ef6352da12dc4
+      internalID: 4909234832326071165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nongoh_Spritesheet_PNG_1.0_7
+      rect:
+        serializedVersion: 2
+        x: 767
+        y: 896
+        width: 82
+        height: 110
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6584e72f3dfecf541bcc4e54c7edc59d
+      internalID: -4343421519836790466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nongoh_Spritesheet_PNG_1.0_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 736
+        width: 102
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 681a76575501b984ead18986005c1dca
+      internalID: 4249588888866761180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nongoh_Spritesheet_PNG_1.0_9
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 736
+        width: 107
+        height: 138
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afb1e1f1bb0e9b4429a937a82449e552
+      internalID: 9046963741488838996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nongoh_Spritesheet_PNG_1.0_10
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 736
+        width: 107
+        height: 138
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40662115edb509742a1b04311dae7087
+      internalID: 7412111546372987128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nongoh_Spritesheet_PNG_1.0_11
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 736
+        width: 102
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 731a15e5cce80884c9c5e9a2b95ef9c6
+      internalID: -3560154503281923641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nongoh_Spritesheet_PNG_1.0_12
+      rect:
+        serializedVersion: 2
+        x: 521
+        y: 736
+        width: 82
+        height: 115
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d1ec3b23eaa47641bdbe54739befd7e
+      internalID: 4417764015636345365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nongoh_Spritesheet_PNG_1.0_13
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 600
+        width: 126
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d4624b9d1fc6434e9ddcd5293834be3
+      internalID: -8530326385859211256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nongoh_Spritesheet_PNG_1.0_14
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 598
+        width: 126
+        height: 126
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f7a36202cce7e94bbf6c3cb67333c88
+      internalID: -1102781173821255799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nongoh_Spritesheet_PNG_1.0_15
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 595
+        width: 126
+        height: 126
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65e80a7efee9aad43aca4561c757b8bc
+      internalID: -5282749631389268867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nongoh_Spritesheet_PNG_1.0_16
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 595
+        width: 126
+        height: 126
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5b52bb26000c504ab5923de67aa44d5
+      internalID: 2928488214212349044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nongoh_Spritesheet_PNG_1.0_17
+      rect:
+        serializedVersion: 2
+        x: 537
+        y: 594
+        width: 126
+        height: 126
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5be64b25c243ffb41ba4fde6a5b34739
+      internalID: 6449072664358179452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nongoh_Spritesheet_PNG_1.0_18
+      rect:
+        serializedVersion: 2
+        x: 670
+        y: 612
+        width: 126
+        height: 126
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 036e04c7fb86d2d4b84351dd004cfd69
+      internalID: 5819190123559277788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nongoh_Spritesheet_PNG_1.0_19
+      rect:
+        serializedVersion: 2
+        x: 793
+        y: 607
+        width: 126
+        height: 126
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c25e3d6b01690674a85c7bdac1451125
+      internalID: 2089093535119229605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nongoh_Spritesheet_PNG_1.0_20
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 401
+        width: 78
+        height: 154
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b97e0117d3ede3d428fb0f5c331affa8
+      internalID: -1091635945166238250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nongoh_Spritesheet_PNG_1.0_21
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 400
+        width: 113
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d065a8223a54b954db33c24701df6b1b
+      internalID: -2938583996529999255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nongoh_Spritesheet_PNG_1.0_22
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 400
+        width: 117
+        height: 134
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6912fb81891ec094291f4d9976c61ce3
+      internalID: 7758035084111208951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nongoh_Spritesheet_PNG_1.0_23
+      rect:
+        serializedVersion: 2
+        x: 446
+        y: 403
+        width: 114
+        height: 135
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ae77ba7c14bee641becda26e2b59483
+      internalID: 3323293185758189738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nongoh_Spritesheet_PNG_1.0_24
+      rect:
+        serializedVersion: 2
+        x: 583
+        y: 403
+        width: 120
+        height: 133
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2864ee95f30b37b42a7e9b2111a3ec16
+      internalID: -1075235095640833191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nongoh_Spritesheet_PNG_1.0_25
+      rect:
+        serializedVersion: 2
+        x: 708
+        y: 404
+        width: 114
+        height: 134
+      alignment: 9
+      pivot: {x: 0.37374824, y: 0.5076722}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ddcf7b898532c844936ceb98be3a3b1
+      internalID: 4664343551776384490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nongoh_Spritesheet_PNG_1.0_26
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 214
+        width: 111
+        height: 148
+      alignment: 9
+      pivot: {x: 0.35181266, y: 0.5138927}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7de04e1ea9b479241a2c5d65660b36eb
+      internalID: 7045784678482661556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nongoh_Spritesheet_PNG_1.0_27
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 214
+        width: 171
+        height: 149
+      alignment: 9
+      pivot: {x: 0.16934061, y: 0.51379925}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a24b765684449248b6d228cf34b056b
+      internalID: -8559055123743962728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nongoh_Spritesheet_PNG_1.0_28
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 214
+        width: 186
+        height: 148
+      alignment: 9
+      pivot: {x: 0.11862659, y: 0.5000002}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f385bc281ffab44a98a64d3af02057d
+      internalID: 1654106761803503802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nongoh_Spritesheet_PNG_1.0_29
+      rect:
+        serializedVersion: 2
+        x: 572
+        y: 214
+        width: 183
+        height: 148
+      alignment: 9
+      pivot: {x: 0.11799263, y: 0.5000002}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 084249199aea8c74bbcb245f8dce3860
+      internalID: -6755664353050468258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nongoh_Spritesheet_PNG_1.0_30
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 46
+        width: 68
+        height: 110
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 713e6693fab1b964ba7df17d3352244e
+      internalID: -1295647884823566378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nongoh_Spritesheet_PNG_1.0_31
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 46
+        width: 54
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 938b1c4a2e2398f45888961a4f7871cf
+      internalID: -4466104029849760905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nongoh_Spritesheet_PNG_1.0_32
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 43
+        width: 58
+        height: 116
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a22dfaf5eba9054f8b5023bdb17c55a
+      internalID: 7344180650612106450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nongoh_Spritesheet_PNG_1.0_33
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 43
+        width: 72
+        height: 114
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e12ca91d230f144dbc2cd056fc12a26
+      internalID: 5553652937214555151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nongoh_Spritesheet_PNG_1.0_34
+      rect:
+        serializedVersion: 2
+        x: 365
+        y: 43
+        width: 81
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f41147002a9b3254f9df9afb5b3c9696
+      internalID: 2475292718481581341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nongoh_Spritesheet_PNG_1.0_35
+      rect:
+        serializedVersion: 2
+        x: 471
+        y: 43
+        width: 81
+        height: 110
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a07682d4b3ae9024087367d868891f16
+      internalID: -5459522374525898375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nongoh_Spritesheet_PNG_1.0_36
+      rect:
+        serializedVersion: 2
+        x: 575
+        y: 43
+        width: 72
+        height: 113
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2374c932ffde56d4a8d47ed07b31bbc5
+      internalID: 276516201177427723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nongoh_Spritesheet_PNG_1.0_37
+      rect:
+        serializedVersion: 2
+        x: 670
+        y: 43
+        width: 58
+        height: 116
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 931d0742df5c6414abca35adad954aa5
+      internalID: 1717068043158161447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nongoh_Spritesheet_PNG_1.0_38
+      rect:
+        serializedVersion: 2
+        x: 749
+        y: 43
+        width: 49
+        height: 114
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e89baffa084530340ad32455dfc7b8f1
+      internalID: -7523657125331737883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Nongoh_Spritesheet_PNG_1.0_39
+      rect:
+        serializedVersion: 2
+        x: 818
+        y: 43
+        width: 68
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c653b0613083e3a4ead79761bd68eb47
+      internalID: 5818791473714157362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
