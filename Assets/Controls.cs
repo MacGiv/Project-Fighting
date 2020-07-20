@@ -41,13 +41,29 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""13a3bd43-a2fe-4a89-b768-18f105fb62f5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Dash"",
+                    ""type"": ""Button"",
+                    ""id"": ""6ea49146-3022-4374-aafd-fa3eb3e74f20"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": """",
                     ""id"": ""16ad744b-45fd-4ddc-81e9-821b2592c4a5"",
-                    ""path"": ""<Keyboard>/z"",
+                    ""path"": ""<Keyboard>/v"",
                     ""interactions"": ""Press(behavior=2)"",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
@@ -61,7 +77,7 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Gamepad;Keyboard"",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Attack1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -69,7 +85,7 @@ public class @Controls : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""6cf62674-a490-4364-aee6-303a39c9ae3e"",
-                    ""path"": ""<Keyboard>/x"",
+                    ""path"": ""<Keyboard>/c"",
                     ""interactions"": ""Press(behavior=2)"",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
@@ -153,6 +169,50 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""77fbd93f-95d8-4067-af89-0e878e3524d4"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4993b799-2bfa-4636-878e-bab2459f65c5"",
+                    ""path"": ""<Keyboard>/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""75118546-db22-4285-8095-6b2585a47481"",
+                    ""path"": ""<Keyboard>/z"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f065a55f-2a8d-4657-90c1-eab27905e679"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -175,6 +235,8 @@ public class @Controls : IInputActionCollection, IDisposable
         m_Kyo_Attack1 = m_Kyo.FindAction("Attack1", throwIfNotFound: true);
         m_Kyo_Attack2 = m_Kyo.FindAction("Attack2", throwIfNotFound: true);
         m_Kyo_Move = m_Kyo.FindAction("Move", throwIfNotFound: true);
+        m_Kyo_Jump = m_Kyo.FindAction("Jump", throwIfNotFound: true);
+        m_Kyo_Dash = m_Kyo.FindAction("Dash", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -227,6 +289,8 @@ public class @Controls : IInputActionCollection, IDisposable
     private readonly InputAction m_Kyo_Attack1;
     private readonly InputAction m_Kyo_Attack2;
     private readonly InputAction m_Kyo_Move;
+    private readonly InputAction m_Kyo_Jump;
+    private readonly InputAction m_Kyo_Dash;
     public struct KyoActions
     {
         private @Controls m_Wrapper;
@@ -234,6 +298,8 @@ public class @Controls : IInputActionCollection, IDisposable
         public InputAction @Attack1 => m_Wrapper.m_Kyo_Attack1;
         public InputAction @Attack2 => m_Wrapper.m_Kyo_Attack2;
         public InputAction @Move => m_Wrapper.m_Kyo_Move;
+        public InputAction @Jump => m_Wrapper.m_Kyo_Jump;
+        public InputAction @Dash => m_Wrapper.m_Kyo_Dash;
         public InputActionMap Get() { return m_Wrapper.m_Kyo; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -252,6 +318,12 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Move.started -= m_Wrapper.m_KyoActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_KyoActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_KyoActionsCallbackInterface.OnMove;
+                @Jump.started -= m_Wrapper.m_KyoActionsCallbackInterface.OnJump;
+                @Jump.performed -= m_Wrapper.m_KyoActionsCallbackInterface.OnJump;
+                @Jump.canceled -= m_Wrapper.m_KyoActionsCallbackInterface.OnJump;
+                @Dash.started -= m_Wrapper.m_KyoActionsCallbackInterface.OnDash;
+                @Dash.performed -= m_Wrapper.m_KyoActionsCallbackInterface.OnDash;
+                @Dash.canceled -= m_Wrapper.m_KyoActionsCallbackInterface.OnDash;
             }
             m_Wrapper.m_KyoActionsCallbackInterface = instance;
             if (instance != null)
@@ -265,6 +337,12 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
+                @Jump.started += instance.OnJump;
+                @Jump.performed += instance.OnJump;
+                @Jump.canceled += instance.OnJump;
+                @Dash.started += instance.OnDash;
+                @Dash.performed += instance.OnDash;
+                @Dash.canceled += instance.OnDash;
             }
         }
     }
@@ -292,5 +370,7 @@ public class @Controls : IInputActionCollection, IDisposable
         void OnAttack1(InputAction.CallbackContext context);
         void OnAttack2(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
+        void OnJump(InputAction.CallbackContext context);
+        void OnDash(InputAction.CallbackContext context);
     }
 }
