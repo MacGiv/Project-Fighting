@@ -29,6 +29,8 @@ namespace ProjectFighting.FirstRound
         [SerializeField] LayerMask whatIsDamageable;
         Animator playerAnimator;
 
+        // ASD PARA GITHUB HEHEHEHEHE
+
         float lastInputTime = -100; //Stores the last time we attempted to attack 
         float lastAttackTime = -1;
         float normalGravityScale;
