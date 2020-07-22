@@ -5,10 +5,17 @@ using UnityEngine.InputSystem;
 
 public class InputHandler : MonoBehaviour
 {
-    
+
+
+    private void OnEnable()
+    {
+        
+    }
+
     public void OnMoveInput(InputAction.CallbackContext context)
     {
-        Debug.Log("MOVEMENT input pressed!" + context);
+        if (context.started == true)
+            Debug.Log("MOVEMENT input pressed!" + context);
     }
 
     public void OnJumpInput(InputAction.CallbackContext context)
