@@ -5,11 +5,11 @@ using UnityEngine.InputSystem;
 
 public class InputHandler : MonoBehaviour
 {
-
+    private Controls _controls;
 
     private void OnEnable()
     {
-        
+        _controls = new Controls();
     }
 
     public void OnMoveInput(InputAction.CallbackContext context)
