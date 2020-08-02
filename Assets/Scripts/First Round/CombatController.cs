@@ -8,7 +8,7 @@ namespace ProjectFighting.FirstRound
         [Header("Configuration Parameters")]
         [SerializeField] float attackMoveSpeed = 0;
         [SerializeField] float comboLostTime = 0;
-        [SerializeField] float continueComboTime = 0;
+        //[SerializeField] float continueComboTime = 0;
         [SerializeField] float hitSpotOffset = 0;
         [SerializeField] float xHitOffset = 0;
         [SerializeField] float hitRadius = 0;

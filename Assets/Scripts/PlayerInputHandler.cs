@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class InputHandler : MonoBehaviour
+public class PlayerInputHandler : MonoBehaviour
 {
     private Controls _controls;
+    public Vector2 RawMovementInput { get; private set; }
+    public int NormalizedInputX { get; private set; }
+    public int NormalizedInputY { get; private set; }
 
     private void OnEnable()
     {
@@ -14,8 +17,10 @@ public class InputHandler : MonoBehaviour
 
     public void OnMoveInput(InputAction.CallbackContext context)
     {
-        if (context.started == true)
-            Debug.Log("MOVEMENT input pressed!" + context);
+        RawMovementInput = context.ReadValue<Vector2>();
+
+        NormalizedInputX = (int)(RawMovementInput * Vector2.right).normalized.x;
+        NormalizedInputY = (int)(RawMovementInput * Vector2.up).normalized.y;
     }
 
     public void OnJumpInput(InputAction.CallbackContext context)
