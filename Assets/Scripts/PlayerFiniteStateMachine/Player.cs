@@ -13,15 +13,13 @@ public class Player : MonoBehaviour
 
     #region Components
 
+    public PlayerMovement playerMovement { get; private set; }
     public Animator Anim { get; private set; }
     public PlayerInputHandler InputHandler { get; private set; }
     public Rigidbody2D RB { get; private set; }
     #endregion
 
     #region Other Variables
-
-    public Vector2 CurrentVelocity { get; private set; }
-    public int FacingDirection { get; private set; }
 
     [SerializeField]
     private PlayerData _playerData;
@@ -41,15 +39,13 @@ public class Player : MonoBehaviour
         Anim = GetComponent<Animator>();
         InputHandler = GetComponent<PlayerInputHandler>();
         RB = GetComponent<Rigidbody2D>();
-
-        FacingDirection = 1;
+        playerMovement = GetComponent<PlayerMovement>();
 
         StateMachine.Initialize(IdleState);
     }
 
     private void Update()
     {
-        CurrentVelocity = RB.velocity;
         StateMachine.CurrentState.LogicUpdate();
     }
 
@@ -58,25 +54,5 @@ public class Player : MonoBehaviour
         StateMachine.CurrentState.PhysicsUpdate();
     }
 
-    public void SetVelocityX(float velocity)
-    {
-        _workspace.Set(velocity, CurrentVelocity.y);
-        RB.velocity = _workspace;
-        CurrentVelocity = _workspace;
-    }
-
-    public void CheckIfShouldFlip(int xInput)
-    {
-        if (xInput != 0 && xInput != FacingDirection)
-        {
-            Flip();
-        }
-    }
-
-    private void Flip()
-    {
-        FacingDirection *= -1;
-        transform.Rotate(0.0f, 180.0f, 0.0f);
-    }
-
+    
 }

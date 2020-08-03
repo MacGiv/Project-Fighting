@@ -28,9 +28,9 @@ public class PlayerMoveState : PlayerGroundedState
     {
         base.LogicUpdate();
 
-        player.CheckIfShouldFlip(xInput);
+        player.playerMovement.CheckIfShouldFlip(xInput);
 
-        player.SetVelocityX(playerData.movementVelocity * xInput);
+        player.playerMovement.SetVelocityX(playerData.movementVelocity * xInput);
 
         if (xInput == 0)
         {
