@@ -9,7 +9,6 @@ public class PlayerGroundedState : PlayerState
     public PlayerGroundedState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string boolName) : base(player, stateMachine, playerData, boolName)
     {
 
-
     }
 
     public override void DoChecks()

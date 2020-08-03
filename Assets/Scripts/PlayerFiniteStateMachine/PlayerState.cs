@@ -10,7 +10,7 @@ public class PlayerState
 
     protected float startTime;
 
-    private string _animBoolName;
+    protected string _animBoolName;
 
     public PlayerState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string boolName)
     {
