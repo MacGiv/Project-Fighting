@@ -23,7 +23,6 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private PlayerData _playerData;
-    private Vector2 _workspace;
     #endregion
 
     private void Awake()
