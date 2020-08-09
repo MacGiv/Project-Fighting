@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 _workspace;
     #endregion
 
-    private void Start()
+    private void Awake()
     {
         InputHandler = GetComponent<PlayerInputHandler>();
         RB = GetComponent<Rigidbody2D>();
@@ -37,6 +37,13 @@ public class PlayerMovement : MonoBehaviour
     public void SetVelocityX(float velocity)
     {
         _workspace.Set(velocity, CurrentVelocity.y);
+        RB.velocity = _workspace;
+        CurrentVelocity = _workspace;
+    }
+
+    public void SetVelocityY(float jumpVelocity)
+    {
+        _workspace.Set(CurrentVelocity.x, jumpVelocity);
         RB.velocity = _workspace;
         CurrentVelocity = _workspace;
     }

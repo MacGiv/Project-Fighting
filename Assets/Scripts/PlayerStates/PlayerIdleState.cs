@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerIdleState : PlayerGroundedState
 {
+    public bool jumpInput;
+
+
     public PlayerIdleState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string boolName) : base(player, stateMachine, playerData, boolName)
     {
 
@@ -28,9 +31,16 @@ public class PlayerIdleState : PlayerGroundedState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
+        jumpInput = player.InputHandler.JumpInput;
+
         if (xInput != 0)
         {
             stateMachine.ChangeState(player.MoveState);
+        }
+
+        if (player.InputHandler.JumpInput == true)
+        {
+            stateMachine.ChangeState(player.JumpState);
         }
     }
 

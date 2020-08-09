@@ -9,6 +9,7 @@ public class PlayerInputHandler : MonoBehaviour
     public Vector2 RawMovementInput { get; private set; }
     public int NormalizedInputX { get; private set; }
     public int NormalizedInputY { get; private set; }
+    public bool JumpInput { get; private set; }
 
     private void OnEnable()
     {
@@ -25,7 +26,10 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnJumpInput(InputAction.CallbackContext context)
     {
-        Debug.Log("JUMP input button pressed!");
+        if (context.started)
+        {
+            JumpInput = true;
+        }
     }
 
     public void OnDashInput(InputAction.CallbackContext context)
@@ -36,6 +40,12 @@ public class PlayerInputHandler : MonoBehaviour
     public void OnAttackInput(InputAction.CallbackContext context)
     {
         Debug.Log("ATTACK input button pressed!");
+    }
+
+
+    public void JumpInputWasUsed()
+    {
+        JumpInput = false;
     }
 
 }
