@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public PlayerMoveState MoveState { get; private set; }
     public PlayerJumpState JumpState { get; private set; }
     public PlayerInAirState InAirState { get; private set; }
+    public PlayerLandState LandState { get; private set; }
     #endregion
 
     #region Components
@@ -23,6 +24,7 @@ public class Player : MonoBehaviour
     #endregion
 
     #region Check Transforms
+
     [SerializeField]
     private Transform groundCheck;
     #endregion
@@ -41,8 +43,9 @@ public class Player : MonoBehaviour
 
         IdleState = new PlayerIdleState(this, StateMachine, _playerData, "idle");
         MoveState = new PlayerMoveState(this, StateMachine, _playerData, "move");
-        JumpState = new PlayerJumpState(this, StateMachine, _playerData, "inAir");
+        JumpState = new PlayerJumpState(this, StateMachine, _playerData, "jump");
         InAirState = new PlayerInAirState(this, StateMachine, _playerData, "inAir");
+        LandState = new PlayerLandState(this, StateMachine, _playerData, "land");
     }
 
     private void Start()
@@ -58,6 +61,7 @@ public class Player : MonoBehaviour
     private void Update()
     {
         StateMachine.CurrentState.LogicUpdate();
+        Debug.Log("Is Kyo grounded? " + CheckIfGrounded());
     }
 
     private void FixedUpdate()
@@ -66,6 +70,7 @@ public class Player : MonoBehaviour
     }
     #endregion
 
+    #region Other Functions
     public bool CheckIfGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.position, _playerData.groundCheckRadius, _playerData.whatIsGround);
@@ -75,6 +80,6 @@ public class Player : MonoBehaviour
     {
         Gizmos.DrawWireSphere(groundCheck.position, _playerData.groundCheckRadius);
     }
-
+    #endregion
 
 }

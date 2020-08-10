@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 
-    #region Components
+    #region Cached Components
 
     public PlayerInputHandler InputHandler { get; private set; }
     public Rigidbody2D RB { get; private set; }
@@ -36,16 +36,18 @@ public class PlayerMovement : MonoBehaviour
 
     public void SetVelocityX(float velocity)
     {
-        _workspace.Set(velocity, CurrentVelocity.y);
+        _workspace.Set(velocity, RB.velocity.y);
         RB.velocity = _workspace;
         CurrentVelocity = _workspace;
+        Debug.Log("SET VELOCITY -X- is being executed");
     }
 
     public void SetVelocityY(float jumpVelocity)
     {
-        _workspace.Set(CurrentVelocity.x, jumpVelocity);
+        _workspace.Set(RB.velocity.x, jumpVelocity);
         RB.velocity = _workspace;
         CurrentVelocity = _workspace;
+        Debug.Log("SET VELOCITY -Y- is being executed");
     }
 
     public void CheckIfShouldFlip(int xInput)

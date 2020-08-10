@@ -20,6 +20,7 @@ public class PlayerInAirState : PlayerState
     public override void Enter()
     {
         base.Enter();
+        
     }
 
     public override void Exit()
@@ -30,19 +31,22 @@ public class PlayerInAirState : PlayerState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-        _isGrounded = player.CheckIfGrounded();
-        _xInput = player.InputHandler.NormalizedInputX;
 
-        if (_isGrounded)
+        if (player.InputHandler.JumpInput)
+            player.InputHandler.JumpInputWasUsed();
+
+        _xInput = player.InputHandler.NormalizedInputX;
+        _isGrounded = player.CheckIfGrounded();
+
+        if (_isGrounded && player.playerMovement.RB.velocity.y < 0.1f)
         {
-            stateMachine.ChangeState(player.IdleState);
+            stateMachine.ChangeState(player.LandState);
         }
         else
         {
             player.playerMovement.CheckIfShouldFlip(_xInput);
             player.playerMovement.SetVelocityX(playerData.movementVelocity * _xInput);
         }
-
     }
 
     public override void PhysicsUpdate()

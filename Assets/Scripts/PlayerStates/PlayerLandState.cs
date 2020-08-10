@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerIdleState : PlayerGroundedState
+public class PlayerLandState : PlayerGroundedState
 {
-    public PlayerIdleState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string boolName) : base(player, stateMachine, playerData, boolName)
+    public PlayerLandState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string boolName) : base(player, stateMachine, playerData, boolName)
     {
-
     }
 
     public override void DoChecks()
@@ -17,7 +16,6 @@ public class PlayerIdleState : PlayerGroundedState
     public override void Enter()
     {
         base.Enter();
-        player.playerMovement.SetVelocityX(0f);
     }
 
     public override void Exit()
@@ -29,10 +27,11 @@ public class PlayerIdleState : PlayerGroundedState
     {
         base.LogicUpdate();
 
-        if (xInput != 0)
-        {
-            stateMachine.ChangeState(player.MoveState);
-        }
+        //TO DO: Ejecutar el código de abajo si termino la animación 
+        if (xInput == 0)
+            player.StateMachine.ChangeState(player.IdleState);
+        else
+            player.StateMachine.ChangeState(player.MoveState);
     }
 
     public override void PhysicsUpdate()

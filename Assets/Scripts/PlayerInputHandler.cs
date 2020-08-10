@@ -43,9 +43,6 @@ public class PlayerInputHandler : MonoBehaviour
     }
 
 
-    public void JumpInputWasUsed()
-    {
-        JumpInput = false;
-    }
+    public void JumpInputWasUsed() => JumpInput = false;
 
 }

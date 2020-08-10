@@ -13,18 +13,18 @@ namespace ProjectFighting.FirstRound
         // Start is called before the first frame update
         void Start()
         {
-
+            
         }
 
         // Update is called once per frame
         void Update()
         {
-
+            Time.timeScale = normalTimeScale;
         }
 
         public void SetNormalSpeed()
         {
-            Time.timeScale = normalTimeScale;
+            
         }
 
         public void SetSlowAttackSpeed()

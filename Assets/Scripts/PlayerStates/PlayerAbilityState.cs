@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class PlayerAbilityState : PlayerState
 {
+    protected bool isAbilityDone;
+
+    protected bool isGrounded;
+
     public PlayerAbilityState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string boolName) : base(player, stateMachine, playerData, boolName)
     {
     }
@@ -11,11 +15,14 @@ public class PlayerAbilityState : PlayerState
     public override void DoChecks()
     {
         base.DoChecks();
+
+        isGrounded = player.CheckIfGrounded();
     }
 
     public override void Enter()
     {
         base.Enter();
+        isAbilityDone = false;
     }
 
     public override void Exit()
@@ -26,6 +33,18 @@ public class PlayerAbilityState : PlayerState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
+
+        if (isAbilityDone)
+        {
+            if (isGrounded && player.playerMovement.CurrentVelocity.y <= 0.01f)
+            {
+                stateMachine.ChangeState(player.IdleState);
+            }
+            else
+            {
+                stateMachine.ChangeState(player.InAirState);
+            }
+        }
     }
 
     public override void PhysicsUpdate()

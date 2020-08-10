@@ -13,4 +13,12 @@ public class PlayerJumpState : PlayerAbilityState
         base.Enter();
         player.playerMovement.SetVelocityY(playerData.jumpVelocity);
     }
+
+    public override void LogicUpdate()
+    {
+        base.LogicUpdate();
+        if (!player.CheckIfGrounded())
+            isAbilityDone = true;
+
+    }
 }
