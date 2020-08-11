@@ -11,10 +11,21 @@ public class PlayerInputHandler : MonoBehaviour
     public int NormalizedInputY { get; private set; }
     public bool JumpInput { get; private set; }
 
+    [SerializeField]
+    private float _inputHoldTime = 0.2f;
+    private float _jumInputStartTime;
+
+
     private void OnEnable()
     {
         _controls = new Controls();
     }
+
+    private void Update()
+    {
+        CheckInputHoldTime();
+    }
+
 
     public void OnMoveInput(InputAction.CallbackContext context)
     {
@@ -29,6 +40,7 @@ public class PlayerInputHandler : MonoBehaviour
         if (context.started)
         {
             JumpInput = true;
+            _jumInputStartTime = Time.time;
         }
     }
 
@@ -44,5 +56,13 @@ public class PlayerInputHandler : MonoBehaviour
 
 
     public void JumpInputWasUsed() => JumpInput = false;
+
+    private void CheckInputHoldTime()
+    {
+        if (Time.time >= _jumInputStartTime + _inputHoldTime)
+        {
+            JumpInput = false;
+        }
+    }
 
 }

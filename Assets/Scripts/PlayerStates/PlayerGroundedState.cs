@@ -34,11 +34,17 @@ public class PlayerGroundedState : PlayerState
         xInput = player.InputHandler.NormalizedInputX;
         _jumpInput = player.InputHandler.JumpInput;
 
-        if (player.CheckIfGrounded() && _jumpInput)
+        if (_jumpInput)
         {
             player.InputHandler.JumpInputWasUsed();
             stateMachine.ChangeState(player.JumpState);
         }
+        else if (!player.CheckIfGrounded())
+        {
+            player.InAirState.StartCoyoteTime();
+            stateMachine.ChangeState(player.InAirState);
+        }
+
 
     }
 

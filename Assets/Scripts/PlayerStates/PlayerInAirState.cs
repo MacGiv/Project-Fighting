@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class PlayerInAirState : PlayerState
 {
-    private bool _isGrounded;
     private int _xInput;
+    private bool _isGrounded;
+    private bool coyoteTime;
 
     public PlayerInAirState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string boolName) : base(player, stateMachine, playerData, boolName)
     {
@@ -32,8 +33,7 @@ public class PlayerInAirState : PlayerState
     {
         base.LogicUpdate();
 
-        if (player.InputHandler.JumpInput)
-            player.InputHandler.JumpInputWasUsed();
+        CheckCoyoteTime();
 
         _xInput = player.InputHandler.NormalizedInputX;
         _isGrounded = player.CheckIfGrounded();
@@ -46,6 +46,9 @@ public class PlayerInAirState : PlayerState
         {
             player.playerMovement.CheckIfShouldFlip(_xInput);
             player.playerMovement.SetVelocityX(playerData.movementVelocity * _xInput);
+
+            player.Anim.SetFloat("yVelocity", player.playerMovement.RB.velocity.y);
+            player.Anim.SetFloat("xVelocity", Mathf.Abs(player.playerMovement.RB.velocity.x));
         }
     }
 
@@ -53,5 +56,16 @@ public class PlayerInAirState : PlayerState
     {
         base.PhysicsUpdate();
     }
+
+    private void CheckCoyoteTime()
+    {
+        if (coyoteTime && Time.time > startTime + playerData.coyoteTime)
+        {
+            coyoteTime = false;
+            player.InputHandler.JumpInputWasUsed();
+        }
+    }
+
+    public void StartCoyoteTime() => coyoteTime = true;
 
 }
