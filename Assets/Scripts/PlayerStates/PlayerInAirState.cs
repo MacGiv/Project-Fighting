@@ -6,7 +6,8 @@ public class PlayerInAirState : PlayerState
 {
     private int _xInput;
     private bool _isGrounded;
-    private bool coyoteTime;
+    private bool _coyoteTime;
+    private bool _jumpInput;
 
     public PlayerInAirState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string boolName) : base(player, stateMachine, playerData, boolName)
     {
@@ -37,10 +38,15 @@ public class PlayerInAirState : PlayerState
 
         _xInput = player.InputHandler.NormalizedInputX;
         _isGrounded = player.CheckIfGrounded();
+        _jumpInput = player.InputHandler.JumpInput;
 
         if (_isGrounded && player.playerMovement.RB.velocity.y < 0.1f)
         {
             stateMachine.ChangeState(player.LandState);
+        }
+        else if (_jumpInput && player.JumpState.CanJump())
+        {
+            stateMachine.ChangeState(player.JumpState);
         }
         else
         {
@@ -59,13 +65,13 @@ public class PlayerInAirState : PlayerState
 
     private void CheckCoyoteTime()
     {
-        if (coyoteTime && Time.time > startTime + playerData.coyoteTime)
+        if (_coyoteTime && Time.time > startTime + playerData.coyoteTime)
         {
-            coyoteTime = false;
+            _coyoteTime = false;
             player.InputHandler.JumpInputWasUsed();
         }
     }
 
-    public void StartCoyoteTime() => coyoteTime = true;
+    public void StartCoyoteTime() => _coyoteTime = true;
 
 }

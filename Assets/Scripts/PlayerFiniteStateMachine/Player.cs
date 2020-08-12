@@ -71,6 +71,10 @@ public class Player : MonoBehaviour
     #endregion
 
     #region Other Functions
+
+    private void AnimationTrigger() => StateMachine.CurrentState.AnimationTrigger();
+    private void AnimationFinishedTrigger() => StateMachine.CurrentState.AnimationFinishedTrigger();
+
     public bool CheckIfGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.position, _playerData.groundCheckRadius, _playerData.whatIsGround);
