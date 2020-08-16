@@ -61,7 +61,7 @@ public class Player : MonoBehaviour
     private void Update()
     {
         StateMachine.CurrentState.LogicUpdate();
-        Debug.Log("Is Kyo grounded? " + CheckIfGrounded());
+        //Debug.Log("Is Kyo grounded? " + CheckIfGrounded());
     }
 
     private void FixedUpdate()

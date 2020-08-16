@@ -44,7 +44,6 @@ public class PlayerGroundedState : PlayerState
         {
             player.InAirState.StartCoyoteTime();
 
-            player.JumpState.DecreaseAmountOfJumpsLeft();
             stateMachine.ChangeState(player.InAirState);
         }
 
