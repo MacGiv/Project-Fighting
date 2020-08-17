@@ -13,6 +13,7 @@ public class PlayerState
     protected string _animBoolName;
 
     protected bool isAnimationFinished;
+    protected bool isExitingState;
 
     public PlayerState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string boolName)
     {
@@ -30,11 +31,13 @@ public class PlayerState
         Debug.Log("State entered: " + _animBoolName);
 
         isAnimationFinished = false;
+        isExitingState = false;
     }
 
     public virtual void Exit()
     {
         player.Anim.SetBool(_animBoolName, false);
+        isExitingState = true;
     }
 
     public virtual void LogicUpdate() { }

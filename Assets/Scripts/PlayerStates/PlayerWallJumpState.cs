@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerIdleState : PlayerGroundedState
+public class PlayerWallJumpState : PlayerAbilityState
 {
-    public PlayerIdleState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string boolName) : base(player, stateMachine, playerData, boolName)
+    public PlayerWallJumpState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string boolName) : base(player, stateMachine, playerData, boolName)
     {
-
     }
 
     public override void DoChecks()
@@ -17,7 +16,10 @@ public class PlayerIdleState : PlayerGroundedState
     public override void Enter()
     {
         base.Enter();
-        player.playerMovement.StopAllMovement();
+        player.playerMovement.SetWallJumpVelocity(playerData.wallJumpVelocityX, playerData.wallJumpVelocityY);
+        isAbilityDone = true;
+        player.JumpState.DecreaseAmountOfJumpsLeft();
+        player.InAirState.SetJumping();
     }
 
     public override void Exit()
@@ -28,16 +30,10 @@ public class PlayerIdleState : PlayerGroundedState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-
-        if (xInput != 0 && !isExitingState)
-        {
-            stateMachine.ChangeState(player.MoveState);
-        }
     }
 
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
-        player.playerMovement.StopAllMovement();
     }
 }

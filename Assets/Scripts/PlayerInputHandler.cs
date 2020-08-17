@@ -11,6 +11,7 @@ public class PlayerInputHandler : MonoBehaviour
     public int NormalizedInputY { get; private set; }
     public bool JumpInput { get; private set; }
     public bool JumpInputStop { get; private set; }
+    public bool MoveInputStarted { get; private set; }
 
     [SerializeField]
     private float _inputHoldTime = 0.2f;
@@ -30,10 +31,16 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnMoveInput(InputAction.CallbackContext context)
     {
+        if (context.started)
+            MoveInputStarted = true;
+
         RawMovementInput = context.ReadValue<Vector2>();
 
         NormalizedInputX = (int)(RawMovementInput * Vector2.right).normalized.x;
         NormalizedInputY = (int)(RawMovementInput * Vector2.up).normalized.y;
+
+        if (context.canceled)
+            MoveInputStarted = false;
     }
 
     public void OnJumpInput(InputAction.CallbackContext context)

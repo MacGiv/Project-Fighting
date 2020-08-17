@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     public PlayerJumpState JumpState { get; private set; }
     public PlayerInAirState InAirState { get; private set; }
     public PlayerLandState LandState { get; private set; }
+    public PlayerWallSlideState WallSlideState { get; private set; }
+    public PlayerWallJumpState WallJumpState { get; private set; }
     #endregion
 
     #region Components
@@ -27,6 +29,8 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private Transform groundCheck;
+    [SerializeField]
+    private Transform wallCheck;
     #endregion
 
     #region Other Variables
@@ -43,9 +47,11 @@ public class Player : MonoBehaviour
 
         IdleState = new PlayerIdleState(this, StateMachine, _playerData, "idle");
         MoveState = new PlayerMoveState(this, StateMachine, _playerData, "move");
-        JumpState = new PlayerJumpState(this, StateMachine, _playerData, "jump");
+        JumpState = new PlayerJumpState(this, StateMachine, _playerData, "inAir");
         InAirState = new PlayerInAirState(this, StateMachine, _playerData, "inAir");
         LandState = new PlayerLandState(this, StateMachine, _playerData, "land");
+        WallSlideState = new PlayerWallSlideState(this, StateMachine, _playerData, "wallSliding");
+        WallJumpState = new PlayerWallJumpState(this, StateMachine, _playerData, "inAir"); 
     }
 
     private void Start()
@@ -62,6 +68,7 @@ public class Player : MonoBehaviour
     {
         StateMachine.CurrentState.LogicUpdate();
         //Debug.Log("Is Kyo grounded? " + CheckIfGrounded());
+        //Debug.Log("Is Kyo touching wall? " + CheckIfTouchingWall());
     }
 
     private void FixedUpdate()
@@ -78,6 +85,11 @@ public class Player : MonoBehaviour
     public bool CheckIfGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.position, _playerData.groundCheckRadius, _playerData.whatIsGround);
+    }
+
+    public bool CheckIfTouchingWall()
+    {
+        return Physics2D.Raycast(wallCheck.position, Vector2.right * playerMovement.FacingDirection, _playerData.wallCheckDistance, _playerData.whatIsGround);
     }
 
     private void OnDrawGizmos()

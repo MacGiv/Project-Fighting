@@ -16,6 +16,7 @@ public class PlayerLandState : PlayerGroundedState
     public override void Enter()
     {
         base.Enter();
+        
     }
 
     public override void Exit()
@@ -27,14 +28,17 @@ public class PlayerLandState : PlayerGroundedState
     {
         base.LogicUpdate();
 
-
-        if (xInput != 0)
+        if (!isExitingState)
         {
-            player.StateMachine.ChangeState(player.MoveState);
-        }
-        else if (isAnimationFinished)
-        {
-            player.StateMachine.ChangeState(player.IdleState);
+            if (xInput != 0)
+            {
+                player.StateMachine.ChangeState(player.MoveState);
+            }
+            else if (isAnimationFinished)
+            {
+                player.playerMovement.StopAllMovement();
+                player.StateMachine.ChangeState(player.IdleState);
+            }
         }
     }
 
