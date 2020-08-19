@@ -39,6 +39,7 @@ public class PlayerInputHandler : MonoBehaviour
         RawMovementInput = context.ReadValue<Vector2>();
 
         NormalizedInputX = (int)(RawMovementInput * Vector2.right).normalized.x;
+
         NormalizedInputY = (int)(RawMovementInput * Vector2.up).normalized.y;
 
         if (context.canceled)

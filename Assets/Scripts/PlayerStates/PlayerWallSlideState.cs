@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerWallSlideState: PlayerState
 {
     private float _xInput;
+    private float _yRawInput;
 
     public PlayerWallSlideState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string boolName) : base(player, stateMachine, playerData, boolName)
     { }
@@ -31,6 +32,7 @@ public class PlayerWallSlideState: PlayerState
         base.LogicUpdate();
 
         _xInput = player.InputHandler.NormalizedInputX;
+        _yRawInput = player.InputHandler.RawMovementInput.y;
 
         player.playerMovement.SetVelocityY(playerData.wallSlideVelocity);
 
@@ -45,7 +47,7 @@ public class PlayerWallSlideState: PlayerState
             {
                 stateMachine.ChangeState(player.LandState);
             }
-            else if (!player.CheckIfTouchingWall())
+            else if (!player.CheckIfTouchingWall() || (_yRawInput < -0.8f && _xInput != player.playerMovement.FacingDirection ))
             {
                 stateMachine.ChangeState(player.InAirState);
             }
