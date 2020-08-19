@@ -23,6 +23,7 @@ public class PlayerWallSlideState: PlayerState
     public override void Exit()
     {
         base.Exit();
+        player.InAirState.StartCoyoteTime();
     }
 
     public override void LogicUpdate()
