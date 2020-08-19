@@ -10,6 +10,7 @@ public class PlayerInAirState : PlayerState
     private bool _jumpInput;
     private bool _isJumpingUp;
     private bool _jumpInputStop;
+    private bool _dashInput;
 
     public PlayerInAirState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string boolName) : base(player, stateMachine, playerData, boolName)
     {
@@ -42,12 +43,17 @@ public class PlayerInAirState : PlayerState
         _isGrounded = player.CheckIfGrounded();
         _jumpInput = player.InputHandler.JumpInput;
         _jumpInputStop = player.InputHandler.JumpInputStop;
+        _dashInput = player.InputHandler.DashInput;
 
         CheckJumpMultiplier();
 
         if (_isGrounded && player.playerMovement.RB.velocity.y < 0.1f)
         {
             stateMachine.ChangeState(player.LandState);
+        }
+        else if (_dashInput && player.DashState.CanDash())
+        {
+            stateMachine.ChangeState(player.DashState);
         }
         else if (player.CheckIfTouchingWall() && _xInput == player.playerMovement.FacingDirection)
         {

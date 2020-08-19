@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     public PlayerLandState LandState { get; private set; }
     public PlayerWallSlideState WallSlideState { get; private set; }
     public PlayerWallJumpState WallJumpState { get; private set; }
+    public PlayerDashState DashState { get; private set; }
     #endregion
 
     #region Components
@@ -51,7 +52,8 @@ public class Player : MonoBehaviour
         InAirState = new PlayerInAirState(this, StateMachine, _playerData, "inAir");
         LandState = new PlayerLandState(this, StateMachine, _playerData, "land");
         WallSlideState = new PlayerWallSlideState(this, StateMachine, _playerData, "wallSliding");
-        WallJumpState = new PlayerWallJumpState(this, StateMachine, _playerData, "inAir"); 
+        WallJumpState = new PlayerWallJumpState(this, StateMachine, _playerData, "inAir");
+        DashState = new PlayerDashState(this, StateMachine, _playerData, "dash");
     }
 
     private void Start()

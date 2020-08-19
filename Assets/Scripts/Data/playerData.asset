@@ -17,11 +17,14 @@ MonoBehaviour:
   amountOfJumps: 1
   coyoteTime: 0.2
   variableJumpHeightMultiplier: 0.5
+  wallSlideVelocity: -3
+  wallJumpVelocityX: 15
+  wallJumpVelocityY: 15
+  dashDuration: 0.15
+  dashVelocity: 25
+  dashCooldown: 1.5
   groundCheckRadius: 0.3
   wallCheckDistance: 0.5
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
-  wallSlideVelocity: -3
-  wallJumpVelocityX: 15
-  wallJumpVelocityY: 15
