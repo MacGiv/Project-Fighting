@@ -22,7 +22,7 @@ MonoBehaviour:
   wallJumpVelocityY: 15
   dashDuration: 0.15
   dashVelocity: 25
-  dashCooldown: 1.5
+  dashCooldown: 1
   groundCheckRadius: 0.3
   wallCheckDistance: 0.5
   whatIsGround:
