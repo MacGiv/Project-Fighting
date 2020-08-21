@@ -1,13 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ProjectFighting.FirstRound;
 
 public class UIManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject[] slides;
+    public GameObject canvas;
+    //public int finalSlide = 3;
+
+    private int slideIndex = 0;
+    
+
+    void Awake()
     {
-        
+        FindObjectOfType<GameSpeed>().gameSpedValue = 0;
+        canvas.SetActive(true);
+        slides[slideIndex].SetActive(true);
     }
 
     // Update is called once per frame
@@ -16,5 +25,32 @@ public class UIManager : MonoBehaviour
         
     }
 
+    public void NextSlide()
+    {
+        slides[slideIndex].SetActive(false);
+        slides[slideIndex + 1].SetActive(true);
+        slideIndex++;
+    }
+
+    public void PrevSlide()
+    {
+        slides[slideIndex].SetActive(false);
+        slides[slideIndex - 1].SetActive(true);
+        slideIndex--;
+    }
+
+    public void SkipTutorial()
+    {
+        slides[slideIndex].SetActive(false);
+        slideIndex = slides.Length - 1;
+        slides[slideIndex].SetActive(true);
+    }
+
+    public void StartGame()
+    {
+        slides[slideIndex].SetActive(false);
+        canvas.SetActive(false);
+        FindObjectOfType<GameSpeed>().gameSpedValue = 1;
+    }
 
 }
