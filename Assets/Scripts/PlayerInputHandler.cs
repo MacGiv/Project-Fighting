@@ -13,11 +13,13 @@ public class PlayerInputHandler : MonoBehaviour
     public bool JumpInputStop { get; private set; }
     public bool MoveInputStarted { get; private set; }
     public bool DashInput { get; private set; }
+    public bool AttackInput { get; private set; }
 
     [SerializeField]
     private float _inputHoldTime = 0.2f;
     private float _jumInputStartTime;
     private float _dashInputStartTime;
+    private float _attackInputStartTime;
 
 
     private void OnEnable()
@@ -74,7 +76,13 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnAttackInput(InputAction.CallbackContext context)
     {
-        Debug.Log("ATTACK input button pressed!");
+        
+        if (context.started)
+        {
+            Debug.Log("ATTACK input button pressed!");
+            AttackInput = true;
+            _attackInputStartTime = Time.time;
+        }
     }
 
 
@@ -90,6 +98,10 @@ public class PlayerInputHandler : MonoBehaviour
         if (Time.time >= _dashInputStartTime + _inputHoldTime)
         {
             DashInput = false;
+        }
+        if (Time.time >= _attackInputStartTime + _inputHoldTime)
+        {
+            AttackInput = false;
         }
     }
 

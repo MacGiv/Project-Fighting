@@ -29,6 +29,12 @@ public class PlayerData : ScriptableObject
     public float dashVelocity = 25f;
     public float dashCooldown = 1.5f;
 
+    [Header("Grounded Attack State")]
+    public float attackVelocity = 7.5f;
+    public int attackDamage = 20;
+    public float comboLostTime = 0.3f;
+    public LayerMask enemyLayer;
+
     [Header("Check Variables")]
     public float groundCheckRadius = 0.3f;
     public float wallCheckDistance = 0.5f;

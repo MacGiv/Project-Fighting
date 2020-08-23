@@ -7,6 +7,7 @@ public class PlayerGroundedState : PlayerState
     protected int xInput;
     private bool _jumpInput;
     private bool _dashInput;
+    private bool _attackInput;
 
     public PlayerGroundedState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string boolName) : base(player, stateMachine, playerData, boolName)
     {
@@ -36,6 +37,12 @@ public class PlayerGroundedState : PlayerState
         xInput = player.InputHandler.NormalizedInputX;
         _jumpInput = player.InputHandler.JumpInput;
         _dashInput = player.InputHandler.DashInput;
+        _attackInput = player.InputHandler.AttackInput;
+
+        if (_attackInput)
+        {
+            stateMachine.ChangeState(player.GroundedAttackState);
+        }
 
         if (_dashInput && player.DashState.CanDash())
         {

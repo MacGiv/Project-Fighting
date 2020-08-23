@@ -23,6 +23,11 @@ MonoBehaviour:
   dashDuration: 0.15
   dashVelocity: 25
   dashCooldown: 1
+  attackVelocity: 5
+  attackDamage: 20
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 0
   groundCheckRadius: 0.3
   wallCheckDistance: 0.5
   whatIsGround:

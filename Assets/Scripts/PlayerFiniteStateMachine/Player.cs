@@ -15,11 +15,13 @@ public class Player : MonoBehaviour
     public PlayerWallSlideState WallSlideState { get; private set; }
     public PlayerWallJumpState WallJumpState { get; private set; }
     public PlayerDashState DashState { get; private set; }
+    public PlayerGroundedAttackState GroundedAttackState { get; private set; }
     #endregion
 
     #region Components
 
     public PlayerMovement playerMovement { get; private set; }
+    public PlayerComboHandler comboHandler { get; private set; }
     public PlayerJump playerJump { get; private set; }
     public Animator Anim { get; private set; }
     public PlayerInputHandler InputHandler { get; private set; }
@@ -32,9 +34,12 @@ public class Player : MonoBehaviour
     private Transform groundCheck;
     [SerializeField]
     private Transform wallCheck;
+    private Transform groundedAttackCheck;
     #endregion
 
     #region Other Variables
+
+    public int comboTracker;
 
     [SerializeField]
     private PlayerData _playerData;
@@ -54,6 +59,7 @@ public class Player : MonoBehaviour
         WallSlideState = new PlayerWallSlideState(this, StateMachine, _playerData, "wallSliding");
         WallJumpState = new PlayerWallJumpState(this, StateMachine, _playerData, "inAir");
         DashState = new PlayerDashState(this, StateMachine, _playerData, "dash");
+        GroundedAttackState = new PlayerGroundedAttackState(this, StateMachine, _playerData, "groundedAttack");
     }
 
     private void Start()
@@ -62,6 +68,7 @@ public class Player : MonoBehaviour
         InputHandler = GetComponent<PlayerInputHandler>();
         RB = GetComponent<Rigidbody2D>();
         playerMovement = GetComponent<PlayerMovement>();
+        comboHandler = GetComponent<PlayerComboHandler>();
 
         StateMachine.Initialize(IdleState);
     }
