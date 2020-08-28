@@ -38,7 +38,7 @@ public class PlayerWallSlideState: PlayerState
 
         if (!isExitingState)
         {
-            if (player.InputHandler.JumpInput && _xInput != player.playerMovement.FacingDirection && player.InputHandler.MoveInputStarted)
+            if (player.InputHandler.JumpInput && _xInput == -player.playerMovement.FacingDirection && player.InputHandler.MoveInputStarted)
             {
                 stateMachine.ChangeState(player.WallJumpState);
             }
@@ -47,7 +47,7 @@ public class PlayerWallSlideState: PlayerState
             {
                 stateMachine.ChangeState(player.LandState);
             }
-            else if (!player.CheckIfTouchingWall() || (_yRawInput < -0.8f && _xInput != player.playerMovement.FacingDirection ))
+            else if (!player.CheckIfTouchingWall() || (_yRawInput < -0.8f)) //&& _xInput != player.playerMovement.FacingDirection ))
             {
                 stateMachine.ChangeState(player.InAirState);
             }

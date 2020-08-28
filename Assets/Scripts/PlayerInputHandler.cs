@@ -40,9 +40,9 @@ public class PlayerInputHandler : MonoBehaviour
 
         RawMovementInput = context.ReadValue<Vector2>();
 
-        NormalizedInputX = (int)(RawMovementInput * Vector2.right).normalized.x;
+        CheckForInputX();
 
-        NormalizedInputY = (int)(RawMovementInput * Vector2.up).normalized.y;
+        //NormalizedInputY = (int)(RawMovementInput * Vector2.up).normalized.y;
 
         if (context.canceled)
             MoveInputStarted = false;
@@ -83,6 +83,21 @@ public class PlayerInputHandler : MonoBehaviour
             AttackInput = true;
             _attackInputStartTime = Time.time;
         }
+    }
+
+    public void CheckForInputX()
+    {
+        if (RawMovementInput.x >= 0.5f || RawMovementInput.x <= -0.5f )
+        {
+            NormalizedInputX = (int)(RawMovementInput * Vector2.right).normalized.x;
+            
+        }
+        else //if (RawMovementInput.x < 0.5f && RawMovementInput.x > -0.5f)
+        {
+            NormalizedInputX = 0;
+            
+        }
+        
     }
 
 

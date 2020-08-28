@@ -59,7 +59,7 @@ public class PlayerInAirState : PlayerState
         {
             stateMachine.ChangeState(player.WallSlideState);
         }
-        else if (_jumpInput && player.JumpState.CanJump())
+        else if (_jumpInput && player.JumpState.CanJump() && !player.CheckIfTouchingWall())
         {
             stateMachine.ChangeState(player.JumpState);
         }
