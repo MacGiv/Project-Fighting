@@ -30,7 +30,7 @@ public class PlayerComboHandler : MonoBehaviour
         _groundedAttackState.CheckEnemyHitbox();
     }
 
-    public void CheckCombo()
+    public void CheckIfComboLost()
     {
         if (Time.time > lastAttackTime + _playerdata.comboLostTime)
         {

@@ -23,8 +23,9 @@ MonoBehaviour:
   dashDuration: 0.15
   dashVelocity: 25
   dashCooldown: 1
-  attackVelocity: 5
+  attackVelocity: 3
   attackDamage: 20
+  comboLostTime: 0.3
   enemyLayer:
     serializedVersion: 2
     m_Bits: 0

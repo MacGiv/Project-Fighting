@@ -20,7 +20,7 @@ public class PlayerGroundedAttackState : PlayerState
     public override void Enter()
     {
         base.Enter();
-        player.comboHandler.CheckCombo();
+        player.comboHandler.CheckIfComboLost();
         player.Anim.SetFloat("comboTracker", player.comboHandler.comboTracker);
     }
 
@@ -37,6 +37,7 @@ public class PlayerGroundedAttackState : PlayerState
         _xInput = player.InputHandler.NormalizedInputX;
 
         player.playerMovement.SetVelocityX(playerData.attackVelocity * player.playerMovement.FacingDirection);
+
         if (isAnimationFinished && _xInput == 0)
         {
             stateMachine.ChangeState(player.IdleState);
