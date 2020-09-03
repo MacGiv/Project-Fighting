@@ -6,6 +6,8 @@ public class PlayerComboHandler : MonoBehaviour
 {
     #region Cached Components
 
+    public int comboType;
+
     private PlayerGroundedAttackState _groundedAttackState;
     private Player _player;
     [SerializeField]

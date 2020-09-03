@@ -19,7 +19,7 @@ public class PlayerInputHandler : MonoBehaviour
     private float _inputHoldTime = 0.2f;
     private float _jumInputStartTime;
     private float _dashInputStartTime;
-    private float _attackInputStartTime;
+    private float _attackOneInputStartTime;
 
 
     private void OnEnable()
@@ -74,14 +74,25 @@ public class PlayerInputHandler : MonoBehaviour
 
     }
 
-    public void OnAttackInput(InputAction.CallbackContext context)
+    public void OnAttackInputOne(InputAction.CallbackContext context)
     {
         
         if (context.started)
         {
-            Debug.Log("ATTACK input button pressed!");
+            Debug.Log("ATTACK ONE input button pressed!");
             AttackInput = true;
-            _attackInputStartTime = Time.time;
+            _attackOneInputStartTime = Time.time;
+        }
+    }
+
+    public void OnAttackInputTwo(InputAction.CallbackContext context)
+    {
+
+        if (context.started)
+        {
+            Debug.Log("ATTACK TWO input button pressed!");
+            AttackInput = true;
+            _attackOneInputStartTime = Time.time;
         }
     }
 
@@ -114,7 +125,7 @@ public class PlayerInputHandler : MonoBehaviour
         {
             DashInput = false;
         }
-        if (Time.time >= _attackInputStartTime + _inputHoldTime)
+        if (Time.time >= _attackOneInputStartTime + _inputHoldTime)
         {
             AttackInput = false;
         }
