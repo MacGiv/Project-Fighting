@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f96fe79fb558ee142ababeb0f8fc1a23
+guid: 22798b4a0edcf5f4fa1ecb7a0c17a851
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -46,13 +46,13 @@ TextureImporter:
     second: Kyo_KickCombo1_13
   - first:
       213: 147004916677380529
-    second: Kyo_KickCombo1_15
+    second: Kyo_KickCombo1_14
   - first:
       213: 4971122077378577173
     second: Kyo_KickCombo1_15
   - first:
       213: 143220236038474454
-    second: Kyo_KickCombo1_14
+    second: Kyo_KickCombo1_16
   - first:
       213: 1919275447020873487
     second: Kyo_KickCombo1_17
@@ -233,7 +233,7 @@ TextureImporter:
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -254,7 +254,7 @@ TextureImporter:
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -275,7 +275,7 @@ TextureImporter:
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -296,7 +296,7 @@ TextureImporter:
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -317,7 +317,7 @@ TextureImporter:
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -336,9 +336,9 @@ TextureImporter:
         x: 640
         y: 384
         width: 128
-        height: 164
+        height: 161
       alignment: 9
-      pivot: {x: 0.5, y: 0.3892396}
+      pivot: {x: 0.5, y: 0.41}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -357,9 +357,9 @@ TextureImporter:
         x: 768
         y: 384
         width: 128
-        height: 164
+        height: 162
       alignment: 9
-      pivot: {x: 0.5, y: 0.39}
+      pivot: {x: 0.5, y: 0.41}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -378,9 +378,9 @@ TextureImporter:
         x: 896
         y: 384
         width: 128
-        height: 164
+        height: 162
       alignment: 9
-      pivot: {x: 0.5, y: 0.39}
+      pivot: {x: 0.5, y: 0.41}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -398,10 +398,10 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 128
-        width: 142
-        height: 141
+        width: 161
+        height: 143
       alignment: 9
-      pivot: {x: 0.4588622, y: 0.45857045}
+      pivot: {x: 0.49999994, y: 0.44709766}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -414,15 +414,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kyo_KickCombo1_15
+      name: Kyo_KickCombo1_14
       rect:
         serializedVersion: 2
         x: 256
         y: 128
-        width: 147
-        height: 138
-      alignment: 9
-      pivot: {x: 0.43755376, y: 0.46371704}
+        width: 159
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -435,15 +435,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kyo_KickCombo1_14
+      name: Kyo_KickCombo1_16
       rect:
         serializedVersion: 2
         x: 512
         y: 128
-        width: 164
-        height: 142
+        width: 169
+        height: 128
       alignment: 9
-      pivot: {x: 0.4033192, y: 0.43535507}
+      pivot: {x: 0.4488417, y: 0.5084429}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -464,7 +464,7 @@ TextureImporter:
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -485,7 +485,7 @@ TextureImporter:
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -506,7 +506,7 @@ TextureImporter:
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -527,7 +527,7 @@ TextureImporter:
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

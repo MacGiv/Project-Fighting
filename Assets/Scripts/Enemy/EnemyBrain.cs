@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBrain : MonoBehaviour
+public class EnemyBrain : MonoBehaviour, ICanHandleHits
 {
     public EnemyStateMachine StateMachine { get; private set; }
     public EnemyMovement EnemyMovement { get; private set; }
@@ -37,4 +37,13 @@ public class EnemyBrain : MonoBehaviour
             IdleState.RecieveGroundedNormalHit(playerFacingDirection);
         }
     }
+
+    public void HandleToAirHit(int playerFacingDirection)
+    {
+        if (StateMachine.CurrentState == IdleState)
+        {
+            IdleState.RecieveToAirHit(playerFacingDirection);
+        }
+    }
+
 }

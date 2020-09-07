@@ -6,6 +6,7 @@ public class PlayerGroundedAttackState : PlayerState
 {
     private float _xInput;
     private Collider2D[] _collidersDetected;
+    private int currentComboType;
 
     public PlayerGroundedAttackState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string boolName) : base(player, stateMachine, playerData, boolName)
     {
@@ -21,6 +22,7 @@ public class PlayerGroundedAttackState : PlayerState
     public override void Enter()
     {
         base.Enter();
+        player.Anim.SetFloat("comboType", player.comboHandler.GetAttackInputPressedType());
         player.comboHandler.CheckIfComboLost();
         player.Anim.SetFloat("comboTracker", player.comboHandler.comboTracker);
     }
@@ -54,30 +56,32 @@ public class PlayerGroundedAttackState : PlayerState
         base.PhysicsUpdate();
     }
 
-    public void CheckEnemyHitbox()
+    public override void CheckEnemyHitbox()
     {
-        //TO DO: Check if the player has hit an enemy
-        //TO DO: If has hit an enemy comboTracker++
-
         _collidersDetected = Physics2D.OverlapCircleAll(player.hitCheck.position, playerData.hitCkeckRadius, playerData.enemyLayer);
+
+        //Debug.Log("I've entered in the CheckEnemyHitbox of the GROUNDED ATTACK STATE");
 
         if (_collidersDetected.Length != 0)
         {
-            Debug.Log("COLLIDERS DETECTED " + _collidersDetected.Length);
+            //Debug.Log("COLLIDERS DETECTED " + _collidersDetected.Length);
 
             if (player.comboHandler.comboTracker < 4)
             {
                 foreach (Collider2D colliderDetected in _collidersDetected)
                 {
-                    Debug.Log("Collider's name: " + colliderDetected.gameObject.name);
-
-                    EnemyBrain enemyBrainDetected = colliderDetected.GetComponent<EnemyBrain>();
-                    enemyBrainDetected.HandleGroundedNormalHit(player.playerMovement.FacingDirection);
+                    //Debug.Log("Collider's name: " + colliderDetected.gameObject.name);
+                    ICanHandleHits canBeHit = colliderDetected.gameObject.GetComponent<ICanHandleHits>();
+                    if(canBeHit != null)
+                    {
+                        EnemyBrain enemyBrainDetected = colliderDetected.GetComponent<EnemyBrain>();
+                        enemyBrainDetected.HandleGroundedNormalHit(player.playerMovement.FacingDirection);
+                    }
                 }
 
                 player.comboHandler.comboTracker++;
 
-                Debug.Log("ComboTracker Value: " + player.comboHandler.comboTracker);
+                //Debug.Log("ComboTracker Value: " + player.comboHandler.comboTracker);
             }
             
         }
@@ -88,8 +92,6 @@ public class PlayerGroundedAttackState : PlayerState
     public override void AnimationFinishedTrigger()
     {
         base.AnimationFinishedTrigger();
-        //If the animation ended then continue combo or change state
-
     }
 
     public override void AnimationTrigger()

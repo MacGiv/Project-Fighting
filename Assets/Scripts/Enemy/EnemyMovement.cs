@@ -30,7 +30,7 @@ public class EnemyMovement : MonoBehaviour
 
     public void SetRecieveToAirHitVelocity(int playerFacingMultiplier)
     {
-        Vector2 forceToAdd = new Vector2(_enemyData.recieveToAirHitVelocityX, _enemyData.recieveToAirHitVelocityY);
+        Vector2 forceToAdd = new Vector2(_enemyData.recieveToAirHitVelocityX * playerFacingMultiplier, _enemyData.recieveToAirHitVelocityY);
         _RB.AddForce(forceToAdd, ForceMode2D.Impulse);
     }
 

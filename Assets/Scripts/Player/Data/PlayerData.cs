@@ -19,6 +19,7 @@ public class PlayerData : ScriptableObject
 
     [Header("Wall Slide State")]
     public float wallSlideVelocity = -3f;
+    public float downRaycastHeight = 1f;
 
     [Header("Wall Jump State")]
     public float wallJumpVelocityX = 15f;
@@ -34,6 +35,11 @@ public class PlayerData : ScriptableObject
     public int attackDamage = 20;
     public float comboLostTime = 0.3f;
     
+    [Header("Combo Settings")]
+    public int aInputComboType = 1;
+    public int bInputComboType = 2;
+    public int aInputChainType = 0; // 1 = ToAir Chain | 2 = Push Chain | 3 = Stun Chain
+    public int bInputChainType = 0; // 1 = ToAir Chain | 2 = Push Chain | 3 = Stun Chain
 
     [Header("Check Variables")]
     public float groundCheckRadius = 0.3f;

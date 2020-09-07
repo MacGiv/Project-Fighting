@@ -16,6 +16,8 @@ public class Player : MonoBehaviour
     public PlayerWallJumpState WallJumpState { get; private set; }
     public PlayerDashState DashState { get; private set; }
     public PlayerGroundedAttackState GroundedAttackState { get; private set; }
+    public PlayerChainAttackState ChainState { get; private set; }
+    public PlayerToAirAttackState ToAirAttackState { get; private set; }
     #endregion
 
     #region Components
@@ -59,6 +61,8 @@ public class Player : MonoBehaviour
         WallJumpState = new PlayerWallJumpState(this, StateMachine, _playerData, "inAir");
         DashState = new PlayerDashState(this, StateMachine, _playerData, "dash");
         GroundedAttackState = new PlayerGroundedAttackState(this, StateMachine, _playerData, "groundedAttack");
+        ChainState = new PlayerChainAttackState(this, StateMachine, _playerData, "chainState"); //MMMMMMMMMMM
+        ToAirAttackState = new PlayerToAirAttackState(this, StateMachine, _playerData, "toAirAttack");
     }
 
     private void Start()
@@ -98,6 +102,11 @@ public class Player : MonoBehaviour
     public bool CheckIfTouchingWall()
     {
         return Physics2D.Raycast(_wallCheck.position, Vector2.right * playerMovement.FacingDirection, _playerData.wallCheckDistance, _playerData.whatIsGround);
+    }
+
+    public bool EnoughHeightDistance()
+    {
+        return Physics2D.Raycast(_groundCheck.position, Vector2.down, _playerData.downRaycastHeight, _playerData.whatIsGround);
     }
 
     private void OnDrawGizmos()

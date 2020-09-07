@@ -18,14 +18,19 @@ MonoBehaviour:
   coyoteTime: 0.2
   variableJumpHeightMultiplier: 0.5
   wallSlideVelocity: -3
+  downRaycastHeight: 2
   wallJumpVelocityX: 20
   wallJumpVelocityY: 15
   dashDuration: 0.15
   dashVelocity: 25
   dashCooldown: 1
-  attackVelocity: 3
+  attackVelocity: 2
   attackDamage: 20
-  comboLostTime: 0.3
+  comboLostTime: 0.15
+  aInputComboType: 1
+  bInputComboType: 2
+  aInputChainType: 1
+  bInputChainType: 1
   groundCheckRadius: 0.3
   wallCheckDistance: 0.5
   hitCkeckRadius: 0.4

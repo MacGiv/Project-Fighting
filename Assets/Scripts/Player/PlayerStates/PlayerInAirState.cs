@@ -55,7 +55,7 @@ public class PlayerInAirState : PlayerState
         {
             stateMachine.ChangeState(player.DashState);
         }
-        else if (player.CheckIfTouchingWall() && _xInput == player.playerMovement.FacingDirection)
+        else if (player.CheckIfTouchingWall() && _xInput == player.playerMovement.FacingDirection && !player.EnoughHeightDistance())
         {
             stateMachine.ChangeState(player.WallSlideState);
         }

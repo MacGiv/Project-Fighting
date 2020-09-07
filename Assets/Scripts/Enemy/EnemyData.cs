@@ -7,9 +7,9 @@ using UnityEngine;
 public class EnemyData : ScriptableObject
 {
     [Header("Recieve Hit Velocities")]
-    public float recievedNormHitVelocity = 3f;
-    public float recieveToAirHitVelocityY = 10f;
-    public float recieveToAirHitVelocityX = 7f;
+    public float recievedNormHitVelocity = 200f;
+    public float recieveToAirHitVelocityY = 350f;
+    public float recieveToAirHitVelocityX = 300f;
     public float recievePushHitVelocity = 15f;
     
 

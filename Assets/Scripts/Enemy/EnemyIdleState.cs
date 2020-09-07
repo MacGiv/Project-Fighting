@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyIdleState : EnemyGroundedState
+public class EnemyIdleState : EnemyGroundedState, IChainHittable
 {
     public EnemyIdleState(EnemyBrain enemyBrain, EnemyStateMachine stateMachine, EnemyData enemyData, string animBoolName) : base(enemyBrain, stateMachine, enemyData, animBoolName)
     {
@@ -32,4 +32,12 @@ public class EnemyIdleState : EnemyGroundedState
     {
         base.RecieveGroundedNormalHit(playerFacingDirection);
     }
+
+    public override void RecieveToAirHit(int playerFacingDirection)
+    {
+        base.RecieveToAirHit(playerFacingDirection);
+    }
+
+    public override void RecievePushHit() { }
+    public override void RecieveStunHit() { }
 }

@@ -6,9 +6,10 @@ public class PlayerComboHandler : MonoBehaviour
 {
     #region Cached Components
 
-    public int comboType;
+    public int ComboTypeInputA { get; private set; }
+    public int ComboTypeInputB { get; private set; }
+    public bool ComboLost { get; private set; }
 
-    private PlayerGroundedAttackState _groundedAttackState;
     private Player _player;
     [SerializeField]
     private PlayerData _playerdata;
@@ -19,8 +20,10 @@ public class PlayerComboHandler : MonoBehaviour
 
     private void Start()
     {
+        ComboTypeInputA = _playerdata.aInputComboType;
+        ComboTypeInputB = _playerdata.bInputComboType;
+
         _player = GetComponent<Player>();
-        _groundedAttackState = _player.GroundedAttackState;
     }
 
     private void Update()
@@ -31,7 +34,7 @@ public class PlayerComboHandler : MonoBehaviour
 
     public void CheckEnemyHitbox()
     {
-        _groundedAttackState.CheckEnemyHitbox();
+        _player.StateMachine.CurrentState.CheckEnemyHitbox();
     }
 
     public void CheckIfComboLost()
@@ -41,5 +44,20 @@ public class PlayerComboHandler : MonoBehaviour
             comboTracker = 1;
         }
     }
+
+
+    public int GetAttackInputPressedType()
+    {
+        if (_player.InputHandler.AttackInputA)
+        {
+            return ComboTypeInputA;
+        }
+        else if (_player.InputHandler.AttackInputB)
+        {
+            return ComboTypeInputB;
+        }
+        else return 0;
+    }
+
 
 }

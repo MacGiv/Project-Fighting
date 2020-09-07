@@ -41,7 +41,12 @@ public class PlayerGroundedState : PlayerState
 
         if (_attackInput)
         {
-            stateMachine.ChangeState(player.GroundedAttackState);
+            if (player.comboHandler.comboTracker >= 4)
+            {
+                stateMachine.ChangeState(player.ChainState);
+            }
+            else
+                stateMachine.ChangeState(player.GroundedAttackState);
         }
 
         if (_dashInput && player.DashState.CanDash())

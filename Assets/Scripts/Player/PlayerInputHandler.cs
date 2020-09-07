@@ -14,6 +14,8 @@ public class PlayerInputHandler : MonoBehaviour
     public bool MoveInputStarted { get; private set; }
     public bool DashInput { get; private set; }
     public bool AttackInput { get; private set; }
+    public bool AttackInputA { get; private set; }
+    public bool AttackInputB { get; private set; }
 
     [SerializeField]
     private float _inputHoldTime = 0.2f;
@@ -67,31 +69,35 @@ public class PlayerInputHandler : MonoBehaviour
     {
         if (context.started)
         {
-            Debug.Log("DASH input button pressed!");
+            //Debug.Log("DASH input button pressed!");
             DashInput = true;
             _dashInputStartTime = Time.time;
         }
 
     }
 
-    public void OnAttackInputOne(InputAction.CallbackContext context)
+    public void OnAttackInputA(InputAction.CallbackContext context)
     {
         
         if (context.started)
         {
-            Debug.Log("ATTACK ONE input button pressed!");
+            //Debug.Log("ATTACK --A-- input button pressed!");
             AttackInput = true;
+            AttackInputA = true;
+            AttackInputB = false;
             _attackOneInputStartTime = Time.time;
         }
     }
 
-    public void OnAttackInputTwo(InputAction.CallbackContext context)
+    public void OnAttackInputB(InputAction.CallbackContext context)
     {
 
         if (context.started)
         {
-            Debug.Log("ATTACK TWO input button pressed!");
+            //Debug.Log("ATTACK --B-- input button pressed!");
             AttackInput = true;
+            AttackInputB = true;
+            AttackInputA = false;
             _attackOneInputStartTime = Time.time;
         }
     }
@@ -128,6 +134,8 @@ public class PlayerInputHandler : MonoBehaviour
         if (Time.time >= _attackOneInputStartTime + _inputHoldTime)
         {
             AttackInput = false;
+            AttackInputA = false;
+            AttackInputB = false;
         }
     }
 
