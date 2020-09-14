@@ -56,7 +56,13 @@ public class PlayerGroundedState : PlayerState
         else if (_jumpInput && player.JumpState.CanJump())
         {
             player.InputHandler.JumpInputWasUsed();
-            stateMachine.ChangeState(player.JumpState);
+
+            if (player.comboHandler.CanChainCombo)
+            {
+                stateMachine.ChangeState(player.ComboJumpState);
+            }
+            else
+                stateMachine.ChangeState(player.JumpState);
         }
         else if (!player.CheckIfGrounded())
         {

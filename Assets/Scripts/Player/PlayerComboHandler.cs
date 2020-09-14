@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class PlayerComboHandler : MonoBehaviour
 {
-    #region Cached Components
+    
 
     public int ComboTypeInputA { get; private set; }
     public int ComboTypeInputB { get; private set; }
     public bool ComboLost { get; private set; }
+    public bool CanChainCombo { get; private set; }
+
+    #region Cached Components
 
     private Player _player;
     [SerializeField]
@@ -42,9 +45,15 @@ public class PlayerComboHandler : MonoBehaviour
         if (Time.time > lastAttackTime + _playerdata.comboLostTime)
         {
             comboTracker = 1;
+            CannotChain();
         }
     }
 
+    public void ResetComboTracker() => comboTracker = 1;
+
+    public void CanChain() => CanChainCombo = true;
+
+    public void CannotChain() => CanChainCombo = false;
 
     public int GetAttackInputPressedType()
     {

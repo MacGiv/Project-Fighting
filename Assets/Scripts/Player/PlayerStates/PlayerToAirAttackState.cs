@@ -30,7 +30,7 @@ public class PlayerToAirAttackState : PlayerState
     {
         base.Exit();
         player.comboHandler.lastAttackTime = Time.time;
-        player.comboHandler.comboTracker = 1;
+        player.comboHandler.ResetComboTracker();
         player.Anim.SetFloat("comboTracker", player.comboHandler.comboTracker);
     }
 

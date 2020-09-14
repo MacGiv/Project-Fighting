@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   recievedNormHitVelocity: 150
   recieveToAirHitVelocityY: 450
-  recieveToAirHitVelocityX: 200
+  recieveToAirHitVelocityX: 400
   recievePushHitVelocity: 600

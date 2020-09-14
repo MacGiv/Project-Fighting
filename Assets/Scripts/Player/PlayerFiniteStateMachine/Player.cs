@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     public PlayerGroundedAttackState GroundedAttackState { get; private set; }
     public PlayerChainAttackState ChainState { get; private set; }
     public PlayerToAirAttackState ToAirAttackState { get; private set; }
+    public PlayerComboJumpState ComboJumpState { get; private set; }
     #endregion
 
     #region Components
@@ -36,6 +37,8 @@ public class Player : MonoBehaviour
     private Transform _groundCheck;
     [SerializeField]
     private Transform _wallCheck;
+    [SerializeField]
+    private Transform _enemyInAirRange;
  
     public Transform hitCheck;
     #endregion
@@ -63,6 +66,7 @@ public class Player : MonoBehaviour
         GroundedAttackState = new PlayerGroundedAttackState(this, StateMachine, _playerData, "groundedAttack");
         ChainState = new PlayerChainAttackState(this, StateMachine, _playerData, "chainState"); //MMMMMMMMMMM
         ToAirAttackState = new PlayerToAirAttackState(this, StateMachine, _playerData, "toAirAttack");
+        ComboJumpState = new PlayerComboJumpState(this, StateMachine, _playerData, "comboJump");
     }
 
     private void Start()
@@ -108,6 +112,12 @@ public class Player : MonoBehaviour
     {
         return Physics2D.Raycast(_groundCheck.position, Vector2.down, _playerData.downRaycastHeight, _playerData.whatIsGround);
     }
+
+    public bool CheckIfEnemyInRange()
+    {
+        return Physics2D.Raycast(_enemyInAirRange.position, Vector2.right * playerMovement.FacingDirection, _playerData.enemyInAirRangeDistance, _playerData.enemyLayer);
+    }
+
 
     private void OnDrawGizmos()
     {

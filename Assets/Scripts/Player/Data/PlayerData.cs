@@ -34,7 +34,12 @@ public class PlayerData : ScriptableObject
     public float attackVelocity = 7.5f;
     public int attackDamage = 20;
     public float comboLostTime = 0.3f;
-    
+
+    [Header("Combo Jump State")]
+    public float comboJumpVelocityX = 15f;
+    public float comboJumpVelocityY = 15f;
+    public float enemyCheckDelay = 1f;
+
     [Header("Combo Settings")]
     public int aInputComboType = 1;
     public int bInputComboType = 2;
@@ -45,6 +50,7 @@ public class PlayerData : ScriptableObject
     public float groundCheckRadius = 0.3f;
     public float wallCheckDistance = 0.5f;
     public float hitCkeckRadius = 0.3f;
+    public float enemyInAirRangeDistance = 0.5f;
     public LayerMask whatIsGround;
     public LayerMask enemyLayer;
 

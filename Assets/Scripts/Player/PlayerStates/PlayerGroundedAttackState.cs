@@ -72,7 +72,7 @@ public class PlayerGroundedAttackState : PlayerState
                 {
                     //Debug.Log("Collider's name: " + colliderDetected.gameObject.name);
                     ICanHandleHits canBeHit = colliderDetected.gameObject.GetComponent<ICanHandleHits>();
-                    if(canBeHit != null)
+                    if (canBeHit != null)
                     {
                         EnemyBrain enemyBrainDetected = colliderDetected.GetComponent<EnemyBrain>();
                         enemyBrainDetected.HandleGroundedNormalHit(player.playerMovement.FacingDirection);
@@ -81,9 +81,12 @@ public class PlayerGroundedAttackState : PlayerState
 
                 player.comboHandler.comboTracker++;
 
+                if (player.comboHandler.comboTracker >= 4)
+                {
+                    player.comboHandler.CanChain();
+                }
                 //Debug.Log("ComboTracker Value: " + player.comboHandler.comboTracker);
             }
-            
         }
 
         
