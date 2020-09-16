@@ -35,6 +35,9 @@ public class PlayerData : ScriptableObject
     public int attackDamage = 20;
     public float comboLostTime = 0.3f;
 
+    [Header("Air Attack State")]
+    public float airAttackvelocityX = 3f;
+
     [Header("Combo Jump State")]
     public float comboJumpVelocityX = 15f;
     public float comboJumpVelocityY = 15f;
@@ -45,6 +48,7 @@ public class PlayerData : ScriptableObject
     public int bInputComboType = 2;
     public int aInputChainType = 0; // 1 = ToAir Chain | 2 = Push Chain | 3 = Stun Chain
     public int bInputChainType = 0; // 1 = ToAir Chain | 2 = Push Chain | 3 = Stun Chain
+    public float chainLostTime = 0.2f;
 
     [Header("Check Variables")]
     public float groundCheckRadius = 0.3f;

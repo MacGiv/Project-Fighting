@@ -10,7 +10,9 @@ public class EnemyBrain : MonoBehaviour, ICanHandleHits
     public EnemyIdleState IdleState { get; private set; }
 
     public EnemyData _enemyData;
-    
+
+    public bool recieveingAirCombo = false;
+
     void Awake()
     {
         StateMachine = new EnemyStateMachine();
@@ -45,5 +47,11 @@ public class EnemyBrain : MonoBehaviour, ICanHandleHits
             IdleState.RecieveToAirHit(playerFacingDirection);
         }
     }
+
+
+    public void RecievingAirComboTrue() => recieveingAirCombo = true;
+    public void RecievingAirComboFalse() => recieveingAirCombo = false;
+
+    
 
 }

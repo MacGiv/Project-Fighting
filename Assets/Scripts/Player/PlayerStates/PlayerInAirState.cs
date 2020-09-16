@@ -11,6 +11,8 @@ public class PlayerInAirState : PlayerState
     private bool _isJumpingUp;
     private bool _jumpInputStop;
     private bool _dashInput;
+    private bool _attackInput;
+
 
     public PlayerInAirState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string boolName) : base(player, stateMachine, playerData, boolName)
     {
@@ -44,8 +46,15 @@ public class PlayerInAirState : PlayerState
         _jumpInput = player.InputHandler.JumpInput;
         _jumpInputStop = player.InputHandler.JumpInputStop;
         _dashInput = player.InputHandler.DashInput;
+        _attackInput = player.InputHandler.AttackInput;
+
 
         CheckJumpMultiplier();
+
+        if (_attackInput && player.comboHandler.CanAirCombo)
+        {
+            stateMachine.ChangeState(player.AirAttackState);
+        }
 
         if (_isGrounded && player.playerMovement.RB.velocity.y < 0.1f)
         {

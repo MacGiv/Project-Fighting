@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     public PlayerChainAttackState ChainState { get; private set; }
     public PlayerToAirAttackState ToAirAttackState { get; private set; }
     public PlayerComboJumpState ComboJumpState { get; private set; }
+    public PlayerAirAttackState AirAttackState { get; private set; }
     #endregion
 
     #region Components
@@ -47,6 +48,7 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private PlayerData _playerData;
+    public EnemyBrain currentEnemyBrain;
 
     #endregion
 
@@ -67,6 +69,7 @@ public class Player : MonoBehaviour
         ChainState = new PlayerChainAttackState(this, StateMachine, _playerData, "chainState"); //MMMMMMMMMMM
         ToAirAttackState = new PlayerToAirAttackState(this, StateMachine, _playerData, "toAirAttack");
         ComboJumpState = new PlayerComboJumpState(this, StateMachine, _playerData, "comboJump");
+        AirAttackState = new PlayerAirAttackState(this, StateMachine, _playerData, "airAttack");
     }
 
     private void Start()
@@ -116,6 +119,12 @@ public class Player : MonoBehaviour
     public bool CheckIfEnemyInRange()
     {
         return Physics2D.Raycast(_enemyInAirRange.position, Vector2.right * playerMovement.FacingDirection, _playerData.enemyInAirRangeDistance, _playerData.enemyLayer);
+    }
+
+    public EnemyBrain GetEnemyInRange()
+    {
+        RaycastHit2D raycast = Physics2D.Raycast(_enemyInAirRange.position, Vector2.right * playerMovement.FacingDirection, _playerData.enemyInAirRangeDistance, _playerData.enemyLayer);
+        return raycast.collider.gameObject.GetComponent<EnemyBrain>();
     }
 
 

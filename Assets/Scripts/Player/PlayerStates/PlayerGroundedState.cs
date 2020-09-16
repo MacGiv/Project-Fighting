@@ -56,6 +56,7 @@ public class PlayerGroundedState : PlayerState
         else if (_jumpInput && player.JumpState.CanJump())
         {
             player.InputHandler.JumpInputWasUsed();
+            player.comboHandler.CheckIfChainLost();
 
             if (player.comboHandler.CanChainCombo)
             {

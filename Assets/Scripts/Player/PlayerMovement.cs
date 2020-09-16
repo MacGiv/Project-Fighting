@@ -58,9 +58,9 @@ public class PlayerMovement : MonoBehaviour
         //Debug.Log("WALLJUMP is being executed");
     }
 
-    public void SetDirectionalJumpVelocity(float jumpVelocityX, float jumpVelocityY)
+    public void SetDoubleDirectionalVelocity(float velocityX, float velocityY)
     {
-        _workspace.Set(jumpVelocityX * FacingDirection, jumpVelocityY);
+        _workspace.Set(velocityX * FacingDirection, velocityY);
         RB.velocity = _workspace;
         CurrentVelocity = _workspace;
         //Debug.Log("WALLJUMP is being executed");

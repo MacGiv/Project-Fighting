@@ -29,7 +29,7 @@ public class PlayerToAirAttackState : PlayerState
     public override void Exit()
     {
         base.Exit();
-        player.comboHandler.lastAttackTime = Time.time;
+        player.comboHandler.lastChainAttackTime = Time.time;
         player.comboHandler.ResetComboTracker();
         player.Anim.SetFloat("comboTracker", player.comboHandler.comboTracker);
     }
@@ -61,7 +61,7 @@ public class PlayerToAirAttackState : PlayerState
     {
         _collidersDetected = Physics2D.OverlapCircleAll(player.hitCheck.position, playerData.hitCkeckRadius, playerData.enemyLayer);
 
-        Debug.Log("I've entered in the CheckEnemyHitbox of the TOAIR STATE");
+        //Debug.Log("I've entered in the CheckEnemyHitbox of the TOAIR STATE");
 
         if (_collidersDetected.Length != 0)
         {

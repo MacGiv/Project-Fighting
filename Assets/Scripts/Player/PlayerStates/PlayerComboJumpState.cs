@@ -13,8 +13,9 @@ public class PlayerComboJumpState : PlayerState
     public override void Enter()
     {
         base.Enter();
+        player.JumpState.DecreaseAmountOfJumpsLeft();
         enemyCheckDelay = playerData.enemyCheckDelay;
-        player.playerMovement.SetDirectionalJumpVelocity(playerData.comboJumpVelocityX, playerData.comboJumpVelocityY);
+        player.playerMovement.SetDoubleDirectionalVelocity(playerData.comboJumpVelocityX, playerData.comboJumpVelocityY);
 
     }
 
@@ -30,18 +31,22 @@ public class PlayerComboJumpState : PlayerState
 
         enemyCheckDelay -= Time.deltaTime;
 
-        if (enemyCheckDelay <= 0)
+        if (player.InputHandler.AttackInput)
         {
-            if (player.CheckIfEnemyInRange() && player.InputHandler.AttackInput)
+            if (player.CheckIfEnemyInRange())
             {
-                //Change to AirAttackState
-            }
-            else
-            {
-                stateMachine.ChangeState(player.InAirState);
+                player.currentEnemyBrain = player.GetEnemyInRange();
+                player.currentEnemyBrain.RecievingAirComboTrue();
+
+                player.comboHandler.CanPerformAirCombo();
+
+                stateMachine.ChangeState(player.AirAttackState);
             }
         }
-
+        else if (enemyCheckDelay <= 0)
+        {
+            stateMachine.ChangeState(player.InAirState);
+        }
     }
 
     public override void PhysicsUpdate()

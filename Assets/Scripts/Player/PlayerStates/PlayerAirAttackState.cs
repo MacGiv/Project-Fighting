@@ -12,31 +12,71 @@ public class PlayerAirAttackState : PlayerState
     {
     }
 
-
-    public override void CheckEnemyHitbox()
-    {
-        base.CheckEnemyHitbox();
-    }
-
     public override void Enter()
     {
         base.Enter();
+        isAnimationFinished = false;
+        player.Anim.SetFloat("comboType", player.comboHandler.GetAttackInputPressedType());
+        if (player.comboHandler.comboTracker != 1)
+            player.comboHandler.CheckIfComboLost();
+        player.Anim.SetFloat("comboTracker", player.comboHandler.comboTracker);
     }
 
     public override void Exit()
     {
         base.Exit();
+        player.comboHandler.lastAttackTime = Time.time;
+        
     }
 
     public override void LogicUpdate()
     {
         base.LogicUpdate();
+
+        player.playerMovement.SetDoubleDirectionalVelocity(playerData.airAttackvelocityX, 0f);
+
+        if (isAnimationFinished)
+        {
+            stateMachine.ChangeState(player.InAirState);
+        }
+
     }
 
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
     }
+
+    public override void CheckEnemyHitbox()
+    {
+        _collidersDetected = Physics2D.OverlapCircleAll(player.hitCheck.position, playerData.hitCkeckRadius, playerData.enemyLayer);
+
+        if (_collidersDetected.Length != 0)
+        {
+            if (player.comboHandler.comboTracker < 4)
+            {
+                foreach (Collider2D colliderDetected in _collidersDetected)
+                {
+                    ICanHandleHits canBeHit = colliderDetected.gameObject.GetComponent<ICanHandleHits>();
+                    if (canBeHit != null)
+                    {
+                        EnemyBrain enemyBrainDetected = colliderDetected.GetComponent<EnemyBrain>();
+                        enemyBrainDetected.HandleGroundedNormalHit(player.playerMovement.FacingDirection);
+                    }
+                }
+
+                player.comboHandler.comboTracker++;
+
+                if (player.comboHandler.comboTracker >= 4)
+                {
+                    player.comboHandler.CanFinisher();
+                    player.comboHandler.ResetComboTracker();
+                }
+            }
+        }
+
+    }
+
     public override void AnimationFinishedTrigger()
     {
         base.AnimationFinishedTrigger();
