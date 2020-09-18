@@ -65,7 +65,7 @@ public class PlayerChainAttackState : PlayerState
                 stateMachine.ChangeState(player.ToAirAttackState);
                 break;
             case 2:
-                //TO DO: change to Push Attack State
+                stateMachine.ChangeState(player.PushAttackState);
                 break;
             case 3:
                 //TO DO: change to Stun/Counter Attack State

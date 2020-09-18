@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a7704cbd58767a4484d04fa00ef5879, type: 3}
   m_Name: EnemyData
   m_EditorClassIdentifier: 
-  recievedNormHitVelocity: 40
-  recieveToAirHitVelocityY: 75
-  recieveToAirHitVelocityX: 42
-  recievePushHitVelocity: 120
+  recievedNormHitVelocity: 80
+  recieveToAirHitVelocityY: 150
+  recieveToAirHitVelocityX: 82
+  recievePushHitVelocity: 200

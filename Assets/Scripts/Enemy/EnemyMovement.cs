@@ -40,7 +40,7 @@ public class EnemyMovement : MonoBehaviour
 
     public void SetRecievePushHitVelocity(int playerFacingMultiplier)
     {
-        Vector2 forceToAdd = new Vector2(_enemyData.recievePushHitVelocity, 0f);
+        Vector2 forceToAdd = new Vector2(_enemyData.recievePushHitVelocity * playerFacingMultiplier, 0f);
         _RB.AddForce(forceToAdd, ForceMode2D.Impulse);
     }
 

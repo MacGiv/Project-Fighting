@@ -29,6 +29,7 @@ public class PlayerData : ScriptableObject
     public float dashDuration = 0.5f;
     public float dashVelocity = 25f;
     public float dashCooldown = 1.5f;
+    public float comboDashDuration = 0.7f;
 
     [Header("Grounded Attack State")]
     public float attackVelocity = 7.5f;

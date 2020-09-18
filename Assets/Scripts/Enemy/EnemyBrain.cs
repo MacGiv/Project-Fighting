@@ -48,6 +48,14 @@ public class EnemyBrain : MonoBehaviour, ICanHandleHits
         }
     }
 
+    public void HandlePushHit(int playerFacingDirection)
+    {
+        if (StateMachine.CurrentState == IdleState)
+        {
+            IdleState.RecievePushHit(playerFacingDirection);
+        }
+    }
+
 
     public void RecievingAirComboTrue() => recieveingAirCombo = true;
     public void RecievingAirComboFalse() => recieveingAirCombo = false;

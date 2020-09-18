@@ -49,9 +49,16 @@ public class PlayerGroundedState : PlayerState
                 stateMachine.ChangeState(player.GroundedAttackState);
         }
 
-        if (_dashInput && player.DashState.CanDash())
+        if (_dashInput)
         {
-            stateMachine.ChangeState(player.DashState);
+            player.comboHandler.CheckIfChainLost();
+
+            if (player.comboHandler.CanChainCombo)
+            {
+                stateMachine.ChangeState(player.ComboPreDashState);
+            }
+            else if (player.DashState.CanDash())
+                stateMachine.ChangeState(player.DashState);
         }
         else if (_jumpInput && player.JumpState.CanJump())
         {

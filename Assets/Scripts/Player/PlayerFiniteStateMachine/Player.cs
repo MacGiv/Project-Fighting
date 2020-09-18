@@ -19,7 +19,11 @@ public class Player : MonoBehaviour
     public PlayerChainAttackState ChainState { get; private set; }
     public PlayerToAirAttackState ToAirAttackState { get; private set; }
     public PlayerComboJumpState ComboJumpState { get; private set; }
+    public PlayerComboPreDashState ComboPreDashState { get; private set; }
+    public PlayerComboDashState ComboDashState { get; private set; }
+    public PlayerComboPostDashState ComboPostDashState { get; private set; }
     public PlayerAirAttackState AirAttackState { get; private set; }
+    public PlayerPushAttackState PushAttackState { get; private set; }
     #endregion
 
     #region Components
@@ -69,7 +73,11 @@ public class Player : MonoBehaviour
         ChainState = new PlayerChainAttackState(this, StateMachine, _playerData, "chainState"); //MMMMMMMMMMM
         ToAirAttackState = new PlayerToAirAttackState(this, StateMachine, _playerData, "toAirAttack");
         ComboJumpState = new PlayerComboJumpState(this, StateMachine, _playerData, "comboJump");
+        ComboPreDashState = new PlayerComboPreDashState(this, StateMachine, _playerData, "comboPreDash");
+        ComboDashState = new PlayerComboDashState(this, StateMachine, _playerData, "comboDash");
+        ComboPostDashState = new PlayerComboPostDashState(this, StateMachine, _playerData, "comboPostDash");
         AirAttackState = new PlayerAirAttackState(this, StateMachine, _playerData, "airAttack");
+        PushAttackState = new PlayerPushAttackState(this, StateMachine, _playerData, "pushAttack");
     }
 
     private void Start()
@@ -126,7 +134,6 @@ public class Player : MonoBehaviour
         RaycastHit2D raycast = Physics2D.Raycast(_enemyInAirRange.position, Vector2.right * playerMovement.FacingDirection, _playerData.enemyInAirRangeDistance, _playerData.enemyLayer);
         return raycast.collider.gameObject.GetComponent<EnemyBrain>();
     }
-
 
     private void OnDrawGizmos()
     {

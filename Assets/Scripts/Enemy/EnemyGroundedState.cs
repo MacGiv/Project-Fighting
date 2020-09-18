@@ -40,6 +40,11 @@ public class EnemyGroundedState : EnemyState, INormalHittable, IChainHittable
         enemyBrain.EnemyMovement.SetRecieveToAirHitVelocity(playerFacingDirection);
     }
 
+    public virtual void RecievePushHit(int playerFacingDirection)
+    {
+        enemyBrain.EnemyMovement.SetRecievePushHitVelocity(playerFacingDirection);
+    }
+
     public virtual void RecievePushHit() { }
     public virtual void RecieveStunHit() { }
 
