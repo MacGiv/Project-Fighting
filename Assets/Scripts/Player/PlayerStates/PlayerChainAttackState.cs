@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerChainAttackState : PlayerState
 {
+    private int currentComboType;
 
     public PlayerChainAttackState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string boolName) : base(player, stateMachine, playerData, boolName)
     {
@@ -18,6 +19,13 @@ public class PlayerChainAttackState : PlayerState
     public override void Enter()
     {
         base.Enter();
+
+        currentComboType = player.comboHandler.GetAttackInputPressedType();
+        if (currentComboType != player.comboHandler.lastComboTypePressed)
+        {
+            player.comboHandler.ResetComboTracker();
+        }
+            
 
         player.comboHandler.CheckIfComboLost();
         if (player.comboHandler.comboTracker == 4)
@@ -40,6 +48,7 @@ public class PlayerChainAttackState : PlayerState
     public override void Exit()
     {
         base.Exit();
+        player.comboHandler.lastComboTypePressed = currentComboType;
     }
 
     public override void LogicUpdate()

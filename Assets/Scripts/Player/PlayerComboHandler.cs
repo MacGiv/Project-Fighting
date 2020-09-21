@@ -12,6 +12,7 @@ public class PlayerComboHandler : MonoBehaviour
     public bool CanChainCombo { get; private set; }
     public bool CanAirCombo { get; private set; }
     public bool CanFinisherMove { get; private set; }
+    
 
     #region Cached Components
 
@@ -22,6 +23,7 @@ public class PlayerComboHandler : MonoBehaviour
 
     public float lastAttackTime = -100f;
     public float lastChainAttackTime = -100f;
+    public int lastComboTypePressed = 0;
     public int comboTracker = 1;
 
     private void Start()

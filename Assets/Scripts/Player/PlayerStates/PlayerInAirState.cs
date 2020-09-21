@@ -51,7 +51,7 @@ public class PlayerInAirState : PlayerState
 
         CheckJumpMultiplier();
 
-        if (_attackInput && player.comboHandler.CanAirCombo)
+        if (_attackInput && player.comboHandler.CanAirCombo && player.comboHandler.GetAttackInputPressedType() == 2)
         {
             stateMachine.ChangeState(player.AirAttackState);
         }

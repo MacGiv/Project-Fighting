@@ -21,6 +21,11 @@ public class PlayerToAirAttackState : PlayerState
     public override void Enter()
     {
         base.Enter();
+
+        currentComboType = player.comboHandler.GetAttackInputPressedType();
+        if (currentComboType != player.comboHandler.lastComboTypePressed)
+            player.comboHandler.ResetComboTracker();
+
         player.comboHandler.CheckIfComboLost();
         player.Anim.SetFloat("comboType", player.comboHandler.GetAttackInputPressedType());
         player.Anim.SetFloat("comboTracker", player.comboHandler.comboTracker);
@@ -29,8 +34,8 @@ public class PlayerToAirAttackState : PlayerState
     public override void Exit()
     {
         base.Exit();
+        player.comboHandler.lastComboTypePressed = currentComboType;
         player.comboHandler.lastChainAttackTime = Time.time;
-        player.comboHandler.ResetComboTracker();
         player.Anim.SetFloat("comboTracker", player.comboHandler.comboTracker);
     }
 
@@ -72,6 +77,8 @@ public class PlayerToAirAttackState : PlayerState
                 {
                     EnemyBrain enemyBrainDetected = colliderDetected.GetComponent<EnemyBrain>();
                     enemyBrainDetected.HandleToAirHit(player.playerMovement.FacingDirection);
+
+                    player.comboHandler.comboTracker++;
                 }
                 else
                     Debug.Log("NO IChainHittable Found in " + colliderDetected.gameObject.name);

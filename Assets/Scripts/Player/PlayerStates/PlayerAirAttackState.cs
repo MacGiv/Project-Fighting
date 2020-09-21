@@ -15,6 +15,11 @@ public class PlayerAirAttackState : PlayerState
     public override void Enter()
     {
         base.Enter();
+
+        currentComboType = player.comboHandler.GetAttackInputPressedType();
+        if (currentComboType != player.comboHandler.lastComboTypePressed)
+            player.comboHandler.ResetComboTracker();
+
         isAnimationFinished = false;
         player.Anim.SetFloat("comboType", player.comboHandler.GetAttackInputPressedType());
         if (player.comboHandler.comboTracker != 1)
@@ -25,6 +30,7 @@ public class PlayerAirAttackState : PlayerState
     public override void Exit()
     {
         base.Exit();
+        player.comboHandler.lastComboTypePressed = currentComboType;
         player.comboHandler.lastAttackTime = Time.time;
         
     }
@@ -67,14 +73,13 @@ public class PlayerAirAttackState : PlayerState
 
                 player.comboHandler.comboTracker++;
 
-                if (player.comboHandler.comboTracker >= 4)
+                if (player.comboHandler.comboTracker == 8)
                 {
                     player.comboHandler.CanFinisher();
-                    player.comboHandler.ResetComboTracker();
                 }
             }
         }
-
+        player.comboHandler.comboTracker++;
     }
 
     public override void AnimationFinishedTrigger()

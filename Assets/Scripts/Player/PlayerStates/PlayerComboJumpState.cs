@@ -40,7 +40,8 @@ public class PlayerComboJumpState : PlayerState
 
                 player.comboHandler.CanPerformAirCombo();
 
-                stateMachine.ChangeState(player.AirAttackState);
+                if (player.comboHandler.GetAttackInputPressedType() == 2)
+                    stateMachine.ChangeState(player.AirAttackState);
             }
         }
         else if (enemyCheckDelay <= 0)

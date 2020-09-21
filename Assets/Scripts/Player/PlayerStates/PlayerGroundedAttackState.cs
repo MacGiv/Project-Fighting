@@ -22,6 +22,11 @@ public class PlayerGroundedAttackState : PlayerState
     public override void Enter()
     {
         base.Enter();
+
+        currentComboType = player.comboHandler.GetAttackInputPressedType();
+        if (player.comboHandler.lastComboTypePressed != currentComboType)
+            player.comboHandler.ResetComboTracker();
+
         player.Anim.SetFloat("comboType", player.comboHandler.GetAttackInputPressedType());
         player.comboHandler.CheckIfComboLost();
         player.Anim.SetFloat("comboTracker", player.comboHandler.comboTracker);
@@ -30,6 +35,7 @@ public class PlayerGroundedAttackState : PlayerState
     public override void Exit()
     {
         base.Exit();
+        player.comboHandler.lastComboTypePressed = currentComboType;
         player.comboHandler.lastAttackTime = Time.time;
     }
 

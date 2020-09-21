@@ -53,7 +53,7 @@ public class PlayerGroundedState : PlayerState
         {
             player.comboHandler.CheckIfChainLost();
 
-            if (player.comboHandler.CanChainCombo)
+            if (player.comboHandler.CanChainCombo && player.comboHandler.lastComboTypePressed == 1)
             {
                 stateMachine.ChangeState(player.ComboPreDashState);
             }
@@ -65,7 +65,7 @@ public class PlayerGroundedState : PlayerState
             player.InputHandler.JumpInputWasUsed();
             player.comboHandler.CheckIfChainLost();
 
-            if (player.comboHandler.CanChainCombo)
+            if (player.comboHandler.CanChainCombo && player.comboHandler.lastComboTypePressed == 2)
             {
                 stateMachine.ChangeState(player.ComboJumpState);
             }
