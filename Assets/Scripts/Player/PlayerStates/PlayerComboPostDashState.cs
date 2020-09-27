@@ -27,6 +27,8 @@ public class PlayerComboPostDashState : PlayerState
         {
             if (player.CheckIfEnemyInRange() && player.InputHandler.AttackInput)
             {
+                Debug.Log("POST Dash ENEMY IN RANGE");
+
                 stateMachine.ChangeState(player.GroundedAttackState);
             }
             else

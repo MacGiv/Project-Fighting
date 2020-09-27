@@ -70,13 +70,10 @@ public class PlayerGroundedAttackState : PlayerState
 
         if (_collidersDetected.Length != 0)
         {
-            //Debug.Log("COLLIDERS DETECTED " + _collidersDetected.Length);
-
             if (player.comboHandler.comboTracker < 4)
             {
                 foreach (Collider2D colliderDetected in _collidersDetected)
                 {
-                    //Debug.Log("Collider's name: " + colliderDetected.gameObject.name);
                     ICanHandleHits canBeHit = colliderDetected.gameObject.GetComponent<ICanHandleHits>();
                     if (canBeHit != null)
                     {

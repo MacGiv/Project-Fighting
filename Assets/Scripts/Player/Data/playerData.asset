@@ -40,7 +40,7 @@ MonoBehaviour:
   groundCheckRadius: 0.3
   wallCheckDistance: 0.5
   hitCkeckRadius: 0.4
-  enemyInAirRangeDistance: 0.7
+  enemyInAirRangeDistance: 0.8
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256

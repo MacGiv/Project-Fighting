@@ -37,6 +37,9 @@ public class PlayerComboDashState : PlayerState
 
         if (player.CheckIfEnemyInRange() || _dashTimeLeft <= 0)
         {
+            if (player.CheckIfEnemyInRange())
+                Debug.Log("Combo Dash ENEMY IN RANGE");
+
             stateMachine.ChangeState(player.ComboPostDashState);
         }
     }
