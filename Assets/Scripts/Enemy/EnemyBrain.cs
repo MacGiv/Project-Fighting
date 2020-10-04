@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBrain : MonoBehaviour, ICanHandleHits
+public class EnemyBrain : MonoBehaviour
 {
     public EnemyStateMachine StateMachine { get; private set; }
     public EnemyMovement EnemyMovement { get; private set; }

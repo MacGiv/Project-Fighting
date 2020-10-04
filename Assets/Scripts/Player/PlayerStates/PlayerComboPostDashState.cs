@@ -29,6 +29,8 @@ public class PlayerComboPostDashState : PlayerState
             {
                 Debug.Log("POST Dash ENEMY IN RANGE");
 
+                player.comboHandler.CanSecondCombo();
+
                 stateMachine.ChangeState(player.GroundedAttackState);
             }
             else

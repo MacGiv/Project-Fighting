@@ -73,7 +73,7 @@ public class PlayerAirAttackState : PlayerState
 
                 player.comboHandler.comboTracker++;
 
-                if (player.comboHandler.comboTracker == 8)
+                if (player.comboHandler.comboTracker == 4)
                 {
                     player.comboHandler.CanFinisher();
                 }

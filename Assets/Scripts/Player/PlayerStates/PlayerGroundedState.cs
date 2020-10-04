@@ -41,9 +41,13 @@ public class PlayerGroundedState : PlayerState
 
         if (_attackInput)
         {
-            if (player.comboHandler.comboTracker >= 4)
+            if (player.comboHandler.CanChainCombo && !player.comboHandler.SecondCombo)
             {
                 stateMachine.ChangeState(player.ChainState);
+            }
+            else if (player.comboHandler.CanFinisherMove)
+            {
+                stateMachine.ChangeState(player.GetFinisherState);
             }
             else
                 stateMachine.ChangeState(player.GroundedAttackState);

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyIdleState : EnemyGroundedState, IChainHittable
+public class EnemyIdleState : EnemyGroundedState
 {
     public EnemyIdleState(EnemyBrain enemyBrain, EnemyStateMachine stateMachine, EnemyData enemyData, string animBoolName) : base(enemyBrain, stateMachine, enemyData, animBoolName)
     {

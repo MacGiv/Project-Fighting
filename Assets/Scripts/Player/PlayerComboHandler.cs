@@ -6,7 +6,7 @@ public class PlayerComboHandler : MonoBehaviour
 {
 
     public bool ComboLost { get; private set; }
-    public bool CanChainCombo { get; private set; }
+    public bool CanChainCombo { get; private set; }         //Used to make the ChainAttack and the ComboDash/ComboJump
     public bool CanAirCombo { get; private set; }
     public bool CanFinisherMove { get; private set; }
     public bool SecondCombo { get; private set; }
@@ -66,15 +66,23 @@ public class PlayerComboHandler : MonoBehaviour
     }
     #endregion
 
-    #region Bool Setters
+    #region Can or Cannot Setters
     public void CanChain() => CanChainCombo = true;
     public void CannotChain() => CanChainCombo = false;
     public void CanFinisher() => CanFinisherMove = true;
     public void CannotFinisher() => CanFinisherMove = false;
     public void CanPerformAirCombo() => CanAirCombo = true;
     public void CannotPerformAirCombo() => CanAirCombo = false;
-    public void CanSecondCombo() => SecondCombo = true;
-    public void CannotSecondCombo() => SecondCombo = false;
+    public void CanSecondCombo()
+    {
+        SecondCombo = true;
+        _player.Anim.SetBool("secondCombo", true);
+    }
+    public void CannotSecondCombo()
+    {
+        SecondCombo = false;
+        _player.Anim.SetBool("secondCombo", false);
+    } 
     #endregion
 
     public void ResetComboTracker() => comboTracker = 1;

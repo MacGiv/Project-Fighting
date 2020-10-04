@@ -86,7 +86,10 @@ public class PlayerGroundedAttackState : PlayerState
 
                 if (player.comboHandler.comboTracker >= 4)
                 {
-                    player.comboHandler.CanChain();
+                    if (!player.comboHandler.SecondCombo)
+                        player.comboHandler.CanChain();
+                    else
+                        player.comboHandler.CanFinisher();
                 }
                 //Debug.Log("ComboTracker Value: " + player.comboHandler.comboTracker);
             }

@@ -24,6 +24,8 @@ public class Player : MonoBehaviour
     public PlayerComboPostDashState ComboPostDashState { get; private set; }
     public PlayerAirAttackState AirAttackState { get; private set; }
     public PlayerPushAttackState PushAttackState { get; private set; }
+    public PlayerGetFinisherState GetFinisherState { get; private set; }
+    public PlayerFinisherStatePKC FinisherStatePKC { get; private set; }
     #endregion
 
     #region Components
@@ -78,6 +80,8 @@ public class Player : MonoBehaviour
         ComboPostDashState = new PlayerComboPostDashState(this, StateMachine, _playerData, "comboPostDash");
         AirAttackState = new PlayerAirAttackState(this, StateMachine, _playerData, "airAttack");
         PushAttackState = new PlayerPushAttackState(this, StateMachine, _playerData, "pushAttack");
+        GetFinisherState = new PlayerGetFinisherState(this, StateMachine, _playerData, "getFinisher");
+        FinisherStatePKC = new PlayerFinisherStatePKC(this, StateMachine, _playerData, "finisher");
     }
 
     private void Start()

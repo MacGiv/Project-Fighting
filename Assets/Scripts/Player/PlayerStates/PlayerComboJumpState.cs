@@ -35,9 +35,6 @@ public class PlayerComboJumpState : PlayerState
         {
             if (player.CheckIfEnemyInRange())
             {
-                player.currentEnemyBrain = player.GetEnemyInRange();
-                player.currentEnemyBrain.RecievingAirComboTrue();
-
                 player.comboHandler.CanPerformAirCombo();
 
                 if (player.comboHandler.GetAttackInputPressedType() == 2)
