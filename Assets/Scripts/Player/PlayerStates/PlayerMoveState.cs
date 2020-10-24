@@ -26,7 +26,6 @@ public class PlayerMoveState : PlayerGroundedState
 
     public override void LogicUpdate()
     {
-        base.LogicUpdate();
         
         player.playerMovement.CheckIfShouldFlip(xInput);
 
@@ -37,6 +36,7 @@ public class PlayerMoveState : PlayerGroundedState
         {
             stateMachine.ChangeState(player.IdleState);
         }
+        base.LogicUpdate();
     }
 
     public override void PhysicsUpdate()
