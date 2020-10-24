@@ -22,6 +22,7 @@ public class PlayerComboJumpState : PlayerState
     public override void Exit()
     {
         player.comboHandler.CannotChain();
+        player.comboHandler.lastAttackTime = Time.time;
         base.Exit();
     }
 
@@ -31,14 +32,14 @@ public class PlayerComboJumpState : PlayerState
 
         enemyCheckDelay -= Time.deltaTime;
 
-        if (player.InputHandler.AttackInput)
+        if (player.CheckIfEnemyInRange())
         {
-            if (player.CheckIfEnemyInRange())
-            {
-                player.comboHandler.CanPerformAirCombo();
+            player.comboHandler.CanPerformAirCombo();
+            player.comboHandler.ResetComboTracker();
 
-                if (player.comboHandler.GetAttackInputPressedType() == 2)
-                    stateMachine.ChangeState(player.AirAttackState);
+            if (player.InputHandler.AttackInput && player.comboHandler.GetAttackInputPressedType() == 2)
+            {
+                stateMachine.ChangeState(player.AirAttackState);
             }
         }
         else if (enemyCheckDelay <= 0)

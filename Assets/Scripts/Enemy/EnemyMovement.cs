@@ -6,16 +6,19 @@ public class EnemyMovement : MonoBehaviour
 {
     private Rigidbody2D _RB;
     private EnemyBrain _enemyBrain;
+    private Player _playerBrain;
+    public EnemyData _enemyData;
 
     private Vector2 _vectorWorkspace;
-
-    public EnemyData _enemyData;
+    public int FacingDirection { get; private set; }
 
     void Awake()
     {
+        FacingDirection = 1;                                //DELETE LATER
         _RB = GetComponent<Rigidbody2D>();
         _enemyBrain = GetComponent<EnemyBrain>();
-        _enemyData = _enemyBrain._enemyData;
+        _enemyData = _enemyBrain.enemyData;
+        _playerBrain = FindObjectOfType<Player>();
     }
 
 
@@ -27,26 +30,37 @@ public class EnemyMovement : MonoBehaviour
     public void SetRecieveNormalHitVelocity(int playerFacingMultiplier)
     {
         Vector2 forceToAdd = new Vector2(_enemyData.recievedNormHitVelocity * playerFacingMultiplier, 0f);
-        _RB.AddForce(forceToAdd, ForceMode2D.Impulse);
-        _vectorWorkspace.Set(_RB.velocity.x, 0f);
-        _RB.velocity = _vectorWorkspace;
+        _RB.velocity = forceToAdd;
     }
 
     public void SetRecieveToAirHitVelocity(int playerFacingMultiplier)
     {
         Vector2 forceToAdd = new Vector2(_enemyData.recieveToAirHitVelocityX * playerFacingMultiplier, _enemyData.recieveToAirHitVelocityY);
-        _RB.AddForce(forceToAdd, ForceMode2D.Impulse);
+        _RB.velocity = forceToAdd;
     }
 
     public void SetRecievePushHitVelocity(int playerFacingMultiplier)
     {
         Vector2 forceToAdd = new Vector2(_enemyData.recievePushHitVelocity * playerFacingMultiplier, 0f);
-        _RB.AddForce(forceToAdd, ForceMode2D.Impulse);
+        _RB.velocity = forceToAdd;
     }
 
-    public void StickToThePlayer(float playerPosX, float playerPosY, float playerfacingDirection)
+    public void SetDoubleDirectionalVelocity(int xDirection, float xForce, float yForce)
     {
-        _vectorWorkspace.Set(playerPosX + 1.5f * playerfacingDirection , playerPosY);
+        Vector2 forceToAdd = new Vector2(xForce * xDirection, yForce);
+        _RB.velocity = forceToAdd;
+    }
+
+    public void StickToThePlayer(float playerfacingDirection)
+    {
+        Vector2 playerPos = _playerBrain.gameObject.transform.position;
+
+        _vectorWorkspace.Set( playerPos.x + 1f * playerfacingDirection , playerPos.y);
         transform.position = _vectorWorkspace;
+    }
+
+    public void StopAllMovement()
+    {
+        _RB.velocity = Vector2.zero;
     }
 }

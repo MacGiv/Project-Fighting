@@ -65,11 +65,10 @@ public class PlayerPushAttackState : PlayerState
         {
             foreach (Collider2D colliderDetected in _collidersDetected)
             {
-                ICanHandleHits canBeChainHitted = colliderDetected.gameObject.GetComponent<ICanHandleHits>();
+                ICanHandleSpecialHits canBeChainHitted = colliderDetected.gameObject.GetComponent<ICanHandleSpecialHits>();
                 if (canBeChainHitted != null)
                 {
-                    EnemyBrain enemyBrainDetected = colliderDetected.GetComponent<EnemyBrain>();
-                    enemyBrainDetected.HandlePushHit(player.playerMovement.FacingDirection);
+                    canBeChainHitted.HandlePushHit(player.playerMovement.FacingDirection);
                 }
                 else
                     Debug.Log("NO IChainHittable Found in " + colliderDetected.gameObject.name);

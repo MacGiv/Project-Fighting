@@ -22,6 +22,8 @@ public class PlayerComboPreDashState : PlayerState
     {
         base.LogicUpdate();
 
+        player.playerMovement.StopAllMovement();
+
         if (isAnimationFinished)
         {
             stateMachine.ChangeState(player.ComboDashState);

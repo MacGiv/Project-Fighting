@@ -11,6 +11,7 @@ public class PlayerComboPostDashState : PlayerState
     public override void Enter()
     {
         base.Enter();
+        player.playerMovement.StopAllMovement();
     }
 
     public override void Exit()

@@ -39,7 +39,7 @@ public class PlayerAirAttackState : PlayerState
     {
         base.LogicUpdate();
 
-        player.playerMovement.SetDoubleDirectionalVelocity(playerData.airAttackvelocityX, 0f);
+        player.playerMovement.SetDoubleDirectionalVelocity(playerData.airAttackvelocityX, 0.75f);
 
         if (isAnimationFinished)
         {
@@ -63,23 +63,31 @@ public class PlayerAirAttackState : PlayerState
             {
                 foreach (Collider2D colliderDetected in _collidersDetected)
                 {
-                    ICanHandleHits canBeHit = colliderDetected.gameObject.GetComponent<ICanHandleHits>();
+                    ICanHandleAirHits canBeHit = colliderDetected.gameObject.GetComponent<ICanHandleAirHits>();
                     if (canBeHit != null)
                     {
-                        EnemyBrain enemyBrainDetected = colliderDetected.GetComponent<EnemyBrain>();
-                        enemyBrainDetected.HandleGroundedNormalHit(player.playerMovement.FacingDirection);
+                        canBeHit.HandleAirHit(player.playerMovement.FacingDirection);
+
+                        player.comboHandler.comboTracker++;
+
+                        if (player.comboHandler.comboTracker == 4)
+                            player.comboHandler.CanFinisher();
                     }
-                }
-
-                player.comboHandler.comboTracker++;
-
-                if (player.comboHandler.comboTracker == 4)
-                {
-                    player.comboHandler.CanFinisher();
-                }
+                    else
+                    {
+                        Debug.Log("PLAYER: Non ICanHandleAirHits Found in the current attack. ");
+                        player.comboHandler.CannotPerformAirCombo();
+                        player.comboHandler.ResetComboTracker();
+                    }
+                }                
             }
         }
-        player.comboHandler.comboTracker++;
+        else
+        {
+            Debug.Log("PLAYER: Non Colliders hit in the current attack.");
+            player.comboHandler.CannotPerformAirCombo();
+            player.comboHandler.ResetComboTracker();
+        }
     }
 
     public override void AnimationFinishedTrigger()

@@ -2,22 +2,46 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface ImNormalHittable 
+public interface INormalHittable 
 {
     void RecieveNormalHit( int playerFacingDirection);
 }
 
-public interface ImSpecialHittable
+public interface ISpecialHittable
 {
     void ReceiveToAirHit(int playerFacingDirection);
     void ReceivePushHit(int playerFacingDirection);
     void ReceiveStunHit();
 }
 
+public interface IAirHittable
+{
+    void ReceiveAirHit();
+}
+
+public interface IFinishable
+{
+    void ReceivePKCFinisher();
+    void ReceiveKOCFinisher();
+    void ReceiveAACFinisher();
+}
+
 
 public interface ICanHandleNormalHits
 {
     void HandleGroundedNormalHit(int playerFacingDirection);
+}
+
+public interface ICanHandleAirHits
+{
+    void HandleAirHit(int playerFacingDirection);
+}
+
+public interface IHandleFinishers
+{
+    void HandlePKCFinisher();
+    void HandleKOCFinisher();
+    void HandleAACFinisher();
 }
 
 public interface ICanHandleSpecialHits

@@ -98,8 +98,6 @@ public class Player : MonoBehaviour
     private void Update()
     {
         StateMachine.CurrentState.LogicUpdate();
-        //Debug.Log("Is Kyo grounded? " + CheckIfGrounded());
-        //Debug.Log("Is Kyo touching wall? " + CheckIfTouchingWall());
     }
 
     private void FixedUpdate()
@@ -110,7 +108,6 @@ public class Player : MonoBehaviour
 
     #region Other Functions
 
-    private void AnimationTrigger() => StateMachine.CurrentState.AnimationTrigger();
     private void AnimationFinishedTrigger() => StateMachine.CurrentState.AnimationFinishedTrigger();
 
     public bool CheckIfGrounded()
@@ -130,7 +127,7 @@ public class Player : MonoBehaviour
 
     public bool CheckIfEnemyInRange()
     {
-        return Physics2D.Raycast(_enemyInAirRange.position, Vector2.right * playerMovement.FacingDirection, _playerData.enemyInAirRangeDistance, _playerData.enemyLayer);
+        return Physics2D.Raycast(_enemyInAirRange.position, Vector2.right * playerMovement.FacingDirection, _playerData.enemyInAirRangeDistance, _playerData.enemyFootLayer);
     }
 
     public EnemyBrain GetEnemyInRange()
@@ -143,6 +140,7 @@ public class Player : MonoBehaviour
     {
         Gizmos.DrawWireSphere(_groundCheck.position, _playerData.groundCheckRadius);
         Gizmos.DrawWireSphere(hitCheck.position, _playerData.hitCkeckRadius);
+        Gizmos.DrawRay(_enemyInAirRange.position, Vector2.right * _playerData.enemyInAirRangeDistance);
     }
     #endregion
 

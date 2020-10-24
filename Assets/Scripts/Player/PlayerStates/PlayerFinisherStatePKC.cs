@@ -62,12 +62,7 @@ public class PlayerFinisherStatePKC : PlayerState
         {
             foreach (Collider2D colliderDetected in _collidersDetected)
             {
-                ICanHandleHits canBeHit = colliderDetected.gameObject.GetComponent<ICanHandleHits>();
-                if (canBeHit != null)
-                {
-                    EnemyBrain enemyBrainDetected = colliderDetected.GetComponent<EnemyBrain>();
-                    enemyBrainDetected.HandlePushHit(player.playerMovement.FacingDirection);
-                }
+                
             }
         }
     }

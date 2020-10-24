@@ -86,6 +86,14 @@ public class PlayerComboHandler : MonoBehaviour
     #endregion
 
     public void ResetComboTracker() => comboTracker = 1;
+    public void ResetComboAll()
+    {
+        CannotChain();
+        CannotPerformAirCombo();
+        CannotSecondCombo();
+        CannotFinisher();
+        ResetComboTracker();
+    }
 
     public int GetAttackInputPressedType()
     {

@@ -12,8 +12,6 @@ public class PlayerGroundedAttackState : PlayerState
     {
     }
 
-    
-
     public override void DoChecks()
     {
         base.DoChecks();
@@ -25,7 +23,10 @@ public class PlayerGroundedAttackState : PlayerState
 
         currentComboType = player.comboHandler.GetAttackInputPressedType();
         if (player.comboHandler.lastComboTypePressed != currentComboType)
-            player.comboHandler.ResetComboTracker();
+        {
+            player.comboHandler.ResetComboAll();
+        }
+
 
         player.Anim.SetFloat("comboType", player.comboHandler.GetAttackInputPressedType());
         player.comboHandler.CheckIfComboLost();
@@ -66,36 +67,34 @@ public class PlayerGroundedAttackState : PlayerState
     {
         _collidersDetected = Physics2D.OverlapCircleAll(player.hitCheck.position, playerData.hitCkeckRadius, playerData.enemyLayer);
 
-        //Debug.Log("I've entered in the CheckEnemyHitbox of the GROUNDED ATTACK STATE");
-
         if (_collidersDetected.Length != 0)
         {
             if (player.comboHandler.comboTracker < 4)
             {
                 foreach (Collider2D colliderDetected in _collidersDetected)
                 {
-                    ICanHandleHits canBeHit = colliderDetected.gameObject.GetComponent<ICanHandleHits>();
+                    ICanHandleNormalHits canBeHit = colliderDetected.gameObject.GetComponent<ICanHandleNormalHits>();
                     if (canBeHit != null)
                     {
-                        EnemyBrain enemyBrainDetected = colliderDetected.GetComponent<EnemyBrain>();
-                        enemyBrainDetected.HandleGroundedNormalHit(player.playerMovement.FacingDirection);
+                        canBeHit.HandleGroundedNormalHit(player.playerMovement.FacingDirection);
+
+                        player.comboHandler.comboTracker++;
+
+                        if (player.comboHandler.comboTracker == 4)
+                        {
+                            if (!player.comboHandler.SecondCombo)
+                                player.comboHandler.CanChain();
+                            else
+                                player.comboHandler.CanFinisher();
+                        }
                     }
                 }
-
-                player.comboHandler.comboTracker++;
-
-                if (player.comboHandler.comboTracker >= 4)
-                {
-                    if (!player.comboHandler.SecondCombo)
-                        player.comboHandler.CanChain();
-                    else
-                        player.comboHandler.CanFinisher();
-                }
-                //Debug.Log("ComboTracker Value: " + player.comboHandler.comboTracker);
             }
         }
-
-        
+        else
+        {
+            player.comboHandler.ResetComboAll();
+        }
     }
 
     public override void AnimationFinishedTrigger()
@@ -103,8 +102,4 @@ public class PlayerGroundedAttackState : PlayerState
         base.AnimationFinishedTrigger();
     }
 
-    public override void AnimationTrigger()
-    {
-        base.AnimationTrigger();
-    }
 }

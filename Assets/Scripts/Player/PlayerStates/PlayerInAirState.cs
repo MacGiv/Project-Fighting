@@ -27,7 +27,7 @@ public class PlayerInAirState : PlayerState
     public override void Enter()
     {
         base.Enter();
-        
+        player.comboHandler.CheckIfComboLost(); //Used to prevent the player from performing an AirCombo if is not after a ComboJump
     }
 
     public override void Exit()
@@ -75,6 +75,7 @@ public class PlayerInAirState : PlayerState
         else
         {
             player.playerMovement.CheckIfShouldFlip(_xInput);
+
             player.playerMovement.SetVelocityX(playerData.movementVelocity * _xInput);
 
             player.Anim.SetFloat("yVelocity", player.playerMovement.RB.velocity.y);

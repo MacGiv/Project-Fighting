@@ -5,21 +5,36 @@ using UnityEngine;
 public class EnemyBrain : MonoBehaviour
 {
     public EnemyStateMachine StateMachine { get; private set; }
-    public EnemyMovement EnemyMovement { get; private set; }
+
+    #region Cached Components
+
+    public EnemyMovement enemyMovement;
+    public EnemyData enemyData;
+    public EnemyHitHandler hitHandler;
+    #endregion
+
 
     public EnemyIdleState IdleState { get; private set; }
+    public ReceiveNormalHitState ReceiveNormalHitSt { get; private set; }
+    public ReceivePushHitState ReceivePushHitSt { get; private set; }
+    public ReceiveToAirHitState ReceiveToAirHitSt { get; private set; }
+    public ReceiveAirHitState ReceiveAirHitSt { get; private set; }
 
-    public EnemyData _enemyData;
-
-    public bool recieveingAirCombo = false;
+    [SerializeField]
+    private Transform _wallCheck;
 
     void Awake()
     {
         StateMachine = new EnemyStateMachine();
 
-        EnemyMovement = GetComponent<EnemyMovement>();
+        enemyMovement = GetComponent<EnemyMovement>();
+        hitHandler = GetComponent<EnemyHitHandler>();
 
-        IdleState = new EnemyIdleState(this, StateMachine, _enemyData, "idle");
+        IdleState = new EnemyIdleState(this, StateMachine, enemyData, "idle");
+        ReceiveNormalHitSt = new ReceiveNormalHitState(this, StateMachine, enemyData, "receiveNormalHit");
+        ReceivePushHitSt = new ReceivePushHitState(this, StateMachine, enemyData, "receivePushHit");
+        ReceiveToAirHitSt = new ReceiveToAirHitState(this, StateMachine, enemyData, "receiveToAirHit");
+        ReceiveAirHitSt = new ReceiveAirHitState(this, StateMachine, enemyData, "receiveAirHit");
     }
 
     void Start()
@@ -32,34 +47,14 @@ public class EnemyBrain : MonoBehaviour
         StateMachine.CurrentState.LogicUpdate();
     }
 
-    public void HandleGroundedNormalHit(int playerFacingDirection)
+    private void FixedUpdate()
     {
-        if (StateMachine.CurrentState == IdleState)
-        {
-            IdleState.RecieveGroundedNormalHit(playerFacingDirection);
-        }
-    }
-
-    public void HandleToAirHit(int playerFacingDirection)
-    {
-        if (StateMachine.CurrentState == IdleState)
-        {
-            IdleState.RecieveToAirHit(playerFacingDirection);
-        }
-    }
-
-    public void HandlePushHit(int playerFacingDirection)
-    {
-        if (StateMachine.CurrentState == IdleState)
-        {
-            IdleState.RecievePushHit(playerFacingDirection);
-        }
+        StateMachine.CurrentState.PhysicsUpdate();
     }
 
 
-    public void RecievingAirComboTrue() => recieveingAirCombo = true;
-    public void RecievingAirComboFalse() => recieveingAirCombo = false;
-
-    
-
+    public bool CheckForWall()
+    {
+        return Physics2D.Raycast(_wallCheck.position, Vector2.right * -enemyMovement.FacingDirection, enemyData.wallCheckDistance, enemyData.groundLayer);
+    }
 }

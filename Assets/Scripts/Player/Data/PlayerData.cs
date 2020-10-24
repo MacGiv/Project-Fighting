@@ -58,6 +58,7 @@ public class PlayerData : ScriptableObject
     public float enemyInAirRangeDistance = 0.5f;
     public LayerMask whatIsGround;
     public LayerMask enemyLayer;
+    public LayerMask enemyFootLayer;
 
 
 

@@ -72,11 +72,10 @@ public class PlayerToAirAttackState : PlayerState
         {
             foreach (Collider2D colliderDetected in _collidersDetected)
             {
-                ICanHandleHits canBeChainHitted = colliderDetected.gameObject.GetComponent<ICanHandleHits>();
+                ICanHandleSpecialHits canBeChainHitted = colliderDetected.gameObject.GetComponent<ICanHandleSpecialHits>();
                 if (canBeChainHitted != null)
                 {
-                    EnemyBrain enemyBrainDetected = colliderDetected.GetComponent<EnemyBrain>();
-                    enemyBrainDetected.HandleToAirHit(player.playerMovement.FacingDirection);
+                    canBeChainHitted.HandleToAirHit(player.playerMovement.FacingDirection);
                 }
                 else
                     Debug.Log("NO IChainHittable Found in " + colliderDetected.gameObject.name);

@@ -27,9 +27,9 @@ MonoBehaviour:
   comboDashDuration: 0.3
   attackVelocity: 2
   attackDamage: 20
-  comboLostTime: 0.15
-  airAttackvelocityX: 3
-  comboJumpVelocityX: 13
+  comboLostTime: 0.2
+  airAttackvelocityX: 4
+  comboJumpVelocityX: 16
   comboJumpVelocityY: 17
   enemyCheckDelay: 0.3
   aInputComboType: 1
@@ -39,11 +39,14 @@ MonoBehaviour:
   chainLostTime: 0.2
   groundCheckRadius: 0.3
   wallCheckDistance: 0.5
-  hitCkeckRadius: 0.4
-  enemyInAirRangeDistance: 0.8
+  hitCkeckRadius: 0.2
+  enemyInAirRangeDistance: 1
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
   enemyLayer:
     serializedVersion: 2
     m_Bits: 4096
+  enemyFootLayer:
+    serializedVersion: 2
+    m_Bits: 16384
