@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     #region Other Variables
 
     public Vector2 CurrentVelocity { get; private set; }
-    public int FacingDirection { get; private set; }
+    public int FacingDirection = 1;
 
     [SerializeField]
     private PlayerData _playerData;
@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
         InputHandler = GetComponent<PlayerInputHandler>();
         RB = GetComponent<Rigidbody2D>();
 
-        FacingDirection = 1;
+        //FacingDirection = 1;  FacingDirection was a property 
     }
 
     private void Update()

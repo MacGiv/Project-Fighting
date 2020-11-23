@@ -143,7 +143,7 @@ public class Player : MonoBehaviour
 
     public EnemyBrain GetEnemyInRange()
     {
-        RaycastHit2D raycast = Physics2D.Raycast(_enemyInAirRange.position, Vector2.right * playerMovement.FacingDirection, _playerData.enemyInAirRangeDistance, _playerData.enemyLayer);
+        RaycastHit2D raycast = Physics2D.Raycast(gameObject.transform.position, Vector2.right * playerMovement.FacingDirection, _playerData.enemyInAirRangeDistance, _playerData.enemyLayer);
         return raycast.collider.gameObject.GetComponent<EnemyBrain>();
     }
 
@@ -151,8 +151,8 @@ public class Player : MonoBehaviour
     {
         Gizmos.DrawWireSphere(_groundCheck.position, _playerData.groundCheckRadius);
         Gizmos.DrawWireSphere(hitCheck.position, _playerData.hitCkeckRadius);
-        Gizmos.DrawRay(_enemyInAirRange.position, Vector2.right * _playerData.enemyInAirRangeDistance);
-        Gizmos.DrawRay(_enemyInAirRange.position, Vector2.right * _playerData.comboWallCheckDistance);
+        Gizmos.DrawRay(_enemyInAirRange.position, Vector2.right * GetComponent<PlayerMovement>().FacingDirection * _playerData.enemyInAirRangeDistance);
+        Gizmos.DrawRay(gameObject.transform.position, Vector2.right * GetComponent<PlayerMovement>().FacingDirection * _playerData.comboWallCheckDistance);
     }
     #endregion
 

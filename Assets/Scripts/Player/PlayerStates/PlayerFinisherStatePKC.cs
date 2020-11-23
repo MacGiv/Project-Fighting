@@ -32,30 +32,36 @@ public class PlayerFinisherStatePKC : PlayerState
 
     public override void LogicUpdate()
     {
-        base.LogicUpdate();
-
         _xInput = player.InputHandler.NormalizedInputX;
 
         if (!player.TouchingWallInCombo())
+        {
             player.playerMovement.SetVelocityX(playerData.attackVelocity * 1.5f * player.playerMovement.FacingDirection);
+        }
+        else
+            player.playerMovement.StopAllMovement();
 
-        if (isAnimationFinished && !player.CheckIfGrounded())
+        if (isAnimationFinished)
         {
-            stateMachine.ChangeState(player.InAirState);
+            if (!player.CheckIfGrounded())
+            {
+                stateMachine.ChangeState(player.InAirState);
+            }
+            else if (_xInput == 0)
+            {
+                stateMachine.ChangeState(player.IdleState);
+            }
+            else if (_xInput != 0)
+            {
+                stateMachine.ChangeState(player.MoveState);
+            }
         }
-        else if (isAnimationFinished && _xInput == 0)
-        {
-            stateMachine.ChangeState(player.IdleState);
-        }
-        else if (isAnimationFinished && _xInput != 0)
-        {
-            stateMachine.ChangeState(player.MoveState);
-        }
+        
     }
 
     public override void PhysicsUpdate()
     {
-        base.PhysicsUpdate();
+        
     }
 
     public override void CheckEnemyHitbox()

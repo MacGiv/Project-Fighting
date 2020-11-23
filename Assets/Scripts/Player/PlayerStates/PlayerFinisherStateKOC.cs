@@ -8,13 +8,15 @@ public class PlayerFinisherStateKOC : PlayerState
     private Collider2D[] _collidersDetected;
     private int currentComboType;
 
+    private bool _isAlreadySticked;
+
     public PlayerFinisherStateKOC(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string boolName) : base(player, stateMachine, playerData, boolName) { }
 
     public override void Enter()
     {
         base.Enter();
         player.Anim.SetFloat("comboType", player.comboHandler.GetAttackInputPressedType());
-        StickEnemyToPlayer();
+        _isAlreadySticked = false;
     }
 
     public override void Exit()
@@ -40,6 +42,11 @@ public class PlayerFinisherStateKOC : PlayerState
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
+
+        if (!_isAlreadySticked)
+        {
+            StickEnemyToPlayer();
+        }
     }
 
     public override void CheckEnemyHitbox()
@@ -74,6 +81,7 @@ public class PlayerFinisherStateKOC : PlayerState
                     canBeHit.HandleKOCFinisher();
                 }
             }
+            _isAlreadySticked = true;
         }
     }
 

@@ -75,4 +75,10 @@ public class EnemyBrain : MonoBehaviour
     {
         return Physics2D.Raycast(_wallCheck.position, Vector2.right * -enemyMovement.FacingDirection, enemyData.wallCheckDistance, enemyData.groundLayer);
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawRay(_wallCheck.position, Vector2.right * -GetComponent<EnemyMovement>().FacingDirection * enemyData.wallCheckDistance);
+    }
 }

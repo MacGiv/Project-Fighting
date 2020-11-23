@@ -10,11 +10,10 @@ public class EnemyMovement : MonoBehaviour
     public EnemyData _enemyData;
 
     private Vector2 _vectorWorkspace;
-    public int FacingDirection { get; private set; }
+    public int FacingDirection = 1;
 
     void Awake()
     {
-        FacingDirection = 1;                                //DELETE LATER
         _RB = GetComponent<Rigidbody2D>();
         _enemyBrain = GetComponent<EnemyBrain>();
         _enemyData = _enemyBrain.enemyData;
@@ -31,18 +30,21 @@ public class EnemyMovement : MonoBehaviour
     {
         Vector2 forceToAdd = new Vector2(_enemyData.recievedNormHitVelocity * playerFacingMultiplier, 0f);
         _RB.velocity = forceToAdd;
+        CheckHitFlip(playerFacingMultiplier);
     }
 
     public void SetRecieveToAirHitVelocity(int playerFacingMultiplier)
     {
         Vector2 forceToAdd = new Vector2(_enemyData.recieveToAirHitVelocityX * playerFacingMultiplier, _enemyData.recieveToAirHitVelocityY);
         _RB.velocity = forceToAdd;
+        CheckHitFlip(playerFacingMultiplier);
     }
 
     public void SetRecievePushHitVelocity(int playerFacingMultiplier)
     {
         Vector2 forceToAdd = new Vector2(_enemyData.recievePushHitVelocity * playerFacingMultiplier, 0f);
         _RB.velocity = forceToAdd;
+        CheckHitFlip(playerFacingMultiplier);
     }
 
     public void SetReceivePushDownHitVelocity()
@@ -54,14 +56,17 @@ public class EnemyMovement : MonoBehaviour
     {
         Vector2 forceToAdd = new Vector2(xForce * xDirection, yForce);
         _RB.velocity = forceToAdd;
+        CheckHitFlip(xDirection);
     }
 
-    public void StickToThePlayer(float playerfacingDirection)
+    public void StickToThePlayer(float playerFacingDirection)
     {
         Vector2 playerPos = _playerBrain.gameObject.transform.position;
 
-        _vectorWorkspace.Set( playerPos.x + 1f * playerfacingDirection , playerPos.y);
+        _vectorWorkspace.Set( playerPos.x + 1f * playerFacingDirection , playerPos.y);
         transform.position = _vectorWorkspace;
+        CheckHitFlip((int)playerFacingDirection);
+
     }
 
     public void StickToThePlayerOnX(float playerfacingDirection)
@@ -70,10 +75,25 @@ public class EnemyMovement : MonoBehaviour
 
         _vectorWorkspace.Set(playerPos.x + 1f * playerfacingDirection, _RB.position.y);
         transform.position = _vectorWorkspace;
+        CheckHitFlip((int)playerfacingDirection);
     }
 
     public void StopAllMovement()
     {
         _RB.velocity = Vector2.zero;
+    }
+
+    public void Flip()
+    {
+        FacingDirection *= -1;
+        transform.Rotate(0.0f, 180.0f, 0.0f);
+    }
+
+    public void CheckHitFlip(int playerFacingMultiplier)
+    {
+        if (playerFacingMultiplier == FacingDirection)
+        {
+            Flip();
+        }
     }
 }

@@ -50,6 +50,8 @@ public class PlayerGroundedAttackState : PlayerState
 
         if (!player.TouchingWallInCombo())
             player.playerMovement.SetVelocityX(playerData.attackVelocity * player.playerMovement.FacingDirection);
+        else
+            player.playerMovement.StopAllMovement();
 
         if (isAnimationFinished && _xInput == 0)
         {
