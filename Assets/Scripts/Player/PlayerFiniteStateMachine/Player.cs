@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
     public PlayerPushAttackState PushAttackState { get; private set; }
     public PlayerGetFinisherState GetFinisherState { get; private set; }
     public PlayerFinisherStatePKC FinisherStatePKC { get; private set; }
+    public PlayerFinisherStateKOC FinisherStateKOC { get; private set; }
     #endregion
 
     #region Components
@@ -36,6 +37,7 @@ public class Player : MonoBehaviour
     public Animator Anim { get; private set; }
     public PlayerInputHandler InputHandler { get; private set; }
     public Rigidbody2D RB { get; private set; }
+    public PlayerVFXHandler vfxHandler => GetComponent<PlayerVFXHandler>();
     #endregion
 
     #region Check Transforms
@@ -82,6 +84,7 @@ public class Player : MonoBehaviour
         PushAttackState = new PlayerPushAttackState(this, StateMachine, _playerData, "pushAttack");
         GetFinisherState = new PlayerGetFinisherState(this, StateMachine, _playerData, "getFinisher");
         FinisherStatePKC = new PlayerFinisherStatePKC(this, StateMachine, _playerData, "finisher");
+        FinisherStateKOC = new PlayerFinisherStateKOC(this, StateMachine, _playerData, "finisher");
     }
 
     private void Start()
@@ -109,6 +112,9 @@ public class Player : MonoBehaviour
     #region Other Functions
 
     private void AnimationFinishedTrigger() => StateMachine.CurrentState.AnimationFinishedTrigger();
+    #endregion
+
+    #region Checkers
 
     public bool CheckIfGrounded()
     {
@@ -123,6 +129,11 @@ public class Player : MonoBehaviour
     public bool EnoughHeightDistance()
     {
         return Physics2D.Raycast(_groundCheck.position, Vector2.down, _playerData.downRaycastHeight, _playerData.whatIsGround);
+    }
+
+    public bool TouchingWallInCombo()
+    {
+        return Physics2D.Raycast(_enemyInAirRange.position, Vector2.right * playerMovement.FacingDirection, _playerData.comboWallCheckDistance, _playerData.whatIsGround);
     }
 
     public bool CheckIfEnemyInRange()
@@ -141,6 +152,7 @@ public class Player : MonoBehaviour
         Gizmos.DrawWireSphere(_groundCheck.position, _playerData.groundCheckRadius);
         Gizmos.DrawWireSphere(hitCheck.position, _playerData.hitCkeckRadius);
         Gizmos.DrawRay(_enemyInAirRange.position, Vector2.right * _playerData.enemyInAirRangeDistance);
+        Gizmos.DrawRay(_enemyInAirRange.position, Vector2.right * _playerData.comboWallCheckDistance);
     }
     #endregion
 

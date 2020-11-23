@@ -45,7 +45,8 @@ public class PlayerToAirAttackState : PlayerState
 
         _xInput = player.InputHandler.NormalizedInputX;
 
-        player.playerMovement.SetVelocityX(playerData.attackVelocity * player.playerMovement.FacingDirection);
+        if (!player.TouchingWallInCombo())
+            player.playerMovement.SetVelocityX(playerData.attackVelocity * player.playerMovement.FacingDirection);
 
         if (isAnimationFinished && _xInput == 0)
         {
@@ -76,6 +77,8 @@ public class PlayerToAirAttackState : PlayerState
                 if (canBeChainHitted != null)
                 {
                     canBeChainHitted.HandleToAirHit(player.playerMovement.FacingDirection);
+
+                    player.vfxHandler.PlayNormalHitVFX();
                 }
                 else
                     Debug.Log("NO IChainHittable Found in " + colliderDetected.gameObject.name);

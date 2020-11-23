@@ -38,6 +38,7 @@ public class ReceivePushHitState : EnemyState
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
-        enemyBrain.enemyMovement.SetRecievePushHitVelocity(enemyBrain.hitHandler.CurrentPlayerFacingDirection);
+        if (!enemyBrain.CheckForWall())
+            enemyBrain.enemyMovement.SetRecievePushHitVelocity(enemyBrain.hitHandler.CurrentPlayerFacingDirection);
     }
 }

@@ -51,9 +51,13 @@ public class PlayerData : ScriptableObject
     public int bInputChainType = 0; // 1 = ToAir Chain | 2 = Push Chain | 3 = Stun Chain
     public float chainLostTime = 0.2f;
 
+    [Header("Finisher Settings")]
+    public int pKCFinisherHits = 4;
+
     [Header("Check Variables")]
     public float groundCheckRadius = 0.3f;
     public float wallCheckDistance = 0.5f;
+    public float comboWallCheckDistance = 1.5f;
     public float hitCkeckRadius = 0.3f;
     public float enemyInAirRangeDistance = 0.5f;
     public LayerMask whatIsGround;

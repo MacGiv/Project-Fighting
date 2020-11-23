@@ -11,6 +11,7 @@ public class EnemyData : ScriptableObject
     public float recieveToAirHitVelocityY = 350f;
     public float recieveToAirHitVelocityX = 300f;
     public float recievePushHitVelocity = 15f;
+    public float recievePushDownHitVelocity = 20f;
 
     [Header("Receive Hit Timers Set")]
     public float normalHitDuration = 0.2f;
@@ -20,6 +21,7 @@ public class EnemyData : ScriptableObject
 
     [Header("Checkers")]
     public float wallCheckDistance = 0.9f;
+    public float groundCheckRadius = 0.4f;
     public LayerMask groundLayer;
 
 

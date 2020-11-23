@@ -33,7 +33,8 @@ public class ReceiveAirHitState : EnemyState
             stateMachine.ChangeState(enemyBrain.IdleState);
         }
         else
-            enemyBrain.enemyMovement.StickToThePlayer(enemyBrain.hitHandler.CurrentPlayerFacingDirection * 1.3f);
+            if (!enemyBrain.CheckForWall())
+                enemyBrain.enemyMovement.StickToThePlayer(enemyBrain.hitHandler.CurrentPlayerFacingDirection * 1.3f);
 
     }
 

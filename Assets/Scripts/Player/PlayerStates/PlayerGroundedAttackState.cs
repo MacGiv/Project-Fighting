@@ -8,6 +8,8 @@ public class PlayerGroundedAttackState : PlayerState
     private Collider2D[] _collidersDetected;
     private int currentComboType;
 
+    
+
     public PlayerGroundedAttackState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string boolName) : base(player, stateMachine, playerData, boolName)
     {
     }
@@ -46,7 +48,8 @@ public class PlayerGroundedAttackState : PlayerState
 
         _xInput = player.InputHandler.NormalizedInputX;
 
-        player.playerMovement.SetVelocityX(playerData.attackVelocity * player.playerMovement.FacingDirection);
+        if (!player.TouchingWallInCombo())
+            player.playerMovement.SetVelocityX(playerData.attackVelocity * player.playerMovement.FacingDirection);
 
         if (isAnimationFinished && _xInput == 0)
         {
@@ -77,6 +80,8 @@ public class PlayerGroundedAttackState : PlayerState
                     if (canBeHit != null)
                     {
                         canBeHit.HandleGroundedNormalHit(player.playerMovement.FacingDirection);
+
+                        player.vfxHandler.PlayNormalHitVFX();
 
                         player.comboHandler.comboTracker++;
 

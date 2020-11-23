@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerIdleState : PlayerGroundedState
 {
+    bool _attackInput;
+
     public PlayerIdleState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string boolName) : base(player, stateMachine, playerData, boolName)
     {
 
@@ -27,12 +29,16 @@ public class PlayerIdleState : PlayerGroundedState
 
     public override void LogicUpdate()
     {
-        base.LogicUpdate();
+        
 
-        if (xInput != 0 && !isExitingState && player.CheckIfGrounded())
+        _attackInput = player.InputHandler.AttackInput;
+
+        if (xInput != 0 && !isExitingState && player.CheckIfGrounded() && !_attackInput)
         {
             stateMachine.ChangeState(player.MoveState);
         }
+
+        base.LogicUpdate();
     }
 
     public override void PhysicsUpdate()

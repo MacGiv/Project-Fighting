@@ -24,6 +24,7 @@ public class EnemyState
     {
         //TO DO: enemyBrain.Anim.SetBool(_animBoolName, true);
         startTime = Time.time;
+        Debug.Log("Enemy entered " + stateMachine.CurrentState);
     }
 
     public virtual void Exit()
@@ -37,6 +38,11 @@ public class EnemyState
     }
 
     public virtual void PhysicsUpdate()
+    {
+
+    }
+
+    public virtual void AnimationTrigger()
     {
 
     }

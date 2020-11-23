@@ -8,6 +8,9 @@ public class PlayerFinisherStatePKC : PlayerState
     private Collider2D[] _collidersDetected;
     private int currentComboType;
 
+    private int hitCounter;
+    private int maxHits;
+
     public PlayerFinisherStatePKC(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string boolName) : base(player, stateMachine, playerData, boolName)
     {
     }
@@ -15,6 +18,8 @@ public class PlayerFinisherStatePKC : PlayerState
     public override void Enter()
     {
         base.Enter();
+        hitCounter = 1;
+        maxHits = playerData.pKCFinisherHits;
         player.Anim.SetFloat("comboType", player.comboHandler.GetAttackInputPressedType());
     }
 
@@ -22,7 +27,7 @@ public class PlayerFinisherStatePKC : PlayerState
     {
         base.Exit();
         player.comboHandler.CannotFinisher();
-        player.comboHandler.ResetComboTracker();
+        player.comboHandler.ResetComboAll();
     }
 
     public override void LogicUpdate()
@@ -30,7 +35,9 @@ public class PlayerFinisherStatePKC : PlayerState
         base.LogicUpdate();
 
         _xInput = player.InputHandler.NormalizedInputX;
-        player.playerMovement.SetVelocityX(playerData.attackVelocity * player.playerMovement.FacingDirection);
+
+        if (!player.TouchingWallInCombo())
+            player.playerMovement.SetVelocityX(playerData.attackVelocity * 1.5f * player.playerMovement.FacingDirection);
 
         if (isAnimationFinished && !player.CheckIfGrounded())
         {
@@ -53,16 +60,38 @@ public class PlayerFinisherStatePKC : PlayerState
 
     public override void CheckEnemyHitbox()
     {
-        base.CheckEnemyHitbox();
         _collidersDetected = Physics2D.OverlapCircleAll(player.hitCheck.position, playerData.hitCkeckRadius, playerData.enemyLayer);
-
-        //Debug.Log("I've entered in the CheckEnemyHitbox of the GROUNDED ATTACK STATE");
 
         if (_collidersDetected.Length != 0)
         {
             foreach (Collider2D colliderDetected in _collidersDetected)
             {
-                
+                ICanHandleFinishers canBeHit = colliderDetected.GetComponent<ICanHandleFinishers>();
+                if (canBeHit != null)
+                {
+                    if (hitCounter <= 1)
+                    {
+                        canBeHit.HandlePKCFinisher(player.playerMovement.FacingDirection);
+                        player.vfxHandler.PlayNormalHitVFX();
+
+                        hitCounter++;
+                    }
+                    else if (hitCounter == maxHits)
+                    {
+                        colliderDetected.GetComponent<EnemyBrain>().AnimationTrigger();
+
+                        player.vfxHandler.PlayNormalHitVFX();
+
+                        colliderDetected.GetComponent<ICanHandleNormalHits>().HandleGroundedNormalHit(player.playerMovement.FacingDirection * 2);
+
+                    }
+                    else
+                    {
+                        player.vfxHandler.PlayNormalHitVFX();
+
+                        hitCounter++;
+                    }
+                }
             }
         }
     }

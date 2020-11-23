@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: playerData
   m_EditorClassIdentifier: 
   movementVelocity: 10
-  jumpVelocity: 15
+  jumpVelocity: 13
   amountOfJumps: 1
   coyoteTime: 0.2
   variableJumpHeightMultiplier: 0.5
@@ -29,16 +29,18 @@ MonoBehaviour:
   attackDamage: 20
   comboLostTime: 0.2
   airAttackvelocityX: 4
-  comboJumpVelocityX: 16
+  comboJumpVelocityX: 15
   comboJumpVelocityY: 17
   enemyCheckDelay: 0.3
-  aInputComboType: 1
-  bInputComboType: 2
-  aInputChainType: 2
-  bInputChainType: 1
+  aInputComboType: 2
+  bInputComboType: 1
+  aInputChainType: 1
+  bInputChainType: 2
   chainLostTime: 0.2
+  pKCFinisherHits: 5
   groundCheckRadius: 0.3
   wallCheckDistance: 0.5
+  comboWallCheckDistance: 2
   hitCkeckRadius: 0.2
   enemyInAirRangeDistance: 1
   whatIsGround:

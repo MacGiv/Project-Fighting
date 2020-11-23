@@ -53,7 +53,10 @@ public class PlayerInAirState : PlayerState
 
         if (_attackInput && player.comboHandler.CanAirCombo && player.comboHandler.GetAttackInputPressedType() == 2)
         {
-            stateMachine.ChangeState(player.AirAttackState);
+            if (player.comboHandler.CanFinisherMove)
+                stateMachine.ChangeState(player.FinisherStateKOC);
+            else
+                stateMachine.ChangeState(player.AirAttackState);
         }
 
         if (_isGrounded && player.playerMovement.RB.velocity.y < 0.1f)

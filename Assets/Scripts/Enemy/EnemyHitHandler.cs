@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyHitHandler : MonoBehaviour, ICanHandleNormalHits, ICanHandleAirHits, ICanHandleSpecialHits
+public class EnemyHitHandler : MonoBehaviour, ICanHandleNormalHits, ICanHandleAirHits, ICanHandleSpecialHits, ICanHandleFinishers
 {
     public EnemyBrain enemyBrain;
 
@@ -43,8 +43,29 @@ public class EnemyHitHandler : MonoBehaviour, ICanHandleNormalHits, ICanHandleAi
         
     }
 
+    public void HandlePushDownHit()
+    {
+        enemyBrain.StateMachine.ChangeState(enemyBrain.ReceivePushDownHitSt);
+    }
+
     public int GetPlayerCombotracker()
     {
         return FindObjectOfType<PlayerComboHandler>().comboTracker;
+    }
+
+    public void HandlePKCFinisher(int playerFacingDirection)
+    {
+        CurrentPlayerFacingDirection = playerFacingDirection;
+        enemyBrain.StateMachine.ChangeState(enemyBrain.ReceiveFinisherPKCSt);
+    }
+
+    public void HandleKOCFinisher()
+    {
+        enemyBrain.StateMachine.ChangeState(enemyBrain.ReceiveFinisherKOCSt);
+    }
+
+    public void HandleAACFinisher()
+    {
+
     }
 }

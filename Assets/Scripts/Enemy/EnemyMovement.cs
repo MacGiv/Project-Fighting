@@ -45,6 +45,11 @@ public class EnemyMovement : MonoBehaviour
         _RB.velocity = forceToAdd;
     }
 
+    public void SetReceivePushDownHitVelocity()
+    {
+        Vector2 forceToAdd = new Vector2(0f, _enemyData.recievePushDownHitVelocity);
+    }
+
     public void SetDoubleDirectionalVelocity(int xDirection, float xForce, float yForce)
     {
         Vector2 forceToAdd = new Vector2(xForce * xDirection, yForce);
@@ -56,6 +61,14 @@ public class EnemyMovement : MonoBehaviour
         Vector2 playerPos = _playerBrain.gameObject.transform.position;
 
         _vectorWorkspace.Set( playerPos.x + 1f * playerfacingDirection , playerPos.y);
+        transform.position = _vectorWorkspace;
+    }
+
+    public void StickToThePlayerOnX(float playerfacingDirection)
+    {
+        Vector2 playerPos = _playerBrain.gameObject.transform.position;
+
+        _vectorWorkspace.Set(playerPos.x + 1f * playerfacingDirection, _RB.position.y);
         transform.position = _vectorWorkspace;
     }
 

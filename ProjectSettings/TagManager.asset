@@ -21,7 +21,7 @@ TagManager:
   - Enemy
   - Invulnerable
   - EnemyStanders
-  - 
+  - Vfx
   - 
   - 
   - 
@@ -56,6 +56,9 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 286758043
+    locked: 0
+  - name: Vfx
+    uniqueID: 1617518413
     locked: 0
   - name: UI
     uniqueID: 260535375

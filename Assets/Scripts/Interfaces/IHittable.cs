@@ -7,13 +7,6 @@ public interface INormalHittable
     void RecieveNormalHit( int playerFacingDirection);
 }
 
-public interface ISpecialHittable
-{
-    void ReceiveToAirHit(int playerFacingDirection);
-    void ReceivePushHit(int playerFacingDirection);
-    void ReceiveStunHit();
-}
-
 public interface IAirHittable
 {
     void ReceiveAirHit();
@@ -37,9 +30,9 @@ public interface ICanHandleAirHits
     void HandleAirHit(int playerFacingDirection);
 }
 
-public interface IHandleFinishers
+public interface ICanHandleFinishers
 {
-    void HandlePKCFinisher();
+    void HandlePKCFinisher(int playerFacingDirection);
     void HandleKOCFinisher();
     void HandleAACFinisher();
 }
@@ -49,4 +42,5 @@ public interface ICanHandleSpecialHits
     void HandleToAirHit(int playerFacingDirection);
     void HandlePushHit(int playerFacingDirection);
     void HandleStunHit(int playerFacingDirection);
+    void HandlePushDownHit();
 }

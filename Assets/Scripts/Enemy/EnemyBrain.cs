@@ -18,10 +18,15 @@ public class EnemyBrain : MonoBehaviour
     public ReceiveNormalHitState ReceiveNormalHitSt { get; private set; }
     public ReceivePushHitState ReceivePushHitSt { get; private set; }
     public ReceiveToAirHitState ReceiveToAirHitSt { get; private set; }
+    public ReceivePushDownHitState ReceivePushDownHitSt { get; private set; }
     public ReceiveAirHitState ReceiveAirHitSt { get; private set; }
+    public ReceiveFinisherPKCState ReceiveFinisherPKCSt { get; private set; }
+    public ReceiveFinisherKOCState ReceiveFinisherKOCSt { get; private set; }
 
     [SerializeField]
     private Transform _wallCheck;
+    [SerializeField]
+    private Transform _groudCheck;
 
     void Awake()
     {
@@ -34,7 +39,10 @@ public class EnemyBrain : MonoBehaviour
         ReceiveNormalHitSt = new ReceiveNormalHitState(this, StateMachine, enemyData, "receiveNormalHit");
         ReceivePushHitSt = new ReceivePushHitState(this, StateMachine, enemyData, "receivePushHit");
         ReceiveToAirHitSt = new ReceiveToAirHitState(this, StateMachine, enemyData, "receiveToAirHit");
+        ReceivePushDownHitSt = new ReceivePushDownHitState(this, StateMachine, enemyData, "receivePushDownHit");
         ReceiveAirHitSt = new ReceiveAirHitState(this, StateMachine, enemyData, "receiveAirHit");
+        ReceiveFinisherPKCSt = new ReceiveFinisherPKCState(this, StateMachine, enemyData, "receiveFinisherPKC");
+        ReceiveFinisherKOCSt = new ReceiveFinisherKOCState(this, StateMachine, enemyData, "receiveFinisherKOC");
     }
 
     void Start()
@@ -52,6 +60,16 @@ public class EnemyBrain : MonoBehaviour
         StateMachine.CurrentState.PhysicsUpdate();
     }
 
+    public void AnimationTrigger()
+    {
+        StateMachine.CurrentState.AnimationTrigger();
+    }
+
+
+    public bool IsTouchingGround()
+    {
+        return Physics2D.OverlapCircle(_groudCheck.position, enemyData.groundCheckRadius, enemyData.groundLayer);
+    }
 
     public bool CheckForWall()
     {

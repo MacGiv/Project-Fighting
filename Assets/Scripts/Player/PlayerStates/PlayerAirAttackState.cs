@@ -39,7 +39,8 @@ public class PlayerAirAttackState : PlayerState
     {
         base.LogicUpdate();
 
-        player.playerMovement.SetDoubleDirectionalVelocity(playerData.airAttackvelocityX, 0.75f);
+        if (!player.TouchingWallInCombo())
+            player.playerMovement.SetDoubleDirectionalVelocity(playerData.airAttackvelocityX, 0.75f);
 
         if (isAnimationFinished)
         {
@@ -67,6 +68,8 @@ public class PlayerAirAttackState : PlayerState
                     if (canBeHit != null)
                     {
                         canBeHit.HandleAirHit(player.playerMovement.FacingDirection);
+
+                        player.vfxHandler.PlayNormalHitVFX();
 
                         player.comboHandler.comboTracker++;
 
