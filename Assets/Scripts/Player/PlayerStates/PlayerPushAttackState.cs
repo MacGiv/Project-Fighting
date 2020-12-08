@@ -2,11 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerPushAttackState : PlayerState
+public class PlayerPushAttackState : PlayerAttackState
 {
-    private float _xInput;
-    private Collider2D[] _collidersDetected;
-    private int currentComboType;
 
     public PlayerPushAttackState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string boolName) : base(player, stateMachine, playerData, boolName)
     {
@@ -15,23 +12,7 @@ public class PlayerPushAttackState : PlayerState
     public override void Enter()
     {
         base.Enter();
-        StillSameCombo();
-        SetAnimatorCombo();
     }
-
-    private void StillSameCombo()
-    {
-        currentComboType = player.comboHandler.GetAttackInputPressedType();
-        if (currentComboType != player.comboHandler.lastComboTypePressed)
-            player.comboHandler.ResetComboTracker();
-    }
-    private void SetAnimatorCombo()
-    {
-        player.comboHandler.CheckIfComboLost();
-        player.Anim.SetFloat("comboType", player.comboHandler.GetAttackInputPressedType());
-        player.Anim.SetFloat("comboTracker", player.comboHandler.comboTracker);
-    }
-
 
     public override void Exit()
     {
@@ -45,23 +26,11 @@ public class PlayerPushAttackState : PlayerState
 
     public override void LogicUpdate()
     {
-        base.LogicUpdate();
         _xInput = player.InputHandler.NormalizedInputX;
-
-        if (!player.TouchingWallInCombo())
-            player.playerMovement.SetVelocityX(playerData.attackVelocity * player.playerMovement.FacingDirection);
-        else
-            player.playerMovement.StopAllMovement();
-
-        if (isAnimationFinished && _xInput == 0)
-        {
-            stateMachine.ChangeState(player.IdleState);
-        }
-        else if (isAnimationFinished && _xInput != 0)
-        {
-            stateMachine.ChangeState(player.MoveState);
-        }
+        base.LogicUpdate();
     }
+
+    
 
     public override void PhysicsUpdate()
     {
@@ -87,6 +56,23 @@ public class PlayerPushAttackState : PlayerState
                     Debug.Log("NO IChainHittable Found in " + colliderDetected.gameObject.name);
             }
         }
+    }
+
+    public override void StateFinishedCheck()
+    {
+        if (isAnimationFinished && _xInput == 0)
+        {
+            stateMachine.ChangeState(player.IdleState);
+        }
+        else if (isAnimationFinished && _xInput != 0)
+        {
+            stateMachine.ChangeState(player.MoveState);
+        }
+    }
+
+    public override void Move()
+    {
+        player.playerMovement.SetVelocityX(playerData.attackVelocity * player.playerMovement.FacingDirection);
     }
 
     public override void AnimationFinishedTrigger()

@@ -20,7 +20,7 @@ MonoBehaviour:
   normalHitDuration: 0.2
   pushHitDuration: 0.5
   toAirHitDuration: 0.2
-  airHitDuration: 0.4
+  airHitDuration: 0.35
   wallCheckDistance: 0.9
   groundCheckRadius: 0.4
   groundLayer:

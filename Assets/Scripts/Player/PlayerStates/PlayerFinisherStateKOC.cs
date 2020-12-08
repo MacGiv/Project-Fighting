@@ -2,12 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerFinisherStateKOC : PlayerState
-{
-    private float _xInput;
-    private Collider2D[] _collidersDetected;
-    private int currentComboType;
-
+public class PlayerFinisherStateKOC : PlayerAttackState
+{ 
     private bool _isAlreadySticked;
 
     public PlayerFinisherStateKOC(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string boolName) : base(player, stateMachine, playerData, boolName) { }
@@ -30,25 +26,16 @@ public class PlayerFinisherStateKOC : PlayerState
     {
         base.LogicUpdate();
 
-        WallAheadCheck();
-        StateFinishedCheck();
     }
 
-    private void StateFinishedCheck()
+    public override void StateFinishedCheck()
     {
         if (isAnimationFinished && !player.CheckIfGrounded())
         {
             stateMachine.ChangeState(player.InAirState);
         }
     }
-
-    private void WallAheadCheck()
-    {
-        if (!player.TouchingWallInCombo())
-            player.playerMovement.SetDoubleDirectionalVelocity(playerData.airAttackvelocityX / 2, 0.75f);
-        else
-            player.playerMovement.StopAllMovement();
-    }
+    
 
     public override void PhysicsUpdate()
     {
@@ -94,6 +81,11 @@ public class PlayerFinisherStateKOC : PlayerState
             }
             _isAlreadySticked = true;
         }
+    }
+
+    public override void Move()
+    {
+        player.playerMovement.SetDoubleDirectionalVelocity(playerData.airAttackvelocityX / 2, 0.75f);
     }
 
     public override void AnimationFinishedTrigger()

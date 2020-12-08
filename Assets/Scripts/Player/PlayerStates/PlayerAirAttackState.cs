@@ -2,11 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAirAttackState : PlayerState
+public class PlayerAirAttackState : PlayerAttackState
 {
-    private float _xInput;
-    private Collider2D[] _collidersDetected;
-    private int currentComboType;
 
     public PlayerAirAttackState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string boolName) : base(player, stateMachine, playerData, boolName)
     {
@@ -15,17 +12,8 @@ public class PlayerAirAttackState : PlayerState
     public override void Enter()
     {
         base.Enter();
-
-        currentComboType = player.comboHandler.GetAttackInputPressedType();
-        if (currentComboType != player.comboHandler.lastComboTypePressed)
-            player.comboHandler.ResetComboTracker();
-
-        isAnimationFinished = false;
-        player.Anim.SetFloat("comboType", player.comboHandler.GetAttackInputPressedType());
-        if (player.comboHandler.comboTracker != 1)
-            player.comboHandler.CheckIfComboLost();
-        player.Anim.SetFloat("comboTracker", player.comboHandler.comboTracker);
     }
+
 
     public override void Exit()
     {
@@ -38,15 +26,6 @@ public class PlayerAirAttackState : PlayerState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-
-        if (!player.TouchingWallInCombo())
-            player.playerMovement.SetDoubleDirectionalVelocity(playerData.airAttackvelocityX, 0.75f);
-
-        if (isAnimationFinished)
-        {
-            stateMachine.ChangeState(player.InAirState);
-        }
-
     }
 
     public override void PhysicsUpdate()
@@ -96,5 +75,25 @@ public class PlayerAirAttackState : PlayerState
     public override void AnimationFinishedTrigger()
     {
         base.AnimationFinishedTrigger();
+    }
+
+    public override void SetAnimatorCombo()
+    {
+        isAnimationFinished = false;
+        player.Anim.SetFloat("comboType", player.comboHandler.GetAttackInputPressedType());
+        if (player.comboHandler.comboTracker != 1)
+            player.comboHandler.CheckIfComboLost();
+        player.Anim.SetFloat("comboTracker", player.comboHandler.comboTracker);
+    }
+    public override void StateFinishedCheck()
+    {
+        if (isAnimationFinished)
+        {
+            stateMachine.ChangeState(player.InAirState);
+        }
+    }
+    public override void Move()
+    {
+        player.playerMovement.SetDoubleDirectionalVelocity(playerData.airAttackvelocityX, 0.75f);
     }
 }

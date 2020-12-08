@@ -2,12 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerFinisherStatePKC : PlayerState
+public class PlayerFinisherStatePKC : PlayerAttackState
 {
-    private float _xInput;
-    private Collider2D[] _collidersDetected;
-    private int currentComboType;
-
     private int hitCounter;
     private int maxHits;
 
@@ -33,45 +29,12 @@ public class PlayerFinisherStatePKC : PlayerState
     public override void LogicUpdate()
     {
         _xInput = player.InputHandler.NormalizedInputX;
-
-        WallAheadCheck();
-        StateFinishedCheck();
-
+        base.LogicUpdate();
     }
 
-    private void StateFinishedCheck()
-    {
-        if (isAnimationFinished)
-        {
-            if (!player.CheckIfGrounded())
-            {
-                stateMachine.ChangeState(player.InAirState);
-            }
-            else if (_xInput == 0)
-            {
-                stateMachine.ChangeState(player.IdleState);
-            }
-            else if (_xInput != 0)
-            {
-                stateMachine.ChangeState(player.MoveState);
-            }
-        }
-    }
+    
 
-    private void WallAheadCheck()
-    {
-        if (!player.TouchingWallInCombo())
-        {
-            player.playerMovement.SetVelocityX(playerData.attackVelocity * 1.5f * player.playerMovement.FacingDirection);
-        }
-        else
-            player.playerMovement.StopAllMovement();
-    }
-
-    public override void PhysicsUpdate()
-    {
-        
-    }
+    public override void PhysicsUpdate() { }
 
     public override void CheckEnemyHitbox()
     {
@@ -109,6 +72,30 @@ public class PlayerFinisherStatePKC : PlayerState
                 }
             }
         }
+    }
+
+    public override void StateFinishedCheck()
+    {
+        if (isAnimationFinished)
+        {
+            if (!player.CheckIfGrounded())
+            {
+                stateMachine.ChangeState(player.InAirState);
+            }
+            else if (_xInput == 0)
+            {
+                stateMachine.ChangeState(player.IdleState);
+            }
+            else if (_xInput != 0)
+            {
+                stateMachine.ChangeState(player.MoveState);
+            }
+        }
+    }
+
+    public override void Move()
+    {
+        player.playerMovement.SetVelocityX(playerData.attackVelocity * 1.5f * player.playerMovement.FacingDirection);
     }
 
     public override void AnimationFinishedTrigger()

@@ -37,6 +37,7 @@ public class Player : MonoBehaviour
     public PlayerInputHandler InputHandler { get; private set; }
     public Rigidbody2D RB { get; private set; }
     public PlayerVFXHandler vfxHandler => GetComponent<PlayerVFXHandler>();
+    public ProgressHandler ProgHandler { get; private set; }
     #endregion
 
     #region Check Transforms
@@ -62,28 +63,8 @@ public class Player : MonoBehaviour
     #region Unity Callbacks
     private void Awake()
     {
-        StateMachine = new PlayerStateMachine();
-
-        IdleState = new PlayerIdleState(this, StateMachine, _playerData, "idle");
-        MoveState = new PlayerMoveState(this, StateMachine, _playerData, "move");
-        JumpState = new PlayerJumpState(this, StateMachine, _playerData, "inAir");
-        InAirState = new PlayerInAirState(this, StateMachine, _playerData, "inAir");
-        LandState = new PlayerLandState(this, StateMachine, _playerData, "land");
-        WallSlideState = new PlayerWallSlideState(this, StateMachine, _playerData, "wallSliding");
-        WallJumpState = new PlayerWallJumpState(this, StateMachine, _playerData, "inAir");
-        DashState = new PlayerDashState(this, StateMachine, _playerData, "dash");
-        GroundedAttackState = new PlayerGroundedAttackState(this, StateMachine, _playerData, "groundedAttack");
-        ChainState = new PlayerChainAttackState(this, StateMachine, _playerData, "chainState"); //MMMMMMMMMMM
-        ToAirAttackState = new PlayerToAirAttackState(this, StateMachine, _playerData, "toAirAttack");
-        ComboJumpState = new PlayerComboJumpState(this, StateMachine, _playerData, "comboJump");
-        ComboPreDashState = new PlayerComboPreDashState(this, StateMachine, _playerData, "comboPreDash");
-        ComboDashState = new PlayerComboDashState(this, StateMachine, _playerData, "comboDash");
-        ComboPostDashState = new PlayerComboPostDashState(this, StateMachine, _playerData, "comboPostDash");
-        AirAttackState = new PlayerAirAttackState(this, StateMachine, _playerData, "airAttack");
-        PushAttackState = new PlayerPushAttackState(this, StateMachine, _playerData, "pushAttack");
-        GetFinisherState = new PlayerGetFinisherState(this, StateMachine, _playerData, "getFinisher");
-        FinisherStatePKC = new PlayerFinisherStatePKC(this, StateMachine, _playerData, "finisher");
-        FinisherStateKOC = new PlayerFinisherStateKOC(this, StateMachine, _playerData, "finisher");
+        InitializeStates();
+        ProgHandler = FindObjectOfType<ProgressHandler>();
     }
 
     private void Start()
@@ -109,6 +90,31 @@ public class Player : MonoBehaviour
     #endregion
 
     #region Other Functions
+    private void InitializeStates()
+    {
+        StateMachine = new PlayerStateMachine();
+
+        IdleState = new PlayerIdleState(this, StateMachine, _playerData, "idle");
+        MoveState = new PlayerMoveState(this, StateMachine, _playerData, "move");
+        JumpState = new PlayerJumpState(this, StateMachine, _playerData, "inAir");
+        InAirState = new PlayerInAirState(this, StateMachine, _playerData, "inAir");
+        LandState = new PlayerLandState(this, StateMachine, _playerData, "land");
+        WallSlideState = new PlayerWallSlideState(this, StateMachine, _playerData, "wallSliding");
+        WallJumpState = new PlayerWallJumpState(this, StateMachine, _playerData, "inAir");
+        DashState = new PlayerDashState(this, StateMachine, _playerData, "dash");
+        GroundedAttackState = new PlayerGroundedAttackState(this, StateMachine, _playerData, "groundedAttack");
+        ChainState = new PlayerChainAttackState(this, StateMachine, _playerData, "chainState"); //MMMMMMMMMMM
+        ToAirAttackState = new PlayerToAirAttackState(this, StateMachine, _playerData, "toAirAttack");
+        ComboJumpState = new PlayerComboJumpState(this, StateMachine, _playerData, "comboJump");
+        ComboPreDashState = new PlayerComboPreDashState(this, StateMachine, _playerData, "comboPreDash");
+        ComboDashState = new PlayerComboDashState(this, StateMachine, _playerData, "comboDash");
+        ComboPostDashState = new PlayerComboPostDashState(this, StateMachine, _playerData, "comboPostDash");
+        AirAttackState = new PlayerAirAttackState(this, StateMachine, _playerData, "airAttack");
+        PushAttackState = new PlayerPushAttackState(this, StateMachine, _playerData, "pushAttack");
+        GetFinisherState = new PlayerGetFinisherState(this, StateMachine, _playerData, "getFinisher");
+        FinisherStatePKC = new PlayerFinisherStatePKC(this, StateMachine, _playerData, "finisher");
+        FinisherStateKOC = new PlayerFinisherStateKOC(this, StateMachine, _playerData, "finisher");
+    }
 
     private void AnimationFinishedTrigger() => StateMachine.CurrentState.AnimationFinishedTrigger();
     #endregion

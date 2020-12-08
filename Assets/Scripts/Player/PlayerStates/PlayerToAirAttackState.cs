@@ -2,12 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerToAirAttackState : PlayerState
+public class PlayerToAirAttackState : PlayerAttackState
 {
-    private float _xInput;
-    private Collider2D[] _collidersDetected;
-    private int currentComboType;
-
 
     public PlayerToAirAttackState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string boolName) : base(player, stateMachine, playerData, boolName)
     {
@@ -22,23 +18,6 @@ public class PlayerToAirAttackState : PlayerState
     {
         base.Enter();
 
-        StillSameCombo();
-
-        SetAnimatorCombo();
-    }
-
-    private void SetAnimatorCombo()
-    {
-        player.comboHandler.CheckIfComboLost();
-        player.Anim.SetFloat("comboType", player.comboHandler.GetAttackInputPressedType());
-        player.Anim.SetFloat("comboTracker", player.comboHandler.comboTracker);
-    }
-
-    private void StillSameCombo()
-    {
-        currentComboType = player.comboHandler.GetAttackInputPressedType();
-        if (currentComboType != player.comboHandler.lastComboTypePressed)
-            player.comboHandler.ResetComboTracker();
     }
 
     public override void Exit()
@@ -54,13 +33,9 @@ public class PlayerToAirAttackState : PlayerState
         base.LogicUpdate();
 
         _xInput = player.InputHandler.NormalizedInputX;
-
-        WallAheadCheck();
-
-        StateFinishedCheck();
     }
 
-    private void StateFinishedCheck()
+    public override void StateFinishedCheck()
     {
         if (isAnimationFinished && _xInput == 0)
         {
@@ -72,12 +47,10 @@ public class PlayerToAirAttackState : PlayerState
         }
     }
 
-    private void WallAheadCheck()
+
+    public override void Move()
     {
-        if (!player.TouchingWallInCombo())
-            player.playerMovement.SetVelocityX(playerData.attackVelocity * player.playerMovement.FacingDirection);
-        else
-            player.playerMovement.StopAllMovement();
+        player.playerMovement.SetVelocityX(playerData.attackVelocity * player.playerMovement.FacingDirection);
     }
 
     public override void PhysicsUpdate()

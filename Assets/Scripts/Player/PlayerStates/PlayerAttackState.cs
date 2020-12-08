@@ -22,7 +22,7 @@ public class PlayerAttackState : PlayerState
         SetAnimatorCombo();
     }
 
-    public void SetAnimatorCombo()
+    public virtual void SetAnimatorCombo()
     {
         player.Anim.SetFloat("comboType", player.comboHandler.GetAttackInputPressedType());
         player.comboHandler.CheckIfComboLost();
@@ -46,17 +46,19 @@ public class PlayerAttackState : PlayerState
         base.LogicUpdate();
 
         WallAheadCheck();
-
+        StateFinishedCheck();
     }
 
     public virtual void WallAheadCheck()
     {
         if (!player.TouchingWallInCombo())
-            player.playerMovement.SetVelocityX(playerData.attackVelocity * player.playerMovement.FacingDirection);
+            Move();
         else
             player.playerMovement.StopAllMovement();
     }
 
+    public virtual void StateFinishedCheck() { }  //Has to be overritten
+    public virtual void Move() { }                //Has to be overritten
 
     public override void PhysicsUpdate()
     {
