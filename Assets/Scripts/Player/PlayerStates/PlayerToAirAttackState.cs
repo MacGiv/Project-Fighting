@@ -22,13 +22,23 @@ public class PlayerToAirAttackState : PlayerState
     {
         base.Enter();
 
-        currentComboType = player.comboHandler.GetAttackInputPressedType();
-        if (currentComboType != player.comboHandler.lastComboTypePressed)
-            player.comboHandler.ResetComboTracker();
+        StillSameCombo();
 
+        SetAnimatorCombo();
+    }
+
+    private void SetAnimatorCombo()
+    {
         player.comboHandler.CheckIfComboLost();
         player.Anim.SetFloat("comboType", player.comboHandler.GetAttackInputPressedType());
         player.Anim.SetFloat("comboTracker", player.comboHandler.comboTracker);
+    }
+
+    private void StillSameCombo()
+    {
+        currentComboType = player.comboHandler.GetAttackInputPressedType();
+        if (currentComboType != player.comboHandler.lastComboTypePressed)
+            player.comboHandler.ResetComboTracker();
     }
 
     public override void Exit()
@@ -45,9 +55,13 @@ public class PlayerToAirAttackState : PlayerState
 
         _xInput = player.InputHandler.NormalizedInputX;
 
-        if (!player.TouchingWallInCombo())
-            player.playerMovement.SetVelocityX(playerData.attackVelocity * player.playerMovement.FacingDirection);
+        WallAheadCheck();
 
+        StateFinishedCheck();
+    }
+
+    private void StateFinishedCheck()
+    {
         if (isAnimationFinished && _xInput == 0)
         {
             stateMachine.ChangeState(player.IdleState);
@@ -56,6 +70,14 @@ public class PlayerToAirAttackState : PlayerState
         {
             stateMachine.ChangeState(player.MoveState);
         }
+    }
+
+    private void WallAheadCheck()
+    {
+        if (!player.TouchingWallInCombo())
+            player.playerMovement.SetVelocityX(playerData.attackVelocity * player.playerMovement.FacingDirection);
+        else
+            player.playerMovement.StopAllMovement();
     }
 
     public override void PhysicsUpdate()

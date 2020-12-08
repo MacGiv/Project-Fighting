@@ -33,7 +33,6 @@ public class Player : MonoBehaviour
 
     public PlayerMovement playerMovement { get; private set; }
     public PlayerComboHandler comboHandler { get; private set; }
-    public PlayerJump playerJump { get; private set; }
     public Animator Anim { get; private set; }
     public PlayerInputHandler InputHandler { get; private set; }
     public Rigidbody2D RB { get; private set; }

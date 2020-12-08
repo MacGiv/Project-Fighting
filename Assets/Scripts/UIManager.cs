@@ -7,6 +7,8 @@ public class UIManager : MonoBehaviour
 {
     public GameObject[] slides;
     public GameObject canvas;
+
+    public GameObject keyboardControls;
     //public int finalSlide = 3;
 
     private int slideIndex = 0;
@@ -14,9 +16,9 @@ public class UIManager : MonoBehaviour
 
     void Awake()
     {
-        FindObjectOfType<GameSpeed>().gameSpedValue = 0;
-        canvas.SetActive(true);
-        slides[slideIndex].SetActive(true);
+        //FindObjectOfType<GameSpeed>().gameSpedValue = 0;
+        //canvas.SetActive(true);
+        //slides[slideIndex].SetActive(true);
     }
 
     // Update is called once per frame
@@ -53,4 +55,17 @@ public class UIManager : MonoBehaviour
         FindObjectOfType<GameSpeed>().gameSpedValue = 1;
     }
 
+    public void SeeControls()
+    {
+        FindObjectOfType<GameSpeed>().gameSpedValue = 0;
+        canvas.SetActive(true);
+        keyboardControls.SetActive(true);
+    }
+
+    public void QuitControls()
+    {
+        FindObjectOfType<GameSpeed>().gameSpedValue = 1;
+        canvas.SetActive(false);
+        keyboardControls.SetActive(false);
+    }
 }

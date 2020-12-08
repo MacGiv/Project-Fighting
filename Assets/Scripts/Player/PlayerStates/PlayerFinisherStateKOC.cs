@@ -30,13 +30,24 @@ public class PlayerFinisherStateKOC : PlayerState
     {
         base.LogicUpdate();
 
-        if (!player.TouchingWallInCombo())
-            player.playerMovement.SetDoubleDirectionalVelocity(playerData.airAttackvelocityX /2 , 0.75f);
+        WallAheadCheck();
+        StateFinishedCheck();
+    }
 
+    private void StateFinishedCheck()
+    {
         if (isAnimationFinished && !player.CheckIfGrounded())
         {
             stateMachine.ChangeState(player.InAirState);
         }
+    }
+
+    private void WallAheadCheck()
+    {
+        if (!player.TouchingWallInCombo())
+            player.playerMovement.SetDoubleDirectionalVelocity(playerData.airAttackvelocityX / 2, 0.75f);
+        else
+            player.playerMovement.StopAllMovement();
     }
 
     public override void PhysicsUpdate()

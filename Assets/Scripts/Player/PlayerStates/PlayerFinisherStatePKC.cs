@@ -34,13 +34,13 @@ public class PlayerFinisherStatePKC : PlayerState
     {
         _xInput = player.InputHandler.NormalizedInputX;
 
-        if (!player.TouchingWallInCombo())
-        {
-            player.playerMovement.SetVelocityX(playerData.attackVelocity * 1.5f * player.playerMovement.FacingDirection);
-        }
-        else
-            player.playerMovement.StopAllMovement();
+        WallAheadCheck();
+        StateFinishedCheck();
 
+    }
+
+    private void StateFinishedCheck()
+    {
         if (isAnimationFinished)
         {
             if (!player.CheckIfGrounded())
@@ -56,7 +56,16 @@ public class PlayerFinisherStatePKC : PlayerState
                 stateMachine.ChangeState(player.MoveState);
             }
         }
-        
+    }
+
+    private void WallAheadCheck()
+    {
+        if (!player.TouchingWallInCombo())
+        {
+            player.playerMovement.SetVelocityX(playerData.attackVelocity * 1.5f * player.playerMovement.FacingDirection);
+        }
+        else
+            player.playerMovement.StopAllMovement();
     }
 
     public override void PhysicsUpdate()

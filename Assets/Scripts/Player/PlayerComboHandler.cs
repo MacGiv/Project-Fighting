@@ -40,10 +40,7 @@ public class PlayerComboHandler : MonoBehaviour
     }
 
     #region Check Methods
-    public void CheckEnemyHitbox()
-    {
-        _player.StateMachine.CurrentState.CheckEnemyHitbox();
-    }
+    public void CheckEnemyHitbox() => _player.StateMachine.CurrentState.CheckEnemyHitbox();
 
     public void CheckIfComboLost()
     {
