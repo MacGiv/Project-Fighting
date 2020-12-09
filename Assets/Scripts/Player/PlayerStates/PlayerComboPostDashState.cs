@@ -17,6 +17,7 @@ public class PlayerComboPostDashState : PlayerState
     public override void Exit()
     {
         base.Exit();
+        player.comboHandler.CannotChainMove();
         player.comboHandler.lastAttackTime = Time.time;
     }
 
