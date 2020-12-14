@@ -6,11 +6,13 @@ public class PlayerComboHandler : MonoBehaviour
 {
 
     public bool ComboLost { get; private set; }
+    public bool CanUniqueAttack { get; private set; }
     public bool CanChainCombo { get; private set; }         //Used to make the ChainAttack and the ComboDash/ComboJump
     public bool CanChainMove { get; private set; }
     public bool CanAirCombo { get; private set; }
     public bool CanFinisherMove { get; private set; }
     public bool SecondCombo { get; private set; }
+
 
     #region Cached Components
     public int ComboTypeInputA { get; private set; }
@@ -62,6 +64,7 @@ public class PlayerComboHandler : MonoBehaviour
         if (Time.time > lastChainAttackTime + _playerdata.chainLostTime)
         {
             CannotChain();
+            CannotChainMove();
         }
     }
     #endregion
@@ -88,7 +91,10 @@ public class PlayerComboHandler : MonoBehaviour
             CanAirCombo = true;
         }
         else
+        {
             ResetComboTracker();
+            CannotPerformAirCombo();
+        }
     }
     public void CanSecondCombo()
     {

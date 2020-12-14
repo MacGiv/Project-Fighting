@@ -45,11 +45,11 @@ public class PlayerAttackState : PlayerState
     {
         base.LogicUpdate();
 
-        WallAheadCheck();
+        MoveIfNotWallAhead();
         StateFinishedCheck();
     }
 
-    public virtual void WallAheadCheck()
+    public virtual void MoveIfNotWallAhead()
     {
         if (!player.TouchingWallInCombo())
             Move();

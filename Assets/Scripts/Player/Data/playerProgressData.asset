@@ -19,5 +19,5 @@ MonoBehaviour:
     canUniqueSecond: 0
     canChainMove: 1
     canSecondCombo: 1
-    canFinisher: 0
+    canFinisher: 1
   maxHealth: 0

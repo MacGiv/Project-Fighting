@@ -30,12 +30,14 @@ public class PlayerFinisherStateKOC : PlayerAttackState
 
     public override void StateFinishedCheck()
     {
-        if (isAnimationFinished && !player.CheckIfGrounded())
+        if (isAnimationFinished)
         {
-            stateMachine.ChangeState(player.InAirState);
+            if (!player.CheckIfGrounded())
+                stateMachine.ChangeState(player.InAirState);
+            else
+                stateMachine.ChangeState(player.IdleState);
         }
     }
-    
 
     public override void PhysicsUpdate()
     {
