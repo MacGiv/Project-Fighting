@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class PlayerInAirState : PlayerState
 {
-    private int _xInput;
     private bool _isGrounded;
     private bool _coyoteTime;
+
+    private int _xInput;
     private bool _jumpInput;
     private bool _isJumpingUp;
     private bool _jumpInputStop;
@@ -41,24 +42,21 @@ public class PlayerInAirState : PlayerState
 
         CheckCoyoteTime();
 
-        _xInput = player.InputHandler.NormalizedInputX;
-        _isGrounded = player.CheckIfGrounded();
-        _jumpInput = player.InputHandler.JumpInput;
-        _jumpInputStop = player.InputHandler.JumpInputStop;
-        _dashInput = player.InputHandler.DashInput;
-        _attackInput = player.InputHandler.AttackInput;
-
+        GetInput();
 
         CheckJumpMultiplier();
 
-        if (_attackInput && player.comboHandler.CanAirCombo && player.comboHandler.GetAttackInputPressedType() == 2)
+        if (_attackInput && player.comboHandler.CanAirCombo && player.comboHandler.GetAttackInputPressedType() == (int)ComboTypeIndexes.KICKS_ONLY)
         {
             if (player.comboHandler.CanFinisherMove)
                 stateMachine.ChangeState(player.FinisherStateKOC);
             else
                 stateMachine.ChangeState(player.AirAttackState);
         }
-
+        if (_jumpInput && _coyoteTime && player.JumpState.CanJump())
+        {
+            stateMachine.ChangeState(player.JumpState);
+        }
         if (_isGrounded && player.playerMovement.RB.velocity.y < 0.1f)
         {
             stateMachine.ChangeState(player.LandState);
@@ -71,10 +69,7 @@ public class PlayerInAirState : PlayerState
         {
             stateMachine.ChangeState(player.WallSlideState);
         }
-        else if (_jumpInput && player.JumpState.CanJump() && !player.CheckIfTouchingWall())
-        {
-            stateMachine.ChangeState(player.JumpState);
-        }
+        
         else
         {
             player.playerMovement.CheckIfShouldFlip(_xInput);
@@ -84,6 +79,16 @@ public class PlayerInAirState : PlayerState
             player.Anim.SetFloat("yVelocity", player.playerMovement.RB.velocity.y);
             player.Anim.SetFloat("xVelocity", Mathf.Abs(player.playerMovement.RB.velocity.x));
         }
+    }
+
+    private void GetInput()
+    {
+        _xInput = player.InputHandler.NormalizedInputX;
+        _isGrounded = player.CheckIfGrounded();
+        _jumpInput = player.InputHandler.JumpInput;
+        _jumpInputStop = player.InputHandler.JumpInputStop;
+        _dashInput = player.InputHandler.DashInput;
+        _attackInput = player.InputHandler.AttackInput;
     }
 
     public override void PhysicsUpdate()

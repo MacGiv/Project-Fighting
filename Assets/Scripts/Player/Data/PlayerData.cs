@@ -24,6 +24,7 @@ public class PlayerData : ScriptableObject
     [Header("Wall Jump State")]
     public float wallJumpVelocityX = 15f;
     public float wallJumpVelocityY = 15f;
+    public float wallJumpTime = 0.3f;
 
     [Header("Dash State")]
     public float dashDuration = 0.5f;

@@ -43,7 +43,7 @@ public class PlayerWallSlideState: PlayerState
                 stateMachine.ChangeState(player.WallJumpState);
             }
 
-            if (player.CheckIfGrounded())
+            else if (player.CheckIfGrounded())
             {
                 stateMachine.ChangeState(player.LandState);
             }

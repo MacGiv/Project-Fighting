@@ -96,11 +96,11 @@ public class Player : MonoBehaviour
 
         IdleState = new PlayerIdleState(this, StateMachine, _playerData, "idle");
         MoveState = new PlayerMoveState(this, StateMachine, _playerData, "move");
-        JumpState = new PlayerJumpState(this, StateMachine, _playerData, "inAir");
+        JumpState = new PlayerJumpState(this, StateMachine, _playerData, "jump");
         InAirState = new PlayerInAirState(this, StateMachine, _playerData, "inAir");
         LandState = new PlayerLandState(this, StateMachine, _playerData, "land");
         WallSlideState = new PlayerWallSlideState(this, StateMachine, _playerData, "wallSliding");
-        WallJumpState = new PlayerWallJumpState(this, StateMachine, _playerData, "inAir");
+        WallJumpState = new PlayerWallJumpState(this, StateMachine, _playerData, "wallJump");
         DashState = new PlayerDashState(this, StateMachine, _playerData, "dash");
         GroundedAttackState = new PlayerGroundedAttackState(this, StateMachine, _playerData, "groundedAttack");
         ChainState = new PlayerChainAttackState(this, StateMachine, _playerData, "chainState"); //MMMMMMMMMMM
@@ -128,7 +128,9 @@ public class Player : MonoBehaviour
 
     public bool CheckIfTouchingWall()
     {
-        return Physics2D.Raycast(_wallCheck.position, Vector2.right * playerMovement.FacingDirection, _playerData.wallCheckDistance, _playerData.whatIsGround);
+        return Physics2D.Raycast(_wallCheck.position,
+            Vector2.right * playerMovement.FacingDirection,
+            _playerData.wallCheckDistance, _playerData.whatIsGround);
     }
 
     public bool EnoughHeightDistance()

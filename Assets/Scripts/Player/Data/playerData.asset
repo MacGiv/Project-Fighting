@@ -13,14 +13,15 @@ MonoBehaviour:
   m_Name: playerData
   m_EditorClassIdentifier: 
   movementVelocity: 10
-  jumpVelocity: 14
+  jumpVelocity: 15
   amountOfJumps: 1
   coyoteTime: 0.2
   variableJumpHeightMultiplier: 0.5
   wallSlideVelocity: -4
-  downRaycastHeight: 2
-  wallJumpVelocityX: 20
-  wallJumpVelocityY: 15
+  downRaycastHeight: 2.5
+  wallJumpVelocityX: 13.5
+  wallJumpVelocityY: 14
+  wallJumpTime: 0.25
   dashDuration: 0.15
   dashVelocity: 25
   dashCooldown: 1

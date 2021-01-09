@@ -2,8 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerWallJumpState : PlayerAbilityState
+public class PlayerWallJumpState : PlayerState
 {
+    bool isAbilityDone;
+    bool isGrounded;
+
+    public int xInput => player.InputHandler.NormalizedInputX; 
+
+    float abilityTimer;
+
     public PlayerWallJumpState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string boolName) : base(player, stateMachine, playerData, boolName)
     {
     }
@@ -17,10 +24,11 @@ public class PlayerWallJumpState : PlayerAbilityState
     {
         base.Enter();
         player.playerMovement.SetWallJumpVelocity(playerData.wallJumpVelocityX, playerData.wallJumpVelocityY);
-        isAbilityDone = true;
+        isAbilityDone = false;
+        abilityTimer = playerData.wallJumpTime;
         player.JumpState.DecreaseAmountOfJumpsLeft();
-        player.InAirState.SetJumping();
     }
+
 
     public override void Exit()
     {
@@ -30,6 +38,33 @@ public class PlayerWallJumpState : PlayerAbilityState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
+
+        CheckAbilityDone();
+
+        if (player.CheckIfTouchingWall())
+        {
+            stateMachine.ChangeState(player.WallSlideState);
+        }
+        else if (!player.CheckIfTouchingWall() && !isAbilityDone)
+        {
+            player.playerMovement.CheckIfShouldFlip(xInput);
+        }
+        else if (isAbilityDone)
+        {
+            if (!player.CheckIfGrounded())
+                stateMachine.ChangeState(player.InAirState);
+            else
+                stateMachine.ChangeState(player.IdleState);
+        }
+    }
+
+    void CheckAbilityDone()
+    {
+        abilityTimer -= Time.deltaTime;
+        if (abilityTimer <= 0)
+        {
+            isAbilityDone = true;
+        }
     }
 
     public override void PhysicsUpdate()
