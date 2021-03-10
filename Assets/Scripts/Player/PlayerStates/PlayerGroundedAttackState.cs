@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class PlayerGroundedAttackState : PlayerAttackState
 {
-    
+    private const int _PNKCombo = (int)ComboTypeIndexes.PUNCH_N_KICKS;
+    private const int _KOCCombo = (int)ComboTypeIndexes.KICKS_ONLY;
+
+
     public PlayerGroundedAttackState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string boolName) : base(player, stateMachine, playerData, boolName)
     {
     }
@@ -93,7 +96,18 @@ public class PlayerGroundedAttackState : PlayerAttackState
 
     public override void Move()
     {
-        player.playerMovement.SetVelocityX(playerData.attackVelocity * player.playerMovement.FacingDirection);
+        switch (currentComboType)
+        {
+            case _PNKCombo :
+                player.playerMovement.SetVelocityX(playerData.attackVelocityPKC * player.playerMovement.FacingDirection);
+                break;
+            case _KOCCombo:
+                player.playerMovement.SetVelocityX(playerData.attackVelocityKOC * player.playerMovement.FacingDirection);
+                break;
+            default:
+                //player.playerMovement.SetVelocityX(playerData.attackVelocity * player.playerMovement.FacingDirection);
+                break;
+        }
     }
     public override void AnimationFinishedTrigger()
     {

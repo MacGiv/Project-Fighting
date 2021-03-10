@@ -65,11 +65,14 @@ public class PlayerInAirState : PlayerState
         {
             stateMachine.ChangeState(player.DashState);
         }
+        else if (player.CheckIfTouchingWall() && !player.IsTouchingLedge())
+        {
+            stateMachine.ChangeState(player.LedgeClimbState);
+        }
         else if (player.CheckIfTouchingWall() && _xInput == player.playerMovement.FacingDirection && !player.EnoughHeightDistance())
         {
             stateMachine.ChangeState(player.WallSlideState);
         }
-        
         else
         {
             player.playerMovement.CheckIfShouldFlip(_xInput);

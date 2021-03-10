@@ -18,7 +18,7 @@ MonoBehaviour:
   recievePushHitVelocity: 13
   recievePushDownHitVelocity: 20
   normalHitDuration: 0.2
-  pushHitDuration: 0.5
+  pushHitDuration: 0.4
   toAirHitDuration: 0.2
   airHitDuration: 0.35
   wallCheckDistance: 0.9

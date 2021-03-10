@@ -39,7 +39,6 @@ public class PlayerMovement : MonoBehaviour
         _workspace.Set(velocity, RB.velocity.y);
         RB.velocity = _workspace;
         CurrentVelocity = _workspace;
-        //Debug.Log("SET VELOCITY -X- is being executed");
     }
 
     public void SetVelocityY(float jumpVelocity)
@@ -47,7 +46,6 @@ public class PlayerMovement : MonoBehaviour
         _workspace.Set(RB.velocity.x, jumpVelocity);
         RB.velocity = _workspace;
         CurrentVelocity = _workspace;
-        //Debug.Log("SET VELOCITY -Y- is being executed");
     }
 
     public void SetWallJumpVelocity(float jumpVelocityX, float jumpVelocityY)
@@ -55,7 +53,6 @@ public class PlayerMovement : MonoBehaviour
         _workspace.Set(jumpVelocityX * -FacingDirection, jumpVelocityY);
         RB.velocity = _workspace;
         CurrentVelocity = _workspace;
-        //Debug.Log("WALLJUMP is being executed");
     }
 
     public void SetDoubleDirectionalVelocity(float velocityX, float velocityY)
@@ -63,7 +60,13 @@ public class PlayerMovement : MonoBehaviour
         _workspace.Set(velocityX * FacingDirection, velocityY);
         RB.velocity = _workspace;
         CurrentVelocity = _workspace;
-        //Debug.Log("WALLJUMP is being executed");
+    }
+
+    public void ClimbLedge()
+    {
+        Vector2 oldPos = transform.position;
+        Vector2 newPos = new Vector2(oldPos.x + _playerData.addToXPosition * FacingDirection, oldPos.y + _playerData.addToYPosition);
+        transform.position = newPos;
     }
 
     public void StopAllMovement()

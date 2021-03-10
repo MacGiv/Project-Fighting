@@ -8,6 +8,8 @@ public class PlayerAttackState : PlayerState
     protected Collider2D[] _collidersDetected;
     protected int currentComboType;
 
+    private bool _hittingAir;
+
     public PlayerAttackState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string boolName) : base(player, stateMachine, playerData, boolName)
     {
     }
@@ -18,6 +20,7 @@ public class PlayerAttackState : PlayerState
     public override void Enter()
     {
         base.Enter();
+        _hittingAir = IsHittingAir();
         StillSameCombo();
         SetAnimatorCombo();
     }
@@ -51,7 +54,7 @@ public class PlayerAttackState : PlayerState
 
     public virtual void MoveIfNotWallAhead()
     {
-        if (!player.TouchingWallInCombo())
+        if (!player.TouchingWallInCombo() && !_hittingAir)
             Move();
         else
             player.playerMovement.StopAllMovement();
@@ -77,5 +80,15 @@ public class PlayerAttackState : PlayerState
     public override void AnimationFinishedTrigger()
     {
         base.AnimationFinishedTrigger();
+    }
+
+    private bool IsHittingAir()
+    {
+        _collidersDetected = Physics2D.OverlapCircleAll(player.hitCheck.position, playerData.hitCkeckRadius, playerData.enemyLayer);
+
+        if (_collidersDetected.Length == 0)
+            return true;
+        else
+            return false;
     }
 }

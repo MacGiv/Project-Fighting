@@ -72,7 +72,7 @@ public class PlayerPushAttackState : PlayerAttackState
 
     public override void Move()
     {
-        player.playerMovement.SetVelocityX(playerData.attackVelocity * player.playerMovement.FacingDirection);
+        player.playerMovement.SetVelocityX(playerData.attackVelocityPKC * player.playerMovement.FacingDirection);
     }
 
     public override void AnimationFinishedTrigger()

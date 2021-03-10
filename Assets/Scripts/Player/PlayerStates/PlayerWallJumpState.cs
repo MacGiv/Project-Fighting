@@ -41,7 +41,12 @@ public class PlayerWallJumpState : PlayerState
 
         CheckAbilityDone();
 
-        if (player.CheckIfTouchingWall())
+
+        if (player.CheckIfTouchingWall() && !player.IsTouchingLedge())
+        {
+            stateMachine.ChangeState(player.LedgeClimbState);
+        }
+        else if (player.CheckIfTouchingWall())
         {
             stateMachine.ChangeState(player.WallSlideState);
         }

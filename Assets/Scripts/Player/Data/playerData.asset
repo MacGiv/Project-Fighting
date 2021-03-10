@@ -17,16 +17,19 @@ MonoBehaviour:
   amountOfJumps: 1
   coyoteTime: 0.2
   variableJumpHeightMultiplier: 0.5
-  wallSlideVelocity: -4
+  wallSlideVelocity: -3
   downRaycastHeight: 2.5
-  wallJumpVelocityX: 13.5
+  wallJumpVelocityX: 13
   wallJumpVelocityY: 14
   wallJumpTime: 0.25
   dashDuration: 0.15
   dashVelocity: 25
   dashCooldown: 1
   comboDashDuration: 0.3
-  attackVelocity: 2
+  addToYPosition: 1.2
+  addToXPosition: 0.8
+  attackVelocityKOC: 2
+  attackVelocityPKC: 2.5
   attackDamage: 20
   comboLostTime: 0.2
   airAttackvelocityX: 4
@@ -42,7 +45,7 @@ MonoBehaviour:
   groundCheckRadius: 0.3
   wallCheckDistance: 0.5
   comboWallCheckDistance: 2
-  hitCkeckRadius: 0.2
+  hitCkeckRadius: 0.45
   enemyInAirRangeDistance: 1
   whatIsGround:
     serializedVersion: 2

@@ -50,7 +50,7 @@ public class PlayerToAirAttackState : PlayerAttackState
 
     public override void Move()
     {
-        player.playerMovement.SetVelocityX(playerData.attackVelocity * player.playerMovement.FacingDirection);
+        player.playerMovement.SetVelocityX(playerData.attackVelocityKOC * player.playerMovement.FacingDirection);
     }
 
     public override void PhysicsUpdate()

@@ -95,7 +95,7 @@ public class PlayerFinisherStatePKC : PlayerAttackState
 
     public override void Move()
     {
-        player.playerMovement.SetVelocityX(playerData.attackVelocity * 1.5f * player.playerMovement.FacingDirection);
+        player.playerMovement.SetVelocityX(playerData.attackVelocityPKC * player.playerMovement.FacingDirection);
     }
 
     public override void AnimationFinishedTrigger()

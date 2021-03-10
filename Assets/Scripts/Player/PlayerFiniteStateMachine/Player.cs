@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     public PlayerLandState LandState { get; private set; }
     public PlayerWallSlideState WallSlideState { get; private set; }
     public PlayerWallJumpState WallJumpState { get; private set; }
+    public PlayerLedgeClimbState LedgeClimbState { get; private set; }
     public PlayerDashState DashState { get; private set; }
     public PlayerGroundedAttackState GroundedAttackState { get; private set; }
     public PlayerChainAttackState ChainState { get; private set; }
@@ -46,6 +47,8 @@ public class Player : MonoBehaviour
     private Transform _groundCheck;
     [SerializeField]
     private Transform _wallCheck;
+    [SerializeField]
+    private Transform _ledgeCheck;
     [SerializeField]
     private Transform _enemyInAirRange;
  
@@ -101,6 +104,7 @@ public class Player : MonoBehaviour
         LandState = new PlayerLandState(this, StateMachine, _playerData, "land");
         WallSlideState = new PlayerWallSlideState(this, StateMachine, _playerData, "wallSliding");
         WallJumpState = new PlayerWallJumpState(this, StateMachine, _playerData, "wallJump");
+        LedgeClimbState = new PlayerLedgeClimbState(this, StateMachine, _playerData, "ledgeClimb");
         DashState = new PlayerDashState(this, StateMachine, _playerData, "dash");
         GroundedAttackState = new PlayerGroundedAttackState(this, StateMachine, _playerData, "groundedAttack");
         ChainState = new PlayerChainAttackState(this, StateMachine, _playerData, "chainState"); //MMMMMMMMMMM
@@ -129,6 +133,13 @@ public class Player : MonoBehaviour
     public bool CheckIfTouchingWall()
     {
         return Physics2D.Raycast(_wallCheck.position,
+            Vector2.right * playerMovement.FacingDirection,
+            _playerData.wallCheckDistance, _playerData.whatIsGround);
+    }
+
+    public bool IsTouchingLedge()
+    {
+        return Physics2D.Raycast(_ledgeCheck.position,
             Vector2.right * playerMovement.FacingDirection,
             _playerData.wallCheckDistance, _playerData.whatIsGround);
     }

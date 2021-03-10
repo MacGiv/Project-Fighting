@@ -32,8 +32,13 @@ public class PlayerData : ScriptableObject
     public float dashCooldown = 1.5f;
     public float comboDashDuration = 0.7f;
 
+    [Header("Climb Ledge State")]
+    public float addToYPosition = 1f;
+    public float addToXPosition = 1f;
+
     [Header("Grounded Attack State")]
-    public float attackVelocity = 7.5f;
+    public float attackVelocityKOC = 7.5f;
+    public float attackVelocityPKC = 6f;
     public int attackDamage = 20;
     public float comboLostTime = 0.3f;
 
