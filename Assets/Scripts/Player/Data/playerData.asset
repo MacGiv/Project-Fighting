@@ -19,8 +19,8 @@ MonoBehaviour:
   variableJumpHeightMultiplier: 0.5
   wallSlideVelocity: -3
   downRaycastHeight: 2.5
-  wallJumpVelocityX: 13
-  wallJumpVelocityY: 14
+  wallJumpVelocityX: 12.5
+  wallJumpVelocityY: 15
   wallJumpTime: 0.25
   dashDuration: 0.15
   dashVelocity: 25
