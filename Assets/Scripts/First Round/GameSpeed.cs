@@ -7,7 +7,7 @@ namespace ProjectFighting.FirstRound
     public class GameSpeed : MonoBehaviour
     {
         [SerializeField] float timeOnAttack = 0.3f;
-        [SerializeField] float normalTimeScale = 1f;
+        public float gameSpedValue = 1f;
 
 
         // Start is called before the first frame update
@@ -19,7 +19,7 @@ namespace ProjectFighting.FirstRound
         // Update is called once per frame
         void Update()
         {
-            Time.timeScale = normalTimeScale;
+            Time.timeScale = gameSpedValue;
         }
 
         public void SetNormalSpeed()

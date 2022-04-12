@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6327d1953ec21d47b51e253f4a6d783, type: 3}
+  m_Name: playerData
+  m_EditorClassIdentifier: 
+  movementVelocity: 14
+  jumpVelocity: 22
+  amountOfJumps: 1
+  coyoteTime: 0.2
+  variableJumpHeightMultiplier: 0.5
+  wallSlideVelocity: -3.5
+  downRaycastHeight: 4.5
+  wallJumpVelocityX: 17
+  wallJumpVelocityY: 16.5
+  wallJumpTime: 0.25
+  dashDuration: 0.15
+  dashVelocity: 25
+  dashCooldown: 1
+  comboDashDuration: 1
+  addToYPosition: 2.3
+  addToXPosition: 1.3
+  attackVelocityKOC: 2
+  attackVelocityPKC: 2.5
+  attackDamage: 20
+  comboLostTime: 0.2
+  airAttackvelocityX: 4
+  comboJumpVelocityX: 15
+  comboJumpVelocityY: 17
+  enemyCheckDelay: 0.3
+  aInputComboType: 2
+  bInputComboType: 1
+  aInputChainType: 1
+  bInputChainType: 2
+  chainLostTime: 0.2
+  pKCFinisherHits: 5
+  groundCheckRadius: 0.4
+  wallCheckDistance: 1.3
+  comboWallCheckDistance: 3
+  hitCkeckRadius: 1
+  enemyInAirRangeDistance: 1.5
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 256
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 4096
+  enemyFootLayer:
+    serializedVersion: 2
+    m_Bits: 16384
