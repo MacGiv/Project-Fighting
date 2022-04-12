@@ -63,7 +63,7 @@ public class EnemyMovement : MonoBehaviour
     {
         Vector2 playerPos = _playerBrain.gameObject.transform.position;
 
-        _vectorWorkspace.Set( playerPos.x + 1f * playerFacingDirection , playerPos.y);
+        _vectorWorkspace.Set( playerPos.x + _enemyData.distanceToPlayerPos * playerFacingDirection , playerPos.y);
         transform.position = _vectorWorkspace;
         CheckHitFlip((int)playerFacingDirection);
 

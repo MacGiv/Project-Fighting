@@ -66,15 +66,13 @@ public class EnemyBrain : MonoBehaviour
     }
 
 
-    public bool IsTouchingGround()
-    {
-        return Physics2D.OverlapCircle(_groudCheck.position, enemyData.groundCheckRadius, enemyData.groundLayer);
-    }
+    public bool IsTouchingGround() => Physics2D.OverlapCircle(_groudCheck.position, enemyData.groundCheckRadius, 
+                                      enemyData.groundLayer);
 
-    public bool CheckForWall()
-    {
-        return Physics2D.Raycast(_wallCheck.position, Vector2.right * -enemyMovement.FacingDirection, enemyData.wallCheckDistance, enemyData.groundLayer);
-    }
+
+    public bool CheckForWall() => Physics2D.Raycast(_wallCheck.position, Vector2.right * -enemyMovement.FacingDirection,
+                                                    enemyData.wallCheckDistance, enemyData.groundLayer);
+    
 
     private void OnDrawGizmos()
     {

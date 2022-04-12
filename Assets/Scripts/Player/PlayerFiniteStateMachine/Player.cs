@@ -144,7 +144,7 @@ public class Player : MonoBehaviour
             _playerData.wallCheckDistance, _playerData.whatIsGround);
     }
 
-    public bool EnoughHeightDistance()
+    public bool EnoughHeightDistance()  // Is this distance enough to wall climb?
     {
         return Physics2D.Raycast(_groundCheck.position, Vector2.down, _playerData.downRaycastHeight, _playerData.whatIsGround);
     }
@@ -167,10 +167,16 @@ public class Player : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        // GroundCheck
         Gizmos.DrawWireSphere(_groundCheck.position, _playerData.groundCheckRadius);
+        // HitCheck
         Gizmos.DrawWireSphere(hitCheck.position, _playerData.hitCkeckRadius);
+        // Enemy in hit range
         Gizmos.DrawRay(_enemyInAirRange.position, Vector2.right * GetComponent<PlayerMovement>().FacingDirection * _playerData.enemyInAirRangeDistance);
+        // Combo forward wall check
         Gizmos.DrawRay(gameObject.transform.position, Vector2.right * GetComponent<PlayerMovement>().FacingDirection * _playerData.comboWallCheckDistance);
+        // Enough distance to climb
+        Gizmos.DrawRay(gameObject.transform.position, Vector2.down * _playerData.downRaycastHeight);
     }
     #endregion
 

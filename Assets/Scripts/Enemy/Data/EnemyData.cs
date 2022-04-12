@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "newEnemyData", menuName = "Data/Enemy Data/Base Data")]
 public class EnemyData : ScriptableObject
 {
-    [Header("Recieve Hit Velocities")]
+    [Header("Recieve Hit Velocity")]
     public float recievedNormHitVelocity = 200f;
     public float recieveToAirHitVelocityY = 350f;
     public float recieveToAirHitVelocityX = 300f;
@@ -18,6 +18,9 @@ public class EnemyData : ScriptableObject
     public float pushHitDuration = 0.5f;
     public float toAirHitDuration = 0.2f;
     public float airHitDuration = 0.25f;
+
+    [Header("Receive hit repositioning")]
+    public float distanceToPlayerPos = 1f;
 
     [Header("Checkers")]
     public float wallCheckDistance = 0.9f;
